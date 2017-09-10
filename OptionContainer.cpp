@@ -56,7 +56,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 
 
 
-int OptionContainer::pullInt(const std::string& key, const std::string& value) const {
+int OptionContainer::pullInt(const std::string& key, const int& value) const {
 
   for(auto pair : _intOptions) {
 
@@ -64,6 +64,6 @@ int OptionContainer::pullInt(const std::string& key, const std::string& value) c
       return std::get<1>(pair);
     }
   }
-  return std::atoi(value.c_str());
+  return value;
 
 }

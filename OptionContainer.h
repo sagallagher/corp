@@ -1,5 +1,5 @@
 #ifndef _OPTION_CONTAINER_GAURD_
-#define  _OPTION_CONTAINER_GAURD_
+#define _OPTION_CONTAINER_GAURD_
 
 #include<vector>
 #include<string>
@@ -22,7 +22,7 @@ public:
   bool push(const std::string& key,const std::string& value);
 
   // pull a key's int value
-  int pullInt(const std::string& key, const std::string& value) const;
+  int pullInt(const std::string& key, const int& value) const;
 
   // pull a key's bool value
   bool pullBool(const std::string& key, const std::string& value) const;

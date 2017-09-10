@@ -1,6 +1,6 @@
 // Provides an interface for the implementation of a Config object
 #ifndef _CONFIG_
-#define  _CONFIG_
+#define _CONFIG_
 
 #include "OptionContainer.h"
 #include <fstream>
@@ -20,7 +20,7 @@ public:
   bool parse();
 
   // pull a value of a key
-  int pull(const std::string &key, const std::string &value) const;
+  int pullInt(const std::string &key, const int &value) const;
 
 };
 
