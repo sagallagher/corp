@@ -1,6 +1,7 @@
 #pragma once
 
-#include <stdio.h>
+#include "OptionContainer.h"
+#include "sdafx.h"
 
 template <class T>
 class Matrix
@@ -8,8 +9,9 @@ class Matrix
 public:
 	Matrix(int rows, int cols)
 	{
-		setRow(rows);
-		setCol(cols);
+		//uses push from OptionConatainer.h
+		push(rows);
+		push(cols);
 
 		data = new T*[rows];
 
@@ -23,7 +25,8 @@ public:
 			}
 		}
 	}
-
+	
+	//needs to be implemented
 	void setRow(int r) { row = r; }
 	void setCol(int c) { col = c; }
 	T& operator()(int row, int col);
