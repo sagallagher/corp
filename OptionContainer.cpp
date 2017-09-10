@@ -53,7 +53,6 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 }
 
 
-
 int OptionContainer::pullInt(const std::string& key, const int& value) const {
 
   for(auto pair : _intOptions) {

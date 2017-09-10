@@ -1,24 +1,15 @@
 #include"Config.h"
 #include<iostream>
 
-
-
-Config::Config(std::string cfg_file_name) : _cfg_file_path{ cfg_file_name } {}
-
-
-// Return the value of a key
-// value is returned if the key is not found
-int Config::pullInt(const std::string &key, const int &value) const {
-    return _option_container.pullInt(key,value);
-}
+Config::Config(std::string cfg_file_name) { parse(cfg_file_name); }
 
 // parse config file
-bool Config::parse() {
+bool Config::parse(std::string cfg_file_path) {
 
-  std::ifstream cfg(_cfg_file_path.c_str());
+  std::ifstream cfg(cfg_file_path.c_str());
 
   if(!cfg) {
-    std::cerr << "Could not find congiguration file";
+    std::cerr << "Could not find configuration file";
     return false;
   }
 
@@ -29,8 +20,10 @@ bool Config::parse() {
       cfg.getline(key,256,'=');
       cfg.getline(value,32,'\n');
       std::pair<std::string,std::string> new_option = std::make_pair(key,value);
-      _option_container.push(key,value);
+      push(key,value);
   }
+
+  cfg.close();
 
   return true;
 

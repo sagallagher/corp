@@ -5,23 +5,15 @@
 #include<fstream>
 #include<string.h>
 
-class Config {
+class Config : public OptionContainer {
 
 private:
-  // Member variables
-  std::string _cfg_file_path;
-  OptionContainer _option_container;
+  // parse config file
+  bool parse(std::string cfg_file_name);
 
 public:
   // store the location of the config file
   Config(std::string cfg_file_path);
-
-  // parse config file
-  bool parse();
-
-  // pull a value of a key
-  int pullInt(const std::string &key, const int &value) const;
-
 };
 
 #endif
