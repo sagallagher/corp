@@ -1,9 +1,9 @@
-#include "OptionContainer.h"
-#include <fstream>
-#include <utility>
+#include"OptionContainer.h"
 #include<iostream>
-#include <string.h>
+#include<string.h>
 #include<cstring>
+#include<utility>
+
 // return if value is an int or not
 bool OptionContainer::isInt(const std::string value) const {
 
@@ -21,8 +21,6 @@ bool OptionContainer::isBool(const std::string value) const {
   return false;
 
 }
-
-
 
 // push a value to the corrent container
 bool OptionContainer::push(const std::string& key,const std::string& value) {

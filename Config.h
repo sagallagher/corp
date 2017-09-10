@@ -1,9 +1,9 @@
-// Provides an interface for the implementation of a Config object
 #ifndef _CONFIG_
 #define _CONFIG_
 
-#include "OptionContainer.h"
-#include <fstream>
+#include"OptionContainer.h"
+#include<fstream>
+#include<string.h>
 
 class Config {
 

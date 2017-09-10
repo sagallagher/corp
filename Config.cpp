@@ -1,7 +1,5 @@
-#include "Config.h"
+#include"Config.h"
 #include<iostream>
-#include<algorithm>
-#include <string.h>
 
 
 
