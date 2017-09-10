@@ -1,6 +1,9 @@
 // Provides an interface for the implementation of a Config object
+#ifndef _CONFIG_
+#define  _CONFIG_
 
 #include "OptionContainer.h"
+#include <fstream>
 
 class Config {
 
@@ -14,9 +17,11 @@ public:
   Config(std::string cfg_file_path);
 
   // parse config file
-  bool parse() const;
+  bool parse();
 
   // pull a value of a key
   int pull(const std::string &key, const std::string &value) const;
 
 };
+
+#endif

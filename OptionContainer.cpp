@@ -1,7 +1,9 @@
 #include "OptionContainer.h"
 #include <fstream>
 #include <utility>
-
+#include<iostream>
+#include <string.h>
+#include<cstring>
 // return if value is an int or not
 bool OptionContainer::isInt(const std::string value) const {
 
@@ -43,7 +45,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
   }
 
   // NEED TO IMPLEMENT
-  // if none of the above, it is a string
+  // if none of the above, return an error
   else {
     int za = 4;
   }
@@ -57,7 +59,8 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 int OptionContainer::pullInt(const std::string& key, const std::string& value) const {
 
   for(auto pair : _intOptions) {
-    if(std::get<0>(pair) ==  key) {
+
+    if(std::strcmp(std::get<0>(pair).c_str(), key.c_str()) == 0) {
       return std::get<1>(pair);
     }
   }

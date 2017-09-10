@@ -1,3 +1,6 @@
+#ifndef _OPTION_CONTAINER_GAURD_
+#define  _OPTION_CONTAINER_GAURD_
+
 #include<vector>
 #include<string>
 
@@ -28,3 +31,5 @@ public:
   bool key_exists(const std::string& key) const;
 
 };
+
+#endif
