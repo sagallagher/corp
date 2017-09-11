@@ -42,7 +42,6 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
       _intOptions.push_back(new_option);
 
       return true;
-
   }
 
   // if value is a bool, push it the bool container
@@ -52,6 +51,13 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 
     _boolOptions.push_back(new_option);
 
+    return true;
+  }
+
+  // if value is a string, push it to the string container
+  else if(!isBool(value) && !isInt(value)) {
+    std::pair<std::string, std::string> new_option = std::make_pair(key, value);
+    _stringOptions.push_back(new_option);
     return true;
   }
 
@@ -81,5 +87,20 @@ bool OptionContainer::pullBool(const std::string& key, const bool& value) const 
     }
   }
   return value;
+
+}
+
+// pull a key's string value
+std::string OptionContainer::pullString(const std::string& key,
+  const std::string& value) const {
+
+    for(auto pair : _stringOptions) {
+
+      if(std::strcmp(std::get<0>(pair).c_str(), key.c_str()) == 0) {
+        return std::get<1>(pair);
+      }
+    }
+    return value;
+
 
 }

@@ -12,6 +12,8 @@ private:
   // file might be set to
   std::vector<std::pair<std::string, int>> _intOptions;
   std::vector<std::pair<std::string, bool>> _boolOptions;
+  std::vector<std::pair<std::string, std::string>> _stringOptions;
+
 
   // is value is an int?
   bool isInt(const std::string& value) const;
@@ -34,6 +36,9 @@ public:
 
   // pull a key's bool value
   bool pullBool(const std::string& key, const bool& value) const;
+
+  // pull a key's string value
+  std::string pullString(const std::string& key, const std::string& value) const;
 
 
 };
