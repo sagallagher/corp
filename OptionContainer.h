@@ -13,10 +13,10 @@ private:
 
 public:
   // is value is an int?
-  bool isInt(const std::string value) const;
+  bool isInt(const std::string& value) const;
 
   // is value a bool?
-  bool isBool(const std::string value) const;
+  bool isBool(const std::string& value) const;
 
   // push a value to the correct container
   bool push(const std::string& key,const std::string& value);
@@ -25,10 +25,13 @@ public:
   int pullInt(const std::string& key, const int& value) const;
 
   // pull a key's bool value
-  bool pullBool(const std::string& key, const std::string& value) const;
+  bool pullBool(const std::string& key, const bool& value) const;
 
   // does the key exist in any container?
   bool key_exists(const std::string& key) const;
+
+  // convert a string to a bool
+  bool evalBool(const std::string& value);
 
 };
 

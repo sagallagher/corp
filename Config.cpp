@@ -1,6 +1,6 @@
 #include"Config.h"
 #include<iostream>
-
+#include<fstream>
 Config::Config(std::string cfg_file_name) { parse(cfg_file_name); }
 
 // parse config file

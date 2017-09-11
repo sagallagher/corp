@@ -2,7 +2,6 @@
 #define _CONFIG_
 
 #include"OptionContainer.h"
-#include<fstream>
 #include<string.h>
 
 class Config : public OptionContainer {

@@ -1,11 +1,10 @@
 #include"OptionContainer.h"
 #include<iostream>
-#include<string.h>
 #include<cstring>
 #include<utility>
 
 // return if value is an int or not
-bool OptionContainer::isInt(const std::string value) const {
+bool OptionContainer::isInt(const std::string& value) const {
 
   if(std::atoi(value.c_str()) == 0 && value != "0") return false;
 
@@ -14,7 +13,7 @@ bool OptionContainer::isInt(const std::string value) const {
 }
 
 // return if value is a bool or not
-bool OptionContainer::isBool(const std::string value) const {
+bool OptionContainer::isBool(const std::string& value) const {
 
   if (value == "false" || value == "true") return true;
 
@@ -22,9 +21,19 @@ bool OptionContainer::isBool(const std::string value) const {
 
 }
 
+// convert a string to a bool
+bool OptionContainer::evalBool(const std::string& value) {
+
+  if(value == "true") return true;
+
+  if(value == "false") return false;
+
+}
+
 // push a value to the corrent container
 bool OptionContainer::push(const std::string& key,const std::string& value) {
 
+  // if value is an int, push it to the int container
   if(isInt(value)) {
       // create pair
       std::pair<std::string, int> new_option = std::make_pair(key, std::atoi(value.c_str()));
@@ -36,18 +45,15 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 
   }
 
-  // NEEED TO IMPLEMENT
+  // if value is a bool, push it the value container
   else if(isBool(value)) {
-    int z  = 4;
+
+    std::pair<std::string, int> new_option = std::make_pair(key, evalBool(value));
+
+    _boolOptions.push_back(new_option);
+
     return true;
   }
-
-  // NEED TO IMPLEMENT
-  // if none of the above, return an error
-  else {
-    int za = 4;
-  }
-
 
   return false;
 }
@@ -56,6 +62,18 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 int OptionContainer::pullInt(const std::string& key, const int& value) const {
 
   for(auto pair : _intOptions) {
+
+    if(std::strcmp(std::get<0>(pair).c_str(), key.c_str()) == 0) {
+      return std::get<1>(pair);
+    }
+  }
+  return value;
+
+}
+
+bool OptionContainer::pullBool(const std::string& key, const bool& value) const {
+
+  for(auto pair : _boolOptions) {
 
     if(std::strcmp(std::get<0>(pair).c_str(), key.c_str()) == 0) {
       return std::get<1>(pair);
