@@ -1,6 +1,8 @@
 #include"Config.h"
 #include<iostream>
 #include<fstream>
+#include<cstring>
+#include<utility>
 Config::Config(std::string cfg_file_name) { parse(cfg_file_name); }
 
 // parse config file, provide path to this file
@@ -19,20 +21,25 @@ bool Config::parse(std::string& cfg_file_path) {
 
   char key[256];
   char value[32];
+  std::string line;
 
   while(!cfg.eof()) {
       // store the characters from the beginning of the line to the '=' character
       // as the key
+
       cfg.getline(key,256,'=');
 
-      // store the rest of the line as the value
-      cfg.getline(value,32,'\n');
+      if (key[0] != '#') {
 
-      // create a new key value pair to store in the OptionContiner
-      std::pair<std::string,std::string> new_option = std::make_pair(key,value);
+        // store the rest of the line as the value
+        cfg.getline(value,32,'\n');
 
-      // push the pair into OptionContainer
-      push(key,value);
+        // create a new key value pair to store in the OptionContiner
+        std::pair<std::string,std::string> new_option = std::make_pair(key,value);
+
+        // push the pair into OptionContainer
+        push(key,value);
+    }
   }
 
   // close the configuration file
