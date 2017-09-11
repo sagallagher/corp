@@ -9,9 +9,8 @@ class Matrix
 public:
 	Matrix(int rows, int cols)
 	{
-		//uses push from OptionConatainer.h
-		push(rows);
-		push(cols);
+		setRow(rows);
+		setCol(cols);
 
 		data = new T*[rows];
 
