@@ -14,7 +14,6 @@ private:
   std::vector<std::pair<std::string, bool>> _boolOptions;
   std::vector<std::pair<std::string, std::string>> _stringOptions;
 
-
   // is value is an int?
   bool isInt(const std::string& value) const;
 
@@ -32,13 +31,13 @@ public:
   bool push(const std::string& key,const std::string& value);
 
   // pull a key's int value
-  int pullInt(const std::string& key, const int& value) const;
+  int pull(const std::string& key, const int& value) const;
 
   // pull a key's bool value
-  bool pullBool(const std::string& key, const bool& value) const;
+  bool pull(const std::string& key, const bool& value) const;
 
   // pull a key's string value
-  std::string pullString(const std::string& key, const std::string& value) const;
+  std::string pull(const std::string& key, const std::string& value) const;
 
 
 };

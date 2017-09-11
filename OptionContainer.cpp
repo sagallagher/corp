@@ -9,7 +9,6 @@ bool OptionContainer::isInt(const std::string& value) const {
   if(std::atoi(value.c_str()) == 0 && value != "0") return false;
 
   return true;
-
 }
 
 // return if value is a bool or not
@@ -18,7 +17,6 @@ bool OptionContainer::isBool(const std::string& value) const {
   if (value == "false" || value == "true") return true;
 
   return false;
-
 }
 
 // convert a string to a bool
@@ -27,7 +25,6 @@ bool OptionContainer::evalBool(const std::string& value) const {
   if(value == "true") return true;
 
   if(value == "false") return false;
-
 }
 
 // push a value to the correct container
@@ -56,8 +53,11 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 
   // if value is a string, push it to the string container
   else {
+
     std::pair<std::string, std::string> new_option = std::make_pair(key, value);
+
     _stringOptions.push_back(new_option);
+
     return true;
   }
 
@@ -65,7 +65,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 }
 
 // pull a key's int value
-int OptionContainer::pullInt(const std::string& key, const int& value) const {
+int OptionContainer::pull(const std::string& key, const int& value) const {
 
   for(auto pair : _intOptions) {
 
@@ -74,11 +74,10 @@ int OptionContainer::pullInt(const std::string& key, const int& value) const {
     }
   }
   return value;
-
 }
 
 // pull a key's bool value
-bool OptionContainer::pullBool(const std::string& key, const bool& value) const {
+bool OptionContainer::pull(const std::string& key, const bool& value) const {
 
   for(auto pair : _boolOptions) {
 
@@ -87,11 +86,10 @@ bool OptionContainer::pullBool(const std::string& key, const bool& value) const 
     }
   }
   return value;
-
 }
 
 // pull a key's string value
-std::string OptionContainer::pullString(const std::string& key,
+std::string OptionContainer::pull(const std::string& key,
   const std::string& value) const {
 
     for(auto pair : _stringOptions) {
@@ -101,6 +99,4 @@ std::string OptionContainer::pullString(const std::string& key,
       }
     }
     return value;
-
-
 }
