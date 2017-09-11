@@ -45,7 +45,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 
   }
 
-  // if value is a bool, push it the value container
+  // if value is a bool, push it the bool container
   else if(isBool(value)) {
 
     std::pair<std::string, int> new_option = std::make_pair(key, evalBool(value));
