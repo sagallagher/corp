@@ -22,7 +22,7 @@ bool OptionContainer::isBool(const std::string& value) const {
 }
 
 // convert a string to a bool
-bool OptionContainer::evalBool(const std::string& value) {
+bool OptionContainer::evalBool(const std::string& value) const {
 
   if(value == "true") return true;
 
@@ -58,7 +58,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
   return false;
 }
 
-
+// pull a key's int value
 int OptionContainer::pullInt(const std::string& key, const int& value) const {
 
   for(auto pair : _intOptions) {
@@ -71,6 +71,7 @@ int OptionContainer::pullInt(const std::string& key, const int& value) const {
 
 }
 
+// pull a key's bool value
 bool OptionContainer::pullBool(const std::string& key, const bool& value) const {
 
   for(auto pair : _boolOptions) {
