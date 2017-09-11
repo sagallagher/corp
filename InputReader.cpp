@@ -29,20 +29,13 @@ int main()
 
 	if (inputFile.is_open())
 	{
+		//Rows and columns method not feasible for higher level polytopes? ie 120cell, 600cell
 		int rows, columns, product;
 		inputFile >> rows;
 		inputFile >> columns;
 		product = rows * columns;
 
-
-
-		////Define matrix size depending on rows vs columns
-		//if (rows == 24 && columns == 6)
-		//{
-		//	int matrix[24][6];
-		//}
-
-		//Currently, assume using 24-cell inputs
+		//Currently, assume using 24cell inputs
 		int matrix[24][6];
 
 		cout << "Rows:\t\t" << rows << endl;
@@ -55,33 +48,26 @@ int main()
 			{
 				inputFile >> word;
 				matrix[i][j] = word;
-				//cout << word << "  ";
 			}
-			//cout << endl;
 		}
 
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < columns; j++)
-			{
-				cout << matrix[i][j] << " ";
-				// word << "  ";
-			}
-			cout << endl;
-		}
+		//Printing the matrix isn't necessary
 
-
-
-
+		//for (int i = 0; i < rows; i++)
+		//{
+		//	for (int j = 0; j < columns; j++)
+		//	{
+		//		cout << matrix[i][j] << " ";
+		//		// word << "  ";
+		//	}
+		//	cout << endl;
+		//}
 
 
 		inputFile.close();
 	}
 	else cout << "Unable to read file.";
 
-
-
-	system("pause");
 	return 0;
 }
 
