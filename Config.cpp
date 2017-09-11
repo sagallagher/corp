@@ -21,7 +21,6 @@ bool Config::parse(std::string& cfg_file_path) {
 
   char key[256];
   char value[32];
-  std::string line;
 
   while(!cfg.eof()) {
 
