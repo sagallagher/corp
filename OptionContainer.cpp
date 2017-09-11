@@ -55,7 +55,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
   }
 
   // if value is a string, push it to the string container
-  else if(!isBool(value) && !isInt(value)) {
+  else {
     std::pair<std::string, std::string> new_option = std::make_pair(key, value);
     _stringOptions.push_back(new_option);
     return true;
