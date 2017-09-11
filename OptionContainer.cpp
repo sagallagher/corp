@@ -30,7 +30,7 @@ bool OptionContainer::evalBool(const std::string& value) {
 
 }
 
-// push a value to the corrent container
+// push a value to the correct container
 bool OptionContainer::push(const std::string& key,const std::string& value) {
 
   // if value is an int, push it to the int container
