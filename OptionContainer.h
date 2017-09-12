@@ -39,7 +39,6 @@ public:
   // pull a key's string value
   std::string pull(const std::string& key, const std::string& value) const;
 
-
 };
 
 #endif
