@@ -24,7 +24,7 @@ public:
   // return the instance of Config
   static Config* getInstance();
   // initialize an instance of Config
-  static bool initialize(const char**);
+  static bool initialize(int argc, const char**);
 
 };
 

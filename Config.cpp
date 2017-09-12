@@ -10,7 +10,13 @@ Config::~Config() {
   delete _instance;
 }
 
-bool Config::initialize(const char** cmdparams) {
+bool Config::initialize(int argc,const char** cmdparams) {
+
+  // ensure atleast one command line argument was provided
+  if (argc == 2) {
+    std::cerr << "Configuration file required\n";
+    exit(-1);
+  }
 
   // if an instance already exists, delete it before creating a new one
   if(_instance) delete _instance;
@@ -25,7 +31,6 @@ bool Config::initialize(const char** cmdparams) {
   _instance -> parse(cfg_file_name);
 
   return true;
-
 }
 
 // return the instance of Config
