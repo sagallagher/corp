@@ -13,7 +13,7 @@ bool Config::initialize(int argc,const char** cmdparams) {
   // ensure atleast one command line argument was provided
   if (argc == 1) {
     std::cerr << "Configuration file required\n";
-    _Exit(-1);
+    return false;
   }
 
   // if an instance already exists, delete it before creating a new one
