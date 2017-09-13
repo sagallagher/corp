@@ -3,7 +3,7 @@
 #include<fstream>
 #include<cstring>
 #include<utility>
-
+#include<algorithm>
 Config::Config() {}
 
 Config::~Config() { delete _instance; }
@@ -46,6 +46,7 @@ bool Config::parse(std::string& cfg_file_path) {
     return false;
   }
 
+
   std::string key, value, line;
 
   while(getline(cfg, line)) {
@@ -58,6 +59,10 @@ bool Config::parse(std::string& cfg_file_path) {
 
       // store characters from '=' to the end of the line
       value = line.substr(line.find("=")+1);
+
+      // strip key,value of white space
+      key.erase(std::remove_if(key.begin(), key.end(), isspace), key.end());
+      value.erase(std::remove_if(value.begin(), value.end(), isspace), value.end());
 
       // create a new key value pair to store in the OptionContiner
       std::pair<std::string,std::string> new_option = std::make_pair(key,value);
