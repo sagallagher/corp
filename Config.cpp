@@ -46,20 +46,22 @@ bool Config::parse(std::string& cfg_file_path) {
     return false;
   }
 
-  char key[256];
-  char value[32];
+  std::string key;
+  std::string value;
+  std::string line;
 
-  while(!cfg.eof()) {
-
+  while(getline(cfg, line)) {
     // store the characters from the beginning of the line to the '=' character
-    cfg.getline(key,256,'=');
+    if(line[0] != '#' && line.find('=') != std::string::npos ) {
 
-    // if the line is not a comment, push the attribute to OptionContainer
-    if (key[0] != '#') {
+      key = line.substr(0,line.find("="));
 
-      // store the rest of the line as the value
-      cfg.getline(value,32,'\n');
+      std::cout << "key[0]\t" << key[0]<< std::endl;
 
+      // if the line is not a comment, push the attribute to OptionContainer
+      value = line.substr(line.find("=")+1);
+
+      std::cout << "key:\t" << key << "\tvalue:\t" << value << std::endl;
       // create a new key value pair to store in the OptionContiner
       std::pair<std::string,std::string> new_option = std::make_pair(key,value);
 
