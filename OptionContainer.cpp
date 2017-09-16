@@ -3,7 +3,6 @@
 #include<cstring>
 #include<utility>
 
-
 // return if value is an int or not
 bool OptionContainer::isInt(const std::string& value) const {
 
@@ -26,6 +25,7 @@ bool OptionContainer::evalBool(const std::string& value) const {
   if(value == "true") return true;
 
   return false;
+
 }
 
 // push a value to the correct container
