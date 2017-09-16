@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include"stdafx.h"
 using namespace std;
 
 int main()
