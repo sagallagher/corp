@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	/*
+	
 	Select input file
 	File options:
 	dodecahedron_facets.txt
@@ -14,7 +15,7 @@ int main()
 	24cell_facets.txt
 	120cell_facets.txt
 	600cell_facets.txt
-	*/
+
 	ifstream inputFile;
 	int word;
 
@@ -71,3 +72,4 @@ int main()
 	return 0;
 }
 
+*/

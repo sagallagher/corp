@@ -160,8 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="CORP_TESTs.cpp" />
+    <ClCompile Include="UNIT_TEST.cpp" />
     <ClCompile Include="InputReader.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="OptionContainer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
