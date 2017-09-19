@@ -87,7 +87,7 @@ bool OptionContainer::pull(const std::string& key, const bool& value) const {
   return value;
 }
 
-// pull a key's string value
+// pull a key's string value 
 std::string OptionContainer::pull(const std::string& key,
   const std::string& value) const {
 
