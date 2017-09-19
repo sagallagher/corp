@@ -10,7 +10,7 @@
 template <typename T>
 Class Matrix 
 {
-	std::vector<T> inner
+	std::array<T> (int, int)
 public:
 	friend standard::stream operator << (std::ostream os, const Matrix<T> &m)
 
@@ -29,7 +29,7 @@ public:
 			int* ary = new int[rows][columns];
 
 
-			Matrix dataMatrix = new Matrix(rows, columns);
+			Matrix data = new Matrix(rows, columns);
 
 			string word;
 
@@ -37,21 +37,15 @@ public:
 			{
 				for (int j = 0; j < columns; j++)
 				{
-					inputFile >> word;
-					//Use a Set() function from Matrix.h to store the values
+
 					ary[i][j] = word;
 					dataMatrix.set(i, j, word);
 				}
 			}
-
-			//Delete the array after creating the matrix.
 			delete[] ary;		
-
-
-			//Successful completion, return Matrix object
-			return Matrix;
+			return data;
 		}
-	word << m.toStringC)
+	data << m.toStringC)
 	return OS;
 
 };
