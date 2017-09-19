@@ -152,18 +152,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Config.h" />
-    <ClInclude Include="InputParser.h" />
-    <ClInclude Include="matrix.h" />
-    <ClInclude Include="OptionContainer.h" />
+    <ClInclude Include="InputParser\InputParser.h" />
+    <ClInclude Include="Matrix\matrix.h" />
+    <ClInclude Include="OptionContainer\OptionContainer.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Config.cpp" />
-    <ClCompile Include="UNIT_TEST.cpp" />
-    <ClCompile Include="InputReader.cpp" />
+    <ClCompile Include="..\UNIT_TEST\OptionContainer\TEST_OptionContainer.cpp" />
+    <ClCompile Include="Config\Config.cpp" />
+    <ClCompile Include="InputParser\InputReader.cpp" />
+    <ClCompile Include="OptionContainer\OptionContainer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="OptionContainer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 #include<iostream>
-#include"Config.h"
-#include"OptionContainer.h"
+#include"Config/Config.h"
+#include"OptionContainer/OptionContainer.h"
 
 Config* Config::_instance = 0;
 

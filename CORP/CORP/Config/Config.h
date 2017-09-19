@@ -1,7 +1,7 @@
 #ifndef _CONFIG_
 #define _CONFIG_
 
-#include"OptionContainer.h"
+#include"../OptionContainer/OptionContainer.h"
 #include<string.h>
 
 class Config : public OptionContainer {
