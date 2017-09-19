@@ -20,6 +20,9 @@ private:
   // is value a bool?
   bool isBool(const std::string& value) const;
 
+  // is value a string?
+  bool isString(const std::string& value);
+
   // convert a string to a bool
   bool evalBool(const std::string& value) const;
 
@@ -27,6 +30,10 @@ private:
   bool key_exists(const std::string& key) const;
 
 public:
+
+  // constructor
+  OptionContainer();
+
   // push a value to the correct container
   bool push(const std::string& key,const std::string& value);
 

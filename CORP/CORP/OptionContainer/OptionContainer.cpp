@@ -4,28 +4,26 @@
 #include<utility>
 
 
+// constructor
+OptionContainer::OptionContainer() {}
+
 // return if value is an int or not
 bool OptionContainer::isInt(const std::string& value) const {
-
-  if(std::atoi(value.c_str()) == 0 && value != "0") return false;
-
-  return true;
+	return !(std::atoi(value.c_str()) == 0 && value != "0");
 }
 
 // return if value is a bool or not
 bool OptionContainer::isBool(const std::string& value) const {
-
-  if (value == "false" || value == "true") return true;
-
-  return false;
+  return  value == "false" || value == "true";
 }
 
 // convert a string to a bool
 bool OptionContainer::evalBool(const std::string& value) const {
+	return value == "true";
+}
 
-  if(value == "true") return true;
-
-  return false;
+bool OptionContainer::isString(const std::string& value) {
+	return !isBool(value) && !isInt(value);
 }
 
 // push a value to the correct container
@@ -53,7 +51,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
   }
 
   // if value is a string, push it to the string container
-  else {
+  else if(isString(value)) {
 
     std::pair<std::string, std::string> new_option = std::make_pair(key, value);
 
