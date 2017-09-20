@@ -152,8 +152,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Config\Config.h" />
     <ClInclude Include="InputParser\InputParser.h" />
-    <ClInclude Include="Matrix\matrix.h" />
+    <ClInclude Include="Matrix\matrix.hpp" />
     <ClInclude Include="OptionContainer\OptionContainer.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

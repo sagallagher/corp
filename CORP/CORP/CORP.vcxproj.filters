@@ -24,7 +24,10 @@
     <ClInclude Include="OptionContainer\OptionContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Matrix\matrix.h">
+    <ClInclude Include="Matrix\matrix.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
