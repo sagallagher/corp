@@ -1,58 +1,113 @@
-#ifndef _Matrix_GAURD	
-#define _Matrix_GUARD 1
-#include <iostream>
+//
+//  Matrix.hpp
+//  matrix - called by InputParser and puts files into a matrix with _rows and
+//  _columns
+//  Matrix is created by using a dynamic 2D array of pointers of arrays
+//  Created by Austin Gladfelter.
+//
+
+#ifndef Matrix_hpp
+#define Matrix_hpp
+
+#include <stdio.h>
 #include <fstream>
-#include <cstdlib>
-#include <string>
-#include "InputParser.h"
-#include "OptionContainer.h"
 
 template <typename T>
-Class Matrix 
-{
-	std::array<T> (int, int)
+class Matrix {
+    
+protected:
+    //_columns determins array size
+    int _columns;
+    T *matrix;
+ 
+    
 public:
-	friend standard::stream operator << (std::ostream os, const Matrix<T> &m)
+    // constructor with user pre-defined size(in columns)
+    array (int c) {
+        _columns = c;
+        matrix = new T [_columns];
+    }
+    
+    
+    //sets values into arrays based on number of columns
+    //iterates through inputFile and creates a new array of size _columns until the end of file
+    //Matrix is a list of arrays
+    void setMatrix (int c, T val){
+        matrix[c] = val;
+        if(inputFile.is_open() && !inputFile.eof)
+        {
+            string matrix[c];
+            
+            for(int i = 0; i < c; ++i)
+            {
+                inputFile >> matrix[i];
+                
+                while (!inputFile.eof)
+                    _row = new T[c]
+            }
+        } else {return 0;}
+	    
+	return Matrix;
+    }
+    
 
-	//nested loop
-	OS << m.toString
-		int val = -1
-
-		while (!infile.eof() && !infile.fail())
-			//infile >> val;
-		{
-			int rows, columns;
-			inputFile >> rows;
-			inputFile >> columns;
-
-
-			int* ary = new int[rows][columns];
-
-
-			Matrix data = new Matrix(rows, columns);
-
-			string word;
-
-			for (int i = 0; i < rows; i++)
-			{
-				for (int j = 0; j < columns; j++)
-				{
-
-					ary[i][j] = word;
-					dataMatrix.set(i, j, word);
-				}
-			}
-			delete[] ary;		
-			return data;
-		}
-	data << m.toStringC)
-	return OS;
-
+    void getMatrix() const {
+        
+        
+    }
+    
+    
+    int size() const{
+        return _columns.size();
+    }
+    
+    
 };
 
 
+//120 cell matrix
+class _cell120 : public Matrix{
+    c = 20;
+    setMatrix(c);
+}
+
+//24 cell matrix
+class _cell24 : public Matrix{
+    c = 6;
+    setMatrix(c);
+}
+
+//600 cell matrix
+class _cell600 : public Matrix{
+    c = 4;
+    setMatrix(c)
+    
+}
+
+//dedecahedron matrix
+class _dodechedron : public Matrix{
+    c = 5;
+    setMatrix(c)
+}
+
+//icosehedron facets matrix
+class _icosehedron : public Matrix{
+    c = 3;
+    setMatrix(c)
+}
+
+
+#endif /* Matrix_hpp */
 
 
 
 
-#endif
+
+
+////  while (!inputFile.eof && !inputFile.fail){
+
+/*
+ int** ary = new int*[rowCount];
+ for(int i = 0; i < rowCount; ++i)
+ ary[i] = new int[colCount];
+ */
