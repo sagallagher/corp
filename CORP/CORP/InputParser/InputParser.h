@@ -1,5 +1,5 @@
-#ifndef _InputParser_
-#define _InputParser_
+#ifndef _INPUT_PARSER
+#define _INPUT_PARSER
 
 
 //Should InputParser contain OptionContainer.h, or is it instead called in OptionContainer ? 
@@ -8,51 +8,69 @@
 
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
 
 //Given input file name by OptionContainer, 'input.txt' for instance.
 
 class InputParser
 {
 	public:
-	//Says explicit type is missing -- Need to define what type of variable/object the function returns?  Presumably returns a Matrix object?
-	ParseInput(std::string inputData)
-	{
-		//why is ifstream undefined?
-		ifstream inputFile;
-		inputFile.open(inputData);
 
-		if (inputFile.is_open())
+		InputParser(std::istream& in) : _is{ in }
 		{
-			int rows, columns;
-			inputFile >> rows;
-			inputFile >> columns;
-
-
-			//create a Matrix object from Matrix.h
-			Matrix dataMatrix = new Matrix(rows, columns);
-
-			//Need to define the temporary 'word' object, to store each value as it is read from inputFile.
-			String word;
-			//Stores all values from input file into the Matrix object
-			for (int i = 0; i < rows; i++)
-			{
-				for (int j = 0; j < columns; j++)
-				{
-					inputFile >> word;
-					//Use a Set() function from Matrix.h to store the values
-					dataMatrix.set(i, j, word);
-				}
-			}
-
-			//Closing input file
-			inputFile.close();
-
-			//Successful completion, return Matrix object
-			return dataMatrix;
 		}
-		//Error occurred - return some sort of error?
-		return 0;
+
+		virtual ~InputParser()
+		{
+			//Closing input file
+			_is.close();
+		}
+
+
+	protected:
+		std::istream& _is;
+
+
+		//In main
+		ifstream _is;
+		_is.open(inputData);
+
+if (!_is)
+{
+	std::cerr << "Unable to open file " << name << "for reading.";
+	return 1;
+}
+// In main
+
+
+
+	Matrix* parse()
+	{
+		int rows, columns;
+		_is >> rows;
+		_is >> columns;
+
+
+		//create a Matrix object from Matrix.h
+		Matrix dataMatrix = new Matrix(rows, columns);
+
+		//Stores all values from input file into the Matrix object
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < columns; j++)
+			{
+				int temp;
+				_is >> temp;
+
+				//Use a Set() function from Matrix.h to store the values
+				dataMatrix.set(i, j, temp);
+			}
+		}
+
+
+		//Successful completion, return Matrix object
+		return dataMatrix;
+
 	}
 };
 #endif
