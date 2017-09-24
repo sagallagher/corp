@@ -56,19 +56,19 @@ private:
 	}
 
 	template<typename T>
-	void matrix<T>::insert(unsigned row, unsigned col, const T& entry)
+	void Matrix<T>::insert(unsigned row, unsigned col, const T& entry)
 	{
 		_matrix[row][col] = entry;
 	}
 
 	template<typename T>
-	void matrix<T>::remove(unsigned row, unsigned col)
+	void Matrix<T>::remove(unsigned row, unsigned col)
 	{
 		insert(row, col);
 	}
 
 	template<typename T>
-	const T& matrix<T>::item(unsigned row, unsigned col) const
+	const T& Matrix<T>::item(unsigned row, unsigned col) const
 	{
 		return new_matrix[row][col];
 	}
