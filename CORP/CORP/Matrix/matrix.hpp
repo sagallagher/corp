@@ -1,113 +1,77 @@
-//
-//  Matrix.hpp
-//  matrix - called by InputParser and puts files into a matrix with _rows and
-//  _columns
-//  Matrix is created by using a dynamic 2D array of pointers of arrays
-//  Created by Austin Gladfelter.
-//
+#ifndef _MATRIX_GAURD
+#define _MATRIX_GAURD
 
-#ifndef Matrix_hpp
-#define Matrix_hpp
-
-#include <stdio.h>
-#include <fstream>
-
-template <typename T>
-class Matrix {
-    
-protected:
-    //_columns determins array size
-    int _columns;
-    T *matrix;
- 
-    
+template<typename T> class Matrix
+{
 public:
-    // constructor with user pre-defined size(in columns)
-    array (int c) {
-        _columns = c;
-        matrix = new T [_columns];
-    }
-    
-    
-    //sets values into arrays based on number of columns
-    //iterates through inputFile and creates a new array of size _columns until the end of file
-    //Matrix is a list of arrays
-    void setMatrix (int c, T val){
-        matrix[c] = val;
-        if(inputFile.is_open() && !inputFile.eof)
-        {
-            string matrix[c];
-            
-            for(int i = 0; i < c; ++i)
-            {
-                inputFile >> matrix[i];
-                
-                while (!inputFile.eof)
-                    _row = new T[c]
-            }
-        } else {return 0;}
-	    
-	return Matrix;
-    }
-    
 
-    void getMatrix() const {
-        
-        
-    }
-    
-    
-    int size() const{
-        return _columns.size();
-    }
-    
-    
+	//member functions
+	void Matrix<T>::createMatrix(unsigned rows, unsigned cols);
+	void remove(unsigned row, unsigned col);
+	void insert(unsigned row, unsigned col, const T &entry);
+	T& item(unsigned row, unsigned col);
+private:
+	unsigned _rows;
+	unsigned _cols;
+	T** _matrix[][_cols];
 };
 
+//function definitions
+{
+	template<typename T>
+	void Matrix<T>::createMatrix(rows, cols)
+	{
+		// new_matrix is an array of rows, where each row is an array of T
+		unsigned new_matrix = 0;
+		if (_rows && _cols)
+		{
+			new_matrix = new T*[_rows];
+			for (unsigned row = 0; row < _rows; row++)
+			{
+				new_matrix[row] = new T[_cols];
+				// copy old items to the _matrix 
+				// fill the rest of the grid with the initial value
+				for (unsigned col = 0; col < _cols; col++)
+				{
+					if (row < m_rows && col < _cols)
+						new_matrix[row][col] = _matrix[row][col];
+				}
+			}
+		}
+		else
+		{
 
-//120 cell matrix
-class _cell120 : public Matrix{
-    c = 20;
-    setMatrix(c);
+			// destroy the old matrix
+			for (unsigned row = 0; row < _rows; row++)
+			{
+				delete[] new_matrix[row];
+				delete[] _matrix;
+
+				// move the new entries into the new matrix
+				_matrix = new_matrix;
+				_rows = rows;
+				_cols = cols;
+			}
+		}
+	}
+
+	template<typename T>
+	void matrix<T>::insert(unsigned row, unsigned col, const T& entry)
+	{
+		_matrix[row][col] = entry;
+	}
+
+	template<typename T>
+	void matrix<T>::remove(unsigned row, unsigned col)
+	{
+		insert(row, col);
+	}
+
+	template<typename T>
+	const T& matrix<T>::item(unsigned row, unsigned col) const
+	{
+		return new_matrix[row][col];
+	}
 }
 
-//24 cell matrix
-class _cell24 : public Matrix{
-    c = 6;
-    setMatrix(c);
-}
-
-//600 cell matrix
-class _cell600 : public Matrix{
-    c = 4;
-    setMatrix(c)
-    
-}
-
-//dedecahedron matrix
-class _dodechedron : public Matrix{
-    c = 5;
-    setMatrix(c)
-}
-
-//icosehedron facets matrix
-class _icosehedron : public Matrix{
-    c = 3;
-    setMatrix(c)
-}
-
-
-#endif /* Matrix_hpp */
-
-
-
-
-
-
-////  while (!inputFile.eof && !inputFile.fail){
-
-/*
- int** ary = new int*[rowCount];
- for(int i = 0; i < rowCount; ++i)
- ary[i] = new int[colCount];
- */
+#endif // !_MATRIX_GAURD
