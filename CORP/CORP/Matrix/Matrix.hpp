@@ -72,6 +72,12 @@ private:
 	{
 		return new_matrix[row][col];
 	}
+	
+		template<typename T>
+	Matrix<T>::asString(_matrix)
+	{
+		std::to_string(_matrix[_rows][_cols]);
+	}
 }
 
 #endif // !_MATRIX_GAURD
