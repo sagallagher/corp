@@ -1,83 +1,125 @@
-#ifndef _MATRIX_GAURD
-#define _MATRIX_GAURD
+#ifndef _MATRIX_GAURD_
+#define _MATRIX_GAURD_
+//Austin Gladfelter
+//Generic, isolated matrix utility class
+//contains functions: get, set, getRows, getCols, toString
+//constructor and destructor located at the bottom
+/*
+	Matrix is a dynamic 2 dimensional array.
+	_rows is a dynamic array of pointers.
+	The pointers in _rows[] point to arrays _cols
+	-There is only one _rows array and multiple _cols arrays
+	Type must be specified when calling Matrix
 
-template<typename T> class Matrix
+	The set function adds one element at a time - code calling this function must have its 
+	own loops iterating through input to add multiple values
+*/
+//analyis N/A
+
+namespace std
 {
-public:
 
-	//member functions
-	void Matrix<T>::createMatrix(unsigned rows, unsigned cols);
-	void remove(unsigned row, unsigned col);
-	void insert(unsigned row, unsigned col, const T &entry);
-	T& item(unsigned row, unsigned col);
-private:
-	unsigned _rows;
-	unsigned _cols;
-	T** _matrix[][_cols];
-};
-
-//function definitions
-{
-	template<typename T>
-	void Matrix<T>::createMatrix(rows, cols)
+	template <typename T> class Matrix
+		
 	{
-		// new_matrix is an array of rows, where each row is an array of T
-		unsigned new_matrix = 0;
-		if (_rows && _cols)
+		unsigned _rows;
+		unsigned _cols;
+		T **_matrix;
+		
+	public:
+		
+		
+		Matrix()
 		{
-			new_matrix = new T*[_rows];
-			for (unsigned row = 0; row < _rows; row++)
+			_matrix = NULL;
+			_cols = 0;
+			_rows = 0;
+		}
+
+		Matrix(const int& _rows, const int& _cols)
+		{
+			_matrix = NULL;
+			allocate(_rows, _cols);
+		}
+
+		~Matrix()
+		{
+			deallocate();
+		}
+
+		//get elements from Matrix
+		T get(const int& r, const int c) const
+		{
+			return _matrix[r][c];
+		}
+
+		//add elements to Matrix
+		void set(const T& t, const int& r, const int c)
+		{
+			_matrix[r][c] = t;
+		}
+
+		//retrieve dimensions 
+		int getRows() const
+		{
+			return _rows;
+		}
+
+		int getCols() const
+		{
+			return _cols;
+		}
+
+		//puts out contents of Matrix as a single string
+		void toString()
+		{
+			friend std::ostream& operator << (std::ostream&, const Matrix<T> &_matrix)
 			{
-				new_matrix[row] = new T[_cols];
-				// copy old items to the _matrix 
-				// fill the rest of the grid with the initial value
-				for (unsigned col = 0; col < _cols; col++)
-				{
-					if (row < m_rows && col < _cols)
-						new_matrix[row][col] = _matrix[row][col];
-				}
+				OS << _matrix.toString();
+				return OS
 			}
 		}
-		else
+
+	private:
+		//constructor
+		void allocate(const int& _rows, const int& _cols)
 		{
-
-			// destroy the old matrix
-			for (unsigned row = 0; row < _rows; row++)
+			_matrix = new T*[_rows];
+			for (int i = 0; i < _rows; i++)
 			{
-				delete[] new_matrix[row];
-				delete[] _matrix;
-
-				// move the new entries into the new matrix
-				_matrix = new_matrix;
-				_rows = rows;
-				_cols = cols;
+				_matrix[i] = new T[_cols]
 			}
 		}
-	}
 
-	template<typename T>
-	void Matrix<T>::insert(unsigned row, unsigned col, const T& entry)
-	{
-		_matrix[row][col] = entry;
-	}
+		//destructor
+		void deallocate()
+		{
+			if (NULL == _matrix)
+			{
+				//do nothing
+				return;
+			}
 
-	template<typename T>
-	void Matrix<T>::remove(unsigned row, unsigned col)
-	{
-		insert(row, col);
-	}
+			//release memory
+			for (int i = 0; i < _rows; i++)
+			{
+				delete[] _matrix[i]
+			}
+			delete[] _matrix;
 
-	template<typename T>
-	const T& Matrix<T>::item(unsigned row, unsigned col) const
-	{
-		return new_matrix[row][col];
-	}
-	
-		template<typename T>
-	Matrix<T>::asString(_matrix)
-	{
-		std::to_string(_matrix[_rows][_cols]);
-	}
+			//reset
+			_cols = 0;
+			_rows = 0;
+			_matrix = NULL;
+		}
+
+
+	};
+
+
+
 }
 
-#endif // !_MATRIX_GAURD
+
+
+#endif 
