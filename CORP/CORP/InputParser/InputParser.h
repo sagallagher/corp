@@ -2,13 +2,12 @@
 #define _INPUT_PARSER
 
 
-//Updated file locations 
-#include "../OptionContainer/OptionContainer.h"
-#include "../Matrix/Matrix.hpp"
+//Should InputParser contain OptionContainer.h, or is it instead called in OptionContainer ? 
+#include "OptionContainer.h"
+#include "Matrix.h"
 
-
-//#include <iostream>
-//#include <fstream>
+#include <iostream>
+#include <fstream>
 #include <string>
 
 //Given input file name by OptionContainer, 'input.txt' for instance.
@@ -26,6 +25,18 @@ class InputParser
 
 	protected:
 		std::istream& _is;
+
+
+		//In main
+		ifstream _is;
+		_is.open(inputData);
+
+if (!_is)
+{
+	std::cerr << "Unable to open file " << name << "for reading.";
+	return 1;
+}
+// In main
 
 
 
