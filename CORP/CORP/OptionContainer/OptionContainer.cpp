@@ -64,7 +64,7 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 }
 
 // pull a key's int value
-int OptionContainer::pull(const std::string& key, const int& value) const {
+int OptionContainer::pull(const std::string& key, const int value) const {
 
   for(auto pair : _intOptions) {
 
@@ -76,7 +76,7 @@ int OptionContainer::pull(const std::string& key, const int& value) const {
 }
 
 // pull a key's bool value
-bool OptionContainer::pull(const std::string& key, const bool& value) const {
+bool OptionContainer::pull(const std::string& key, const bool value) const {
 
   for(auto pair : _boolOptions) {
 

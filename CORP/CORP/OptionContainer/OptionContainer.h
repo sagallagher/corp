@@ -38,10 +38,10 @@ public:
   bool push(const std::string& key,const std::string& value);
 
   // pull a key's int value
-  int pull(const std::string& key, const int& value) const;
+  int pull(const std::string& key, const int value) const;
 
   // pull a key's bool value
-  bool pull(const std::string& key, const bool& value) const;
+  bool pull(const std::string& key, const bool value) const;
 
   // pull a key's string value
   std::string pull(const std::string& key, const std::string& value) const;
