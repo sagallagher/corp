@@ -11,6 +11,8 @@ Config::Config() {}
 
 Config::~Config() { delete _instance; }
 
+
+
 bool Config::initialize(int argc,const char** cmdparams) {
 
   // ensure atleast one command line argument was provided
