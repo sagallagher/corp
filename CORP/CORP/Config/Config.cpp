@@ -4,6 +4,9 @@
 #include<cstring>
 #include<utility>
 #include<algorithm>
+
+Config* Config::_instance = 0;
+
 Config::Config() {}
 
 Config::~Config() { delete _instance; }

@@ -3,64 +3,70 @@
 #include"../../CORP/OptionContainer/OptionContainer.h"
 #include<iostream>
 
-std::string generateKey(int keyNumber, std::string& tag) { return ("key" + tag).c_str() + keyNumber;  }
+bool insertRandomSpace(std::string& input) {
+	if (input.length() == 0) { return false; }
+	input[rand() % input.length()] = ' ';
+	return true;
+}
 
+std::string generateRandomKey() {
+	char randomChar;
+	std::string key = "";
 
-bool PushPullTest() {
+	for (int i = 0; i < rand() % 100 + 1; i++) {
+		key += (rand() % 26 + 97);
+		insertRandomSpace(key);
+	}
+	return key;
+}
+
+std::vector<std::string> getKeyVector(int keysToGenerate) {
+	std::vector<std::string> keys;
+
+	for (int i = 0; i < keysToGenerate; i++) {
+		keys.push_back(generateRandomKey());
+	}
+	return keys;
+}
+
+OptionContainer pushKeys(std::vector<std::string> keys) {
 	OptionContainer container;
 
-	std::string int_tag = "int";
-	std::string bool_tag = "bool";
-	std::string string_tag = "string";
-
-	// fill container with keys associated with int values
-	// all keys will have value of 1
-	for (int i = 0; i < 10; i++) {
-		container.push(generateKey(i, int_tag), "1");
-	}
-	
-	// pull keys associated with int values
-	for (int i = 1; i < 10; i++) {
-		// make sure all values are 1
-		if (container.pull(generateKey(i,int_tag), 0) != 1) {
-			std::cerr << "Error pulling int valuet\tExpected\t1\tActual:\t" << container.pull(generateKey(i, int_tag), 0) << std::endl;
-			return false;
-		}
+	// push ints
+	for (int i = 0; i < keys.size() / 3.0; i++) {
+		container.push(keys.at(i),"1");
 	}
 
-	// fill container with keys associated with bool values
-	// all keys have value of true
-	for (int i = 0; i < 10; i++) {
-		container.push(generateKey(i,bool_tag), "true");
+	// push bools
+	for (int i = keys.size() / 3.0; i < keys.size() * (2.0 / 3.0); i++) {
+		container.push(keys.at(i), "true");
+	}
+	return container;
+}
+
+bool pullKeys(std::vector<std::string> keys, OptionContainer &container) {
+
+	bool result = false;
+
+	// pull ints
+	for (int i = 0; i < keys.size() / 3.0; i++) {
+		if (container.pull(keys.at(i), 0) == 1) result = true;
 	}
 
-	// pull keys associated with bool values
-	for (int i = 0; i < 10; i++) {
-		// make sure all values are true
-		if (!container.pull(generateKey(i,bool_tag), false)) {
-			std::cerr << "Error pulling int valuet\tExpected\ttrue\tActual:\t" << container.pull(generateKey(i, bool_tag), false) << std::endl;
-			return false;
-		}
+	//pull bools
+	for (int i = keys.size() / 3.0; i < keys.size() * (2.0 / 3.0); i++) {
+		if (container.pull(keys.at(i), false) == true) result =  true;
 	}
 
-	for (int i = 0; i < 10; i++) {
-		container.push(generateKey(i,string_tag), "string");
-	}
-
-	// pull keys associated with int values
-	// BUG: calling pull(string, bool); should be calling pull(string,string)
-	/*for (int i = 0; i < 10; i++) {
-		// make sure all values are 0
-		std::string no = "nsso";
-		if (container.pull(generateKey(i, string_tag), "not_string") == false) {
-			return false;
-		}
-	}
-	*/
-	return true;
+	return result;
 
 }
 
+bool pushPullTest(int keysToPush) {
+	std::vector<std::string> keys = getKeyVector(keysToPush);
+
+	return pullKeys(keys, pushKeys(keys));
+}
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -72,9 +78,8 @@ namespace CORP
 
 		TEST_METHOD(pull)
 		{
-			Assert::AreEqual(true,::PushPullTest());
+			Assert::AreEqual(true,::pushPullTest(100));
 		}
-
 
 	};
 }
