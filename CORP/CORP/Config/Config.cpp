@@ -40,7 +40,7 @@ Config* Config::getInstance() { return _instance; }
 // parse config file, provide path to this file
 bool Config::parse(std::string& cfg_file_path) {
   // open the configuration file
-  std::ifstream cfg(cfg_file_path.c_str());
+  std::ifstream cfg(cfg_file_path);
 
   // if there is a problem finding the configuration file, print an
   // error and return false

@@ -1,53 +1,24 @@
 #include"CppUnitTest.h"
 #include"../../CORP/OptionContainer/OptionContainer.h"
-//#include"../OptionContainer/TEST_OptionContainer.cpp"
 #include"../../CORP/Config/Config.h"
 #include<iostream>
 #include<fstream>
-
-
-bool insertRandomSpace2(std::string& input) {
-	if (input.length() == 0) { return false; }
-	input[rand() % input.length()] = ' ';
-	return true;
-}
-
-std::string generateRandomKey2() {
-	char randomChar;
-	std::string key = "";
-
-	for (int i = 0; i < rand() % 100 + 1; i++) {
-		key += (rand() % 26 + 97);
-		insertRandomSpace2(key);
-	}
-	return key;
-}
-
-std::vector<std::string> getKeyVector2(int keysToGenerate) {
-	std::vector<std::string> keys;
-
-	for (int i = 0; i < keysToGenerate; i++) {
-		keys.push_back(generateRandomKey2());
-	}
-	return keys;
-}
-
-
-
+#include"../OptionContainer/TEST_OptionContainer.cpp"
 
 // generate a random config file
-bool generateTestConfigFile(std::string fileToUse, std::vector<std::string> keys) {
+bool generateTestConfigFile(std::string fileToUse, std::vector<std::string>& keys) {
 	
 	// create ofstream object
-	std::fstream cfg;
-	cfg.open(fileToUse);
-	if (!cfg) return false;
+	std::ofstream cfg(fileToUse);
+	if (!cfg) {
+		Logger::WriteMessage("File could not be opened");
+		return false;
+	}
 
 	// write int keys
 	for (int i = 0; i < keys.size()/3; i++) {
 		cfg << keys.at(i) + "=" + "1";
 	}
-
 
 	// write bool keys
 	for (int i = keys.size() / 3; i < (2.0/3) * keys.size() ; i++) {
@@ -60,7 +31,6 @@ bool generateTestConfigFile(std::string fileToUse, std::vector<std::string> keys
 	return true;
 }
 
-
 bool readTestConfigFile(std::string fileToUse, std::vector<std::string> keys) {
 	// simulate command line arguments
 	int argc = 1;
@@ -68,30 +38,42 @@ bool readTestConfigFile(std::string fileToUse, std::vector<std::string> keys) {
 	argv[0] = "main.cpp";
 	argv[1] = fileToUse.c_str();
 	generateTestConfigFile(argv[1],keys);
-	return Config::initialize(argc, argv);
+	Config::initialize(argc, argv);
+	return true;
 }
 
 // ensure all values are as they should be
 bool checkValues(std::string fileToUse,int keysToUse) {
-	bool result = false;
+	TestOptionsContainerHelper test_options_container_helper;
+	bool result = true;
 
-	std::vector<std::string> keys = getKeyVector2(keysToUse);
-	if(!generateTestConfigFile(fileToUse, keys)) return false;
-	if(!readTestConfigFile(fileToUse,keys)) return false;
-
+	std::vector<std::string> keys = test_options_container_helper.getKeyVector(keysToUse);
+	if (!generateTestConfigFile(fileToUse, keys)) {
+		Logger::WriteMessage("Generating test configuration file failed");
+		return false;
+	}
+	if (!readTestConfigFile(fileToUse, keys)) {
+		Logger::WriteMessage("Reading test configuration file failed");
+		return false;
+	}
 	// check int values
 	for (int i = 0; i < keys.size() / 3;i++) {
-		if (Config::getInstance()->pull(keys.at(i), "0") == 1) result = true;
+		if (Config::getInstance()->pull(keys.at(i), "0") != 1) {
+			Logger::WriteMessage("Checking int values failed");
+			result = false;
+		}
 	}
 
 	// check bool values
 	for (int i = keys.size() / 3; i < keys.size() * (2.0/3); i++) {
-		if (Config::getInstance()->pull(keys.at(i), "false") == true) result = true;
+		if (Config::getInstance()->pull(keys.at(i), "false") != true) {
+			Logger::WriteMessage("Checking bool values failed");
+			result = false;
+		}
 	}
 
 	return result;
 }
-
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 

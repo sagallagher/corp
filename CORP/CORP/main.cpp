@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 
-Config* Config::_instance = 0;
 
 int main(int argc, char const *argv[]) {
 
@@ -14,7 +13,7 @@ int main(int argc, char const *argv[]) {
 	std::ifstream _is;
 
 	//How to correctly define input file?
-	std::string inputData = Config::getInstance()->pull("AdjacencyList","DefualtAdjacencyList");
+	std::string inputData = "..";//Config::getInstance()->pull("AdjacencyList","DefualtAdjacencyList");
 	_is.open(inputData);
 
 	if (!_is)
