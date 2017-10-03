@@ -24,21 +24,21 @@ namespace std
 	{
 		unsigned _rows;
 		unsigned _cols;
-		T **_matrix;
+		T **m;
 		
 	public:
 		
 		
 		Matrix()
 		{
-			_matrix = NULL;
+			m = nullptr;
 			_cols = 0;
 			_rows = 0;
 		}
 
-		Matrix(const int& _rows, const int& _cols)
+		Matrix(const unsigned _rows, const unsigned _cols)
 		{
-			_matrix = NULL;
+			m = NULL;
 			allocate(_rows, _cols);
 		}
 
@@ -48,15 +48,15 @@ namespace std
 		}
 
 		//get elements from Matrix
-		T get(const int& r, const int c) const
+		T get(const unsigned r, const unsigned c) const
 		{
-			return _matrix[r][c];
+			return m[r][c];
 		}
 
 		//add elements to Matrix
-		void set(const T& t, const int& r, const int c)
+		void set(const T& t, const unsigned r, const unsigned c)
 		{
-			_matrix[r][c] = t;
+			m[r][c] = t;
 		}
 
 		//retrieve dimensions 
@@ -82,19 +82,19 @@ namespace std
 
 	private:
 		//constructor
-		void allocate(const int& _rows, const int& _cols)
+		void allocate(const unsigned _rows, const unsigned _cols)
 		{
-			_matrix = new T*[_rows];
+			m = new T*[_rows];
 			for (int i = 0; i < _rows; i++)
 			{
-				_matrix[i] = new T[_cols]
+				m[i] = new T[_cols]
 			}
 		}
 
 		//destructor
 		void deallocate()
 		{
-			if (NULL == _matrix)
+			if (nullptr == m)
 			{
 				//do nothing
 				return;
@@ -103,14 +103,14 @@ namespace std
 			//release memory
 			for (int i = 0; i < _rows; i++)
 			{
-				delete[] _matrix[i]
+				delete[] m[i]
 			}
-			delete[] _matrix;
+			delete[] m;
 
 			//reset
 			_cols = 0;
 			_rows = 0;
-			_matrix = NULL;
+			m = nullptr;
 		}
 
 
