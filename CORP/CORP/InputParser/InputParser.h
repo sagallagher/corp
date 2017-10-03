@@ -1,16 +1,22 @@
 #ifndef _INPUT_PARSER
 #define _INPUT_PARSER
+//Seth Hostetler
+//Moves data into a matrix object
+//-functions
+//-out of the ordinary: 
+/*
+	Detailed description
+	parse functions does ____
+*/
+//analysis - How long does it take?
 
-
-//Corrected file locations 
 #include "../OptionContainer/OptionContainer.h"
 #include "../Matrix/Matrix.hpp"
 
-//#include <iostream>
-//#include <fstream>
+#include <iostream>
+#include <fstream>
 #include <string>
 
-//Given input file name by OptionContainer, 'input.txt' for instance.
 
 class InputParser
 {
@@ -22,12 +28,9 @@ class InputParser
 
 		virtual ~InputParser();
 
-
 	protected:
 		std::istream& _is;
 
-
-
-Matrix* parse();
+	Matrix* parse();
 };
 #endif

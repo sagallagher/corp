@@ -15,13 +15,14 @@ virtual InputParser::~InputParser()
 
 InputParser::Matrix* parse()
 {
+	
 	int rows, columns;
 	_is >> rows;
 	_is >> columns;
 
 
-	//create a Matrix object from Matrix.h
-	Matrix dataMatrix = new Matrix(rows, columns);
+	//create a Matrix object from Matrix.hpp
+	template <typename T> dataMatrix = new Matrix(rows, columns);
 
 	//Stores all values from input file into the Matrix object
 	for (int i = 0; i < rows; i++)
@@ -32,7 +33,7 @@ InputParser::Matrix* parse()
 			_is >> temp;
 
 			//Use a Set() function from Matrix.h to store the values
-			dataMatrix.set(i, j, temp);
+			dataMatrix.set(temp, i, j);
 		}
 	}
 
