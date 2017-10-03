@@ -4,7 +4,7 @@
 //Unit tets for Matrix.hpp
 
 
-
+#include "Matrix.hpp"
 
 ///////////////////////////////
 //			TODO			 //
@@ -38,7 +38,14 @@ void MatrixTester()
 
 
 //test destructor
-void ~MatrixTester()
+void MatrixDestructorTester()
+{
+	//assign a value to a specific index in Matrix
+	Matrix.set(5, 2, 2)
+}
+
+//test set
+void setTester()
 {
 
 }
@@ -49,11 +56,7 @@ void getTester()
 
 }
 
-//test set
-void setTester()
-{
 
-}
 
 //test remove
 void removeTester()
