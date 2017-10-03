@@ -9,19 +9,22 @@ int main(int argc, char const *argv[]) {
 	Config::initialize(argc, argv);
 
 	//Open file stream for data
-	std::ifstream _is;
+	std::ifstream is;
 
-	//How to correctly define input file?
 	std::string inputData = Config::getInstance()->pull("AdjacencyList",static_cast<std::string>("../../data/24cell_facets.txt"));
-	_is.open(inputData);
+	is.open(inputData);
 
-	if (!_is)
+	if (!is)
 	{
 		std::cerr << "Unable to open file " << inputData << "for reading.";
 		return 1;
 	}
 
+	//Create InputParser object
+
+
 	//End of file stream
+	is.close();
 
 	return 0;
 }

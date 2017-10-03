@@ -7,13 +7,12 @@ InputParser::InputParser(std::istream& in) : _is{ in }
 
 }
 
-virtual InputParser::~InputParser()
+InputParser::~InputParser()
 {
-	//Closing input file
-	_is.close();
+
 }
 
-InputParser::Matrix* parse()
+InputParser::Matrix<int>* parse()
 {
 	
 	int rows, columns;
@@ -22,7 +21,7 @@ InputParser::Matrix* parse()
 
 
 	//create a Matrix object from Matrix.hpp
-	template <typename T> dataMatrix = new Matrix(rows, columns);
+	Matrix<int>* dataMatrix = new Matrix<int>(rows, columns);
 
 	//Stores all values from input file into the Matrix object
 	for (int i = 0; i < rows; i++)
@@ -32,7 +31,7 @@ InputParser::Matrix* parse()
 			int temp;
 			_is >> temp;
 
-			//Use a Set() function from Matrix.h to store the values
+			//Use Set() function from Matrix.h to store the values
 			dataMatrix.set(temp, i, j);
 		}
 	}
