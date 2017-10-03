@@ -3,9 +3,9 @@
 
 #include"../Algorithm/Algorithm.h"
 
-class AlgorithmContainer {
+class AlgorithmRunner {
 public:
-	AlgorithmContainer(Algorithm*);
+	AlgorithmRunner(Algorithm*);
 	void repair();
 
 private:

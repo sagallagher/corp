@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 
-
 int main(int argc, char const *argv[]) {
 
 	Config::initialize(argc, argv);
@@ -13,7 +12,7 @@ int main(int argc, char const *argv[]) {
 	std::ifstream _is;
 
 	//How to correctly define input file?
-	std::string inputData = "..";//Config::getInstance()->pull("AdjacencyList","DefualtAdjacencyList");
+	std::string inputData = Config::getInstance()->pull("AdjacencyList",static_cast<std::string>("../../data/24cell_facets.txt"));
 	_is.open(inputData);
 
 	if (!_is)
