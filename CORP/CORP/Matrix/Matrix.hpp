@@ -11,24 +11,22 @@
 	-There is only one _rows array and multiple _cols arrays
 	Type must be specified when calling Matrix
 
-	The set function adds one element at a time - code calling this function must have its 
+	The set function adds one element at a time - code calling this function must have its
 	own loops iterating through input to add multiple values
 */
 //analyis N/A
 
-namespace std
-{
 
 	template <typename T> class Matrix
-		
+
 	{
 		unsigned _rows;
 		unsigned _cols;
 		T **m;
-		
+
 	public:
-		
-		
+
+
 		Matrix()
 		{
 			m = nullptr;
@@ -59,7 +57,7 @@ namespace std
 			m[r][c] = t;
 		}
 
-		//retrieve dimensions 
+		//retrieve dimensions
 		int getRows() const
 		{
 			return _rows;
@@ -116,10 +114,4 @@ namespace std
 
 	};
 
-
-
-}
-
-
-
-#endif 
+#endif

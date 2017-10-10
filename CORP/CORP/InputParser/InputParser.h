@@ -22,15 +22,14 @@ class InputParser
 {
 	public:
 
-		InputParser(std::istream& in) : _is{ in }
-		{
-		}
+		InputParser(std::istream& in) : _is{ in };
+
 
 		virtual ~InputParser();
 
 	protected:
 		std::istream& _is;
 
-	Matrix* parse();
+	Matrix<int>* parse();
 };
 #endif

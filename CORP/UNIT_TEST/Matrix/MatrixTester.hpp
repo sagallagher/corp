@@ -13,9 +13,9 @@
 //does Matrix work for all primitive types?
 
 //test constructor
-void MatrixTester()
+void MatrixTester(unsigned _rows, unsigned _cols)
 {
-	template <typename int> Matrix(int _rows, int _cols)
+	 *Matrix<int>(int _rows, int _cols)
 	{
 
 	}
