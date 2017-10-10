@@ -1,73 +1,16 @@
 #ifndef _MATRIX_TESTER_HPP
 #define _MATRIX_TESTER_HPP
-
+#include "../../CORP/Matrix/Matrix.hpp"
+#include "CppUnitTest.h"
 //Unit tets for Matrix.hpp
 
 
-#include "Matrix.hpp"
-
-///////////////////////////////
-//			TODO			 //
-///////////////////////////////
-
-//does Matrix work for all primitive types?
-
-//test constructor
-void MatrixTester()
+namespace MATRIXTEST
 {
-	template <typename int> Matrix(int _rows, int _cols)
+	template<typename T> class Matrix_Tester
 	{
-
-	}
-
-	template <typename char> Matrix(char _rows, char _cols)
-	{
-
-	}
-
-	template <typename bool> Matrix(bool _rows, char _cols)
-	{
-
-	}
-
-	template <typename double> Matrix(double _rows, bool _cols)
-	{
-
-	}
-}
-
-
-//test destructor
-void MatrixDestructorTester()
-{
-	//assign a value to a specific index in Matrix
-	Matrix.set(5, 2, 2)
-}
-
-//test set
-void setTester()
-{
-
-}
-
-//test get
-void getTester()
-{
-
-}
-
-
-
-//test remove
-void removeTester()
-{
-
-}
-
-//test toString
-void toStringTester()
-{
-
+		
+	};
 }
 
 
