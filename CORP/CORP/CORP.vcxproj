@@ -152,16 +152,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boolset\BoolSet.h" />
+    <ClInclude Include="Boolset\WeightedBoolSet.h" />
     <ClInclude Include="Config\Config.h" />
+    <ClInclude Include="Cover\Cover.h" />
     <ClInclude Include="InputParser\InputParser.h" />
     <ClInclude Include="Matrix\matrix.hpp" />
     <ClInclude Include="OptionContainer\OptionContainer.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\UNIT_TEST\BoolSet\TEST_Boolset.cpp" />
     <ClCompile Include="..\UNIT_TEST\Config\TEST_Config.cpp" />
     <ClCompile Include="..\UNIT_TEST\OptionContainer\TEST_OptionContainer.cpp" />
+    <ClCompile Include="Boolset\BoolSet.cpp" />
+    <ClCompile Include="Boolset\WeightedBoolSet.cpp" />
     <ClCompile Include="Config\Config.cpp" />
+    <ClCompile Include="Cover\Cover.cpp" />
     <ClCompile Include="OptionContainer\OptionContainer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
