@@ -2,14 +2,14 @@
 *  file:	BoolSet.h
 *  author:	Sarah McGlasson
 *  date:	9/17/2017
-*  updated:	9/24/2017
+*  updated:	10/12/2017
 *
 *  The header file for the WeightedBoolSet class
 *
 */
 
-#ifndef _WEIGHTEDBOOLSET_
-#define _WEIGHTEDBOOLSET_
+#ifndef _WEIGHTEDBOOLSET_GUARD_
+#define _WEIGHTEDBOOLSET_GUARD_
 
 #include "BoolSet.h"
 
@@ -17,10 +17,10 @@ class WeightedBoolSet : public BoolSet
 {
 protected:					
 
-	int* _weights = nullptr;						//weights for the values stored
+	int* _weights = nullptr;							//weights for the values stored
 
 public:
-	WeightedBoolSet(int size = _max);							//constructor
+	WeightedBoolSet(int size = _max);					//constructor
 	WeightedBoolSet(const WeightedBoolSet& original);	//copy constructor
 	~WeightedBoolSet();									//destructor
 
@@ -33,6 +33,8 @@ public:
 	int getWeight(int index) const;						//returns the weight of the value at the given index
 	int getWeightUnchecked(int index) const;			//returns the weight without checking bounds
 	void clear();										//sets every entry to false
-#endif
+
 };	
+
+#endif
 
