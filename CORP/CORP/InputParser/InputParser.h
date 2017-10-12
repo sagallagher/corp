@@ -1,5 +1,5 @@
-#ifndef _INPUT_PARSER
-#define _INPUT_PARSER
+#ifndef _INPUTPARSER_H
+#define _INPUTPARSER_H
 //Seth Hostetler
 //Moves data into a matrix object
 //-functions

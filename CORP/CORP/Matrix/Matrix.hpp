@@ -1,5 +1,5 @@
-#ifndef _MATRIX_GAURD_
-#define _MATRIX_GAURD_
+#ifndef _MATRIX_GUARD_
+#define _MATRIX_GUARD_
 //Austin Gladfelter
 //Generic, isolated matrix utility class
 //contains functions: get, set, getRows, getCols, toString
