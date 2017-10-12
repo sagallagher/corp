@@ -46,13 +46,14 @@
 		}
 
 		//get elements from Matrix
-		T get(const unsigned r, const unsigned c) const
+		template<typename T>
+		Matrix<T>::get(const unsigned r, const unsigned c) const
 		{
 			return m[r][c];
 		}
 
 		//add elements to Matrix
-		void set(const T& t, const unsigned r, const unsigned c)
+		inline set(const T& t, const unsigned r, const unsigned c)
 		{
 			m[r][c] = t;
 		}
