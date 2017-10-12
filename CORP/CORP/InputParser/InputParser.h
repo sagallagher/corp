@@ -24,12 +24,12 @@ class InputParser
 
 		InputParser(std::istream& in) : _is{ in };
 
-
 		virtual ~InputParser();
 
 	protected:
 		std::istream& _is;
 
+	//change back to Matrix::Matrix<int>
 	Matrix<int>* parse();
 };
 #endif

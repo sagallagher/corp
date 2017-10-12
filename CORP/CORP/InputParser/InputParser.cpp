@@ -12,13 +12,11 @@ InputParser::~InputParser()
 
 }
 
-InputParser::Matrix<int>* parse()
-{
-	
+Matrix<int>* InputParser::parse()
+{	
 	int rows, columns;
 	_is >> rows;
 	_is >> columns;
-
 
 	//create a Matrix object from Matrix.hpp
 	Matrix<int>* dataMatrix = new Matrix<int>(rows, columns);
@@ -35,8 +33,6 @@ InputParser::Matrix<int>* parse()
 			dataMatrix.set(temp, i, j);
 		}
 	}
-
-
 	//Successful completion, return Matrix object
 	return dataMatrix;
 
