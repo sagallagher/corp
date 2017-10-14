@@ -90,6 +90,14 @@
 			return OS
 		}
 
+		Matrix& operator= (Matrix& rhs) {
+			m = rhs.m;
+			_rows = rhs._rows;
+			_cols = rhs._cols;
+			return *this;
+
+		}
+
 	private:
 		//constructor
 		void allocate(const unsigned _rows, const unsigned _cols)
