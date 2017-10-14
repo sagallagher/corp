@@ -5,6 +5,8 @@
 #include <fstream>
 #include <string>
 
+const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
+
 int main(int argc, char const *argv[]) {
 
 	Config::initialize(argc, argv);
@@ -12,7 +14,7 @@ int main(int argc, char const *argv[]) {
 	//Open file stream for data
 	std::ifstream is;
 
-	std::string inputData = Config::getInstance()->pull("AdjacencyList",static_cast<std::string>("../../data/24cell_facets.txt"));
+	std::string inputData = Config::getInstance()->pull("AdjacencyList",static_cast<std::string>(DEFAULT_INPUT));
 	is.open(inputData);
 
 	if (!is)
