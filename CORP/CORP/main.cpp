@@ -1,6 +1,7 @@
 #include<iostream>
 #include"Config/Config.h"
 #include"OptionContainer/OptionContainer.h"
+#include"InputParser\InputParser.h"
 #include <fstream>
 #include <string>
 
@@ -21,7 +22,7 @@ int main(int argc, char const *argv[]) {
 	}
 
 	//Create InputParser object
-
+	InputParser parser(is);
 
 	//End of file stream
 	is.close();

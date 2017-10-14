@@ -1,5 +1,5 @@
-#ifndef _INPUTPARSER_H
-#define _INPUTPARSER_H
+#ifndef _INPUT_PARSER_GUARD
+#define _INPUT_PARSER_GUARD
 //Seth Hostetler
 //Moves data into a matrix object
 //-functions
@@ -17,19 +17,20 @@
 #include <fstream>
 #include <string>
 
-
 class InputParser
 {
 	public:
 
 		InputParser(std::istream& in) : _is{ in };
-
 		virtual ~InputParser();
+		Matrix<int> getMatrix();
 
 	protected:
 		std::istream& _is;
 
-	//change back to Matrix::Matrix<int>
-	Matrix<int>* parse();
+	private:
+		Matrix<int> _dataMatrix;
+
+	void parse();
 };
 #endif

@@ -47,7 +47,7 @@
 
 		//get elements from Matrix
 		template<typename T>
-		Matrix<T>::get(const unsigned r, const unsigned c) const
+		get(const unsigned r, const unsigned c) const
 		{
 			return m[r][c];
 		}
