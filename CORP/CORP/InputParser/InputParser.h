@@ -21,7 +21,7 @@
 class InputParser
 {
 	public:
-		InputParser(std::istream& in) : _is{ in };
+		InputParser(std::istream& in);
 		virtual ~InputParser();
 		Matrix<int> getMatrix();
 

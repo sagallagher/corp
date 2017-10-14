@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 
+
 const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
 
 int main(int argc, char const *argv[]) {
@@ -25,6 +26,10 @@ int main(int argc, char const *argv[]) {
 
 	//Create InputParser object
 	InputParser parser(is);
+
+	Matrix<int> dataMatrix = parser.getMatrix();
+
+	std::cout << dataMatrix.toString() << std::endl;
 
 	//End of file stream
 	is.close();

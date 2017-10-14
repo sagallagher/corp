@@ -77,7 +77,8 @@
 			for (int i = 0; i < _rows; i++)
 			{
 				for (int j = 0; j < _columns; j++) {
-					result.append(m[i][j])
+					result.append(m[i][j]);
+					result.append(" ");
 				}
 			}
 			return result;

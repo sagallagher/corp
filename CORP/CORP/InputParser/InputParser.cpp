@@ -10,6 +10,8 @@ InputParser::~InputParser()
 
 }
 
+InputParser::InputParser(std::istream& in) : _is{ in } {}
+
 //Stores all values from input file into the Matrix object
 void InputParser::parse()
 {	
