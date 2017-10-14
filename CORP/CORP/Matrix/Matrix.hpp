@@ -70,13 +70,24 @@
 		}
 
 		//puts out contents of Matrix as a single string
-		void toString()
+		std::string toString()
 		{
-			friend std::ostream& operator << (std::ostream&, const Matrix<T> &_matrix)
+
+			std::string result;
+			for (int i = 0; i < _rows; i++)
 			{
-				OS << _matrix.toString();
-				return OS
+				for (int j = 0; j < _columns; j++) {
+					result.append(m[i][j])
+				}
 			}
+			return result;
+
+		}
+
+		friend std::ostream& operator << (std::ostream&, const Matrix<T> &_matrix)
+		{
+			OS << _matrix.toString();
+			return OS
 		}
 
 	private:
