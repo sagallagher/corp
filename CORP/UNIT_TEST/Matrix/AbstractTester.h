@@ -9,6 +9,7 @@
 
 class AbstractTester
 {
+
 protected:
 	std::map<std::string, int>			_errorCountMap;
 	std::string							_name;
@@ -34,6 +35,8 @@ public:
 	{
 
 	}
+
+	virtual void clear();
 
 };
 

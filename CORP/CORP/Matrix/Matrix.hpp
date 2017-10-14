@@ -20,8 +20,8 @@
 	template <typename T> class Matrix
 
 	{
-		unsigned _rows;
-		unsigned _cols;
+		int _rows;
+		int _cols;
 		T **m;
 
 	public:
@@ -34,7 +34,7 @@
 			_rows = 0;
 		}
 
-		Matrix(const unsigned _rows, const unsigned _cols)
+		Matrix(const int& _rows, const int& _cols)
 		{
 			m = NULL;
 			allocate(_rows, _cols);
@@ -46,13 +46,13 @@
 		}
 
 		//get elements from Matrix
-		T get(const unsigned r, const unsigned c) const
+		T get(const int& r, const int& c) const
 		{
 			return m[r][c];
 		}
 
 		//add elements to Matrix
-		void set(const T& t, const unsigned r, const unsigned c)
+		void set(const T& t, const int& r, const int& c)
 		{
 			m[r][c] = t;
 		}
@@ -80,8 +80,11 @@
 
 	private:
 		//constructor
-		void allocate(const unsigned _rows, const unsigned _cols)
+		void allocate(const int& _rows, const int& _cols)
 		{
+			this-> _rows = _rows;
+			this-> _cols = _cols;
+
 			m = new T*[_rows];
 			for (int i = 0; i < _rows; i++)
 			{
@@ -94,7 +97,7 @@
 		{
 			if (nullptr == m)
 			{
-				//do nothing
+				
 				return;
 			}
 
