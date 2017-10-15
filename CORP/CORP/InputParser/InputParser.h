@@ -21,13 +21,13 @@
 
 class InputParser
 {
+	protected:
+		std::istream& _is;
+
 	public:
 		InputParser(std::istream& in);
 		virtual ~InputParser();
 		Matrix<int> getMatrix();
-
-	protected:
-		std::istream& _is;
 
 	private:
 		Matrix<int> _dataMatrix;
