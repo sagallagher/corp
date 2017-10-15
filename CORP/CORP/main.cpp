@@ -7,8 +7,8 @@
 
 
 
-
 int main(int argc, char const *argv[]) {
+
 	const std::string DEFAULT_INPUT = "../../../data/24cell_facets.txt";
 
 	Config::initialize(argc, argv);
@@ -29,13 +29,20 @@ int main(int argc, char const *argv[]) {
 	//Create InputParser object
 	InputParser parser(is);
 	std::cout << "Data file parsed\n";
-
-	Matrix<int> dataMatrix = parser.getMatrix();
-
-	std::cout << dataMatrix.toString() << std::endl;
-
 	//End of file stream
 	is.close();
+
+
+	std::cout << "geting the parsed dataMatrix\n";
+	Matrix<int>* dataMatrix = parser.getMatrix();
+	std::cout << "got the parsed data matrix\n";
+
+	std::cout << "geting string\n";
+	std::string dm = dataMatrix->toString();
+	std::cout << "displaying outcome\n";
+	std::cout << dataMatrix->toString() << std::endl;
+
+	
 
 	return 0;
 }

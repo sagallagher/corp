@@ -22,17 +22,17 @@
 class InputParser
 {
 	protected:
-		std::istream& _is;
+		std::ifstream& _is;
 
 	public:
-		InputParser(std::istream& in);
+		InputParser(std::ifstream& in);
 		virtual ~InputParser();
-		Matrix<int> getMatrix();
+		Matrix<int>* getMatrix();
 		int getRowCount();
 		int getColumnCount();
 
 	private:
-		Matrix<int> _dataMatrix;
+		Matrix<int>* _dataMatrix;
 		void parse();
 };
 #endif

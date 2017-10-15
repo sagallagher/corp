@@ -1,7 +1,7 @@
 #include "InputParser.h"
 #include<sstream>
 
-InputParser::InputParser(std::istream& in) : _is{ in }
+InputParser::InputParser(std::ifstream& in) : _is{ in }
 {
 	std::cout << "CONSTRUCTED INPUT PARSER\n";
 	parse();
@@ -16,9 +16,10 @@ int InputParser::getRowCount() {
 	std::string str;
 	int rows = 0;
 	while (std::getline(_is, str)) {
+		std::cout << "looped\n";
 		rows++;
 	}
-	return rows;
+	return rows+1;
 }
 
 int InputParser::getColumnCount() {
@@ -30,15 +31,22 @@ int InputParser::getColumnCount() {
 	while (ss >> num) {
 		cols++;
 	}
-	return cols;
+	return cols+1;
 }
 
 //Stores all values from input file into the Matrix object
 void InputParser::parse() {
-	_dataMatrix = Matrix<int>(getRowCount(),getColumnCount());
+	std::cout << "making matrix with correct dimensions\n";
+	int cols = getColumnCount();
+	int rows = getRowCount();
+	_dataMatrix = new Matrix<int>(rows, cols);
+	_dataMatrix->setRows(rows);
+	_dataMatrix->setCols(cols);
 	std::cout << "PARSING\n";
 	int i = 0, j = 0;
 	std::string str;
+	_is.clear();
+	_is.seekg(0, std::ios::beg);
 	while (std::getline(_is, str))
 	{
 		std::istringstream ss(str);
@@ -50,17 +58,18 @@ void InputParser::parse() {
 		{
 			std::cout << "looped once\n";
 			// append that int to "row" vector; num-1 because index starts at 0
-			_dataMatrix.set(num, i, j);
-			std::cout << "set an item of data matrx " << i << "\t" << j << std::endl;
+			_dataMatrix->set(num-1, i, j);
+			std::cout << "set an item of data matrx " << i << "\t" << j <<  "\t" << num << std::endl;
 			j++;
 		}
 		i++;
+		j = 0;
 		
 	}
 
 }
 
-Matrix<int> InputParser::getMatrix()
+Matrix<int>* InputParser::getMatrix()
 {
 	return _dataMatrix;
 }
