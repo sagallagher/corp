@@ -12,7 +12,7 @@
 # include <string>
 
 //constructor
-WeightedBoolSet::WeightedBoolSet(int size = _max) 
+WeightedBoolSet::WeightedBoolSet(int size) 
 {
 	_length = size;
 	_numberSelected = 0;
@@ -25,8 +25,8 @@ WeightedBoolSet::WeightedBoolSet(const WeightedBoolSet & original)
 {
 	_length = original.length;
 	_numberSelected = original._numberSelected;
-	std:memcpy(_values, original._values, sizeof _values);
-	std:memcpy(_weights, original._weights, sizeof _weights);
+	std::memcpy(_values, original._values, sizeof _values);
+	std::memcpy(_weights, original._weights, sizeof _weights);
 }
 
 //destructor
@@ -90,7 +90,9 @@ void WeightedBoolSet::resetWeights()
 int WeightedBoolSet::getWeight(int index) const
 {
 	if (index >= _length || index < 0)
-		return;
+	{
+		//TODO: throw exception
+	}
 	return _weights[index];
 }
 

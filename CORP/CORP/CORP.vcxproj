@@ -169,6 +169,7 @@
     <ClCompile Include="Boolset\WeightedBoolSet.cpp" />
     <ClCompile Include="Config\Config.cpp" />
     <ClCompile Include="Cover\Cover.cpp" />
+    <ClCompile Include="InputParser\InputParser.cpp" />
     <ClCompile Include="OptionContainer\OptionContainer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
