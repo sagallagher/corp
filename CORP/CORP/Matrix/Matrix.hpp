@@ -68,28 +68,39 @@ public:
 		return _cols;
 	}
 
+	void setRows(int num) {
+		_rows = num;
+	}
+
+	void setCols(int num) {
+		_cols = num;
+	}
+
 	//puts out contents of Matrix as a single string
 	std::string toString()
 	{
 
 		std::string result;
-		for (int i = 0; i < _rows; i++)
+		for (int i = 0; i < _rows-1; i++)
 		{
-			for (int j = 0; j < _cols; j++) {
+			for (int j = 0; j < _cols-1; j++) {
 				result.append(std::to_string(m[i][j]));
-
+				result.append(" ");
+				std::cout << "pushed onto string:\t" << std::to_string(m[i][j]) << std::endl;
 			}
+			result.append("\n");
 		}
 		return result;
 
 	}
 
-	friend std::ostream& operator << (std::ostream&, const Matrix<T> &_matrix)
+	/*
+	friend std::ostream& operator << (std::ostream&  OS, const Matrix<T> &_matrix)
 	{
 		OS << _matrix.toString();
-		return OS
+		return OS;
 	}
-
+	*/
 	Matrix& operator= (Matrix& rhs) {
 		m = rhs.m;
 		_rows = rhs._rows;
@@ -105,7 +116,7 @@ private:
 		m = new T*[_rows];
 		for (int i = 0; i < _rows; i++)
 		{
-			m[i] = new T[_cols]
+			m[i] = new T[_cols];
 		}
 	}
 
