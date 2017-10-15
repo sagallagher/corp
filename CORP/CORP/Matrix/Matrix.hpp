@@ -46,13 +46,13 @@
 		}
 
 		//get elements from Matrix
-		T get(const int& r, const int& c) const
+		int get(const unsigned r, const unsigned c) const
 		{
 			return m[r][c];
 		}
 
 		//add elements to Matrix
-		void set(const T& t, const int& r, const int& c)
+		inline void set(const T& t, const unsigned r, const unsigned c)
 		{
 			m[r][c] = t;
 		}
@@ -75,6 +75,10 @@
 			{
 				OS << _matrix.toString();
 				return OS
+				for (int j = 0; j < _cols; j++) {
+					result.append(std::to_string(m[i][j]));
+					
+				}
 			}
 		}
 
@@ -104,7 +108,7 @@
 			//release memory
 			for (int i = 0; i < _rows; i++)
 			{
-				delete[] m[i]
+				delete[] m[i];
 			}
 			delete[] m;
 
@@ -113,8 +117,6 @@
 			_rows = 0;
 			m = nullptr;
 		}
-
-
 	};
 
 #endif
