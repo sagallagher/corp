@@ -22,11 +22,12 @@ Cover::Cover(const Cover & original)
 {
 }
 
+/*
 //overloaded equals
 Cover & Cover::operator=(const Cover & original)
 {
 	// TODO: insert return statement here
-}
+}*/
 
 //destructor
 Cover::~Cover()

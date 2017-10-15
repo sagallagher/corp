@@ -2,13 +2,14 @@
 #define _INPUT_PARSER_GUARD
 //Seth Hostetler
 //Takes input stream object, stores data into a Matrix object
-//-functions:
-//parse()
-//getMatrix()
-//-out of the ordinary: 
+//Contains functions parse, getMatrix
 /*
-	Detailed description
-	parse functions does ____
+	InputParser is a class that takes an input stream object
+		and stores the data in a Matrix object.
+	_is is the input stream object.
+	_dataMatrix is the Matrix object to store the data
+	the parse function loops through the input file and
+		passes the data to the Matrix Object.
 */
 //analysis - How long does it take?
 
@@ -21,7 +22,7 @@
 class InputParser
 {
 	public:
-		InputParser(std::istream& in) : _is{ in };
+		InputParser(std::istream& in);
 		virtual ~InputParser();
 		Matrix<int> getMatrix();
 

@@ -1,5 +1,5 @@
-#ifndef _ALGORITHM_CONTAINER_
-#define _ALGORITHM_CONTAINER_ 1
+#ifndef _ALGORITHM_CONTAINER_GUARD
+#define _ALGORITHM_CONTAINER_GUARD 1
 
 #include"../Algorithm/Algorithm.h"
 
