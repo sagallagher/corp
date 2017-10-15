@@ -78,24 +78,25 @@ public:
 		{
 			for (int j = 0; j < _cols; j++) {
 				result.append(std::to_string(m[i][j]));
-
+				result.append(" ");
 			}
 		}
 		return result;
 
 	}
 
-	friend std::ostream& operator << (std::ostream&, const Matrix<T> &_matrix)
+	/*
+	friend std::ostream& operator << (std::ostream&  OS, const Matrix<T> &_matrix)
 	{
 		OS << _matrix.toString();
-		return OS
+		return OS;
 	}
-
+	*/
 	Matrix& operator= (Matrix& rhs) {
 		m = rhs.m;
 		_rows = rhs._rows;
 		_cols = rhs._cols;
-		return *this;
+		return this;
 
 	}
 

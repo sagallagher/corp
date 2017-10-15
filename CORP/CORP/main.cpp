@@ -9,7 +9,7 @@
 
 
 int main(int argc, char const *argv[]) {
-	const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
+	const std::string DEFAULT_INPUT = "../../../data/24cell_facets.txt";
 
 	Config::initialize(argc, argv);
 
@@ -17,20 +17,22 @@ int main(int argc, char const *argv[]) {
 	std::ifstream is;
 
 	std::string inputData = Config::getInstance()->pull("AdjacencyList",DEFAULT_INPUT);
+	std::cout << "inputData:\t" << inputData << std::endl;
 	is.open(inputData);
-
+	std::cout << "Data file opened\n";
 	if (!is)
 	{
-		std::cerr << "Unable to open file " << inputData << "for reading.";
+		std::cerr << "Unable to open file " << inputData << " for reading.";
 		return 1;
 	}
 
 	//Create InputParser object
 	InputParser parser(is);
+	std::cout << "Data file parsed\n";
 
 	Matrix<int> dataMatrix = parser.getMatrix();
 
-	std::cout << dataMatrix << std::endl;
+	std::cout << dataMatrix.toString() << std::endl;
 
 	//End of file stream
 	is.close();
