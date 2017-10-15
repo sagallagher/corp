@@ -1,8 +1,10 @@
-#ifndef _INPUT_PARSER
-#define _INPUT_PARSER
+#ifndef _INPUT_PARSER_GUARD
+#define _INPUT_PARSER_GUARD
 //Seth Hostetler
-//Moves data into a matrix object
-//-functions
+//Takes input stream object, stores data into a Matrix object
+//-functions:
+//parse()
+//getMatrix()
 //-out of the ordinary: 
 /*
 	Detailed description
@@ -12,24 +14,22 @@
 
 #include "../OptionContainer/OptionContainer.h"
 #include "../Matrix/Matrix.hpp"
-
 #include <iostream>
 #include <fstream>
 #include <string>
 
-
 class InputParser
 {
 	public:
-
 		InputParser(std::istream& in) : _is{ in };
-
-
 		virtual ~InputParser();
+		Matrix<int> getMatrix();
 
 	protected:
 		std::istream& _is;
 
-	Matrix<int>* parse();
+	private:
+		Matrix<int> _dataMatrix;
+		void parse();
 };
 #endif

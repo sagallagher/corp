@@ -5,18 +5,18 @@
 
 class Star
 {
-//protected:
-	Matrix<int>* _star;
-	int _numberOfFacets = 0;
-	int _numberOFVertices = 0;
-	int _lowerBound = 0;
-	int _upperBound = 0;
+protected:
+	Matrix<int> _matrix;
+	int _numberOfFacets;
+	int _numberOFVertices;
+	int _lowerBound;
+	int _upperBound;
 	int _starRows;
 	int _starCols;
 	int _vertex;
 public:
 	//Constructor
-	Star(Matrix<int>* _star);
+	Star(Matrix<int>* matrix);
 
 	//Copy Constructor
 	Star();
@@ -25,17 +25,28 @@ public:
 	~Star();
 
 	//Returns the number of rows
-	int getStarRows(); 
+	int rows( int& r, int& c); 
 
 	//Returns the number of columns
-	int getStarCols();
+	int cols( int& r, int& c);
 
 
 	//Valculates the theoretical minimum vertices
-	int getLowerBound();
+	int lowerBound();
 
 	//Calculates the theoretical maximum vertices
-	int getUpperBound();
+	int upperBound();
+
+	//return the matrix obj
+	Matrix<int> & getMatrix();
+
+	int numberOfFacets();
+
+	int numberOfVertices();
+	
+	int _starRows();
+
+	int _vertex();
 };
 
 

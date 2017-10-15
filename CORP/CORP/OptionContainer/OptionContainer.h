@@ -1,5 +1,5 @@
-#ifndef _OPTION_CONTAINER_GAURD_
-#define _OPTION_CONTAINER_GAURD_
+#ifndef _OPTION_CONTAINER_GUARD_
+#define _OPTION_CONTAINER_GUARD_
 
 #include<vector>
 #include<string>

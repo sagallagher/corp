@@ -7,62 +7,102 @@
 #include "Star.h"
 
 //Constructor
-Star::Star()
+Star::Star(Matrix<int>* matrix)
 {
-	_star = new Matrix<int>();
+	//_matrix = matrix;
+	//calculate bounds
+	int count = 0;
+	int maxVal = 0;
+	for (int i = 0; i < _matrix.getRows; i++)
+	{
+		for (int j = 0; j < _matrix.getCols; j++)
+		{
+			int val = _matrix.get(i, j);
+			if (val == 1)
+				count++;
+			if (val > maxVal)
+				maxVal = val;
+		}
+	}
+	_upperBound = maxVal;
+	_lowerBound = _matrix.getRows() / count;
+	_numberOfFacets = _matrix.getRows();
+	_numberOFVertices = maxVal;
 
-	int _starRows = 0;
-	int _starCols = 0;
 }
 
 //Copy Constructor
-Star::Star(Matrix<int>* _star)
+Star::Star(const Star& original)
 {
-	
-	_starRows = _star->getRows;
-	_starCols = _star->getCols;
-}
 
+}
 
 //Destructor
 Star::~Star()
 {
-	delete[] _star;
+
 }
 
 //Returns the number of rows
-int Star::getStarRows(Matrix<int>* _star)
+int Star::rows(int& r, int& c)
 {
-	return _starRows;
+	return _matrix.getRows();
 }
 
 //Returns the number of columns
-int Star::getStarCols()
+int Star::cols(int& r, int& c)
 {
-	return _starCols;
+	return _matrix.getCols();
 }
 
 
 //Valculates the theoretical minimum vertices
-int getLowerBound(Matrix<int>* _star)
+int Star::lowerBound()
 {
-	for each(int i in _star)
-	{
-		i = _vertex;
-
-		_lowerBound = _starRows / _starCols
-	}
+	
 }
 
-//Calculates teh theoretical maximum vertices
-int getUpperBound(Matrix<int>* _star)
+//Calculates the theoretical maximum vertices
+int upperBound(int& r, int& c)
 {
-	for each (i in _star)
-	{
 
-	}
 }
 
+//return the matrix obj
+Matrix<int> & getMatrix()
+{
+
+}
+
+int numberOfFacets()
+{
+
+}
+
+int numberOfVertices()
+{
+
+}
+
+int _lowerBound()
+{
+
+}
+
+int _upperBound()
+{
+
+}
+
+int _starRows()
+{
+
+}
+
+int _vertex()
+{
+
+}
 
 
 

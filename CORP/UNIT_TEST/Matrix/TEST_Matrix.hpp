@@ -1,5 +1,5 @@
-#ifndef _MATRIX_TESTER_HPP
-#define _MATRIX_TESTER_HPP
+#ifndef _TEST_MATRIX_HPP
+#define _TEST_MATRIX_HPP
 #include <iostream>
 #include <string>
 #include "../../CORP/Matrix/Matrix.hpp"
@@ -176,4 +176,4 @@
 	};
 //}
 
-#endif // _MATRIX_TESTER_HPP
+#endif // _TEST_MATRIX_HPP
