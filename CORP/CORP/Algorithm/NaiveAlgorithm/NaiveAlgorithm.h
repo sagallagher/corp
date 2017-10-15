@@ -1,5 +1,5 @@
-#ifndef _NAIVE_ALGORITHM_
-#define _NAIVE_ALGORITHM_ 1
+#ifndef _NAIVE_ALGORITHM_GUARD
+#define _NAIVE_ALGORITHM_GUARD 1
 #include"../Algorithm.h"
 #include"../../Matrix/matrix.hpp"
 

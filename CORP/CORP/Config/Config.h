@@ -1,5 +1,5 @@
-#ifndef _CONFIG_
-#define _CONFIG_
+#ifndef _CONFIG_GUARD
+#define _CONFIG_GUARD
 
 #include"../OptionContainer/OptionContainer.h"
 #include<string.h>
