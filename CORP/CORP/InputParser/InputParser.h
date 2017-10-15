@@ -21,15 +21,15 @@
 
 class InputParser
 {
+	protected:
+		std::istream& _is;
+
 	public:
 		InputParser(std::istream& in);
 		virtual ~InputParser();
 		Matrix<int> getMatrix();
 		int getRowCount();
 		int getColumnCount();
-
-	protected:
-		std::istream& _is;
 
 	private:
 		Matrix<int> _dataMatrix;
