@@ -190,7 +190,7 @@ namespace BOOLSETTEST
 		TEST_METHOD(allTrueTrue)
 		{
 			BoolSet set = BoolSet::BoolSet(60);
-			for (int i = 0; i < set.length; i++)
+			for (int i = 0; i < set.length(); i++)
 			{
 				set[i] = true;
 			}

@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]) {
 	//Open file stream for data
 	std::ifstream is;
 
-	std::string inputData = Config::getInstance()->pull("AdjacencyList",static_cast<std::string>(DEFAULT_INPUT));
+	std::string inputData = Config::getInstance()->pull("AdjacencyList",DEFAULT_INPUT);
 	is.open(inputData);
 
 	if (!is)
