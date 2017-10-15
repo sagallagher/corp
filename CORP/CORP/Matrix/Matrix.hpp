@@ -47,13 +47,13 @@
 
 		//get elements from Matrix
 		template<typename T>
-		get(const unsigned r, const unsigned c) const
+		int get(const unsigned r, const unsigned c) const
 		{
 			return m[r][c];
 		}
 
 		//add elements to Matrix
-		inline set(const T& t, const unsigned r, const unsigned c)
+		inline int set(const T& t, const unsigned r, const unsigned c)
 		{
 			m[r][c] = t;
 		}
@@ -76,7 +76,7 @@
 			std::string result;
 			for (int i = 0; i < _rows; i++)
 			{
-				for (int j = 0; j < _columns; j++) {
+				for (int j = 0; j < _cols j++) {
 					result.append(m[i][j]);
 					result.append(" ");
 				}
@@ -122,7 +122,7 @@
 			//release memory
 			for (int i = 0; i < _rows; i++)
 			{
-				delete[] m[i]
+				delete[] m[i];
 			}
 			delete[] m;
 

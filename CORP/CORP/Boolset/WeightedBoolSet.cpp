@@ -23,7 +23,7 @@ WeightedBoolSet::WeightedBoolSet(int size)
 //copy constructor
 WeightedBoolSet::WeightedBoolSet(const WeightedBoolSet & original) 
 {
-	_length = original.length;
+	_length = original.length();
 	_numberSelected = original._numberSelected;
 	std::memcpy(_values, original._values, sizeof _values);
 	std::memcpy(_weights, original._weights, sizeof _weights);

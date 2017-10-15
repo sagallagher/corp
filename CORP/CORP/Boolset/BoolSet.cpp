@@ -25,16 +25,16 @@ BoolSet::BoolSet(const BoolSet & original)
 	_length = original.length();
 	_numberSelected = original._numberSelected;
 	_values = new bool[_length];
-	std:memcpy(_values, original._values, sizeof _values);
+	std::memcpy(_values, original._values, sizeof _values);
 }
 
 //overloaded equals
 BoolSet & BoolSet::operator=(const BoolSet & original) 
 {
-	_length = original.length;
+	_length = original.length();
 	_numberSelected = original._numberSelected;
 	_values = new bool[_length];
-	std:memcpy(_values, original._values, sizeof _values);
+	std::memcpy(_values, original._values, sizeof _values);
 	return *this;
 }
 
