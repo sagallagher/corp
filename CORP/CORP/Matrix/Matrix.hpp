@@ -53,7 +53,7 @@
 		}
 
 		//add elements to Matrix
-		inline int set(const T& t, const unsigned r, const unsigned c)
+		inline void set(const T& t, const unsigned r, const unsigned c)
 		{
 			m[r][c] = t;
 		}
@@ -76,9 +76,9 @@
 			std::string result;
 			for (int i = 0; i < _rows; i++)
 			{
-				for (int j = 0; j < _cols j++) {
-					result.append(m[i][j]);
-					result.append(" ");
+				for (int j = 0; j < _cols; j++) {
+					result.append(std::to_string(m[i][j]));
+					
 				}
 			}
 			return result;
