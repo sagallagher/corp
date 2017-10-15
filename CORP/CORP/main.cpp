@@ -30,7 +30,7 @@ int main(int argc, char const *argv[]) {
 
 	Matrix<int> dataMatrix = parser.getMatrix();
 
-	std::cout << dataMatrix.toString() << std::endl;
+	std::cout << dataMatrix << std::endl;
 
 	//End of file stream
 	is.close();
