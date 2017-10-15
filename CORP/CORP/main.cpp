@@ -6,9 +6,10 @@
 #include <string>
 
 
-const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
+
 
 int main(int argc, char const *argv[]) {
+	const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
 
 	Config::initialize(argc, argv);
 
