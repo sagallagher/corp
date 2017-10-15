@@ -34,10 +34,10 @@ public:
 		_rows = 0;
 	}
 
-	Matrix(const unsigned _rows, const unsigned _cols)
+	Matrix(const unsigned rows, const unsigned cols)
 	{
-		m = NULL;
-		allocate(_rows, _cols);
+		m = nullptr;
+		allocate(rows, cols);
 	}
 
 	~Matrix()
@@ -46,14 +46,13 @@ public:
 	}
 
 	//get elements from Matrix
-	template<typename T>
 	int get(const unsigned r, const unsigned c) const
 	{
 		return m[r][c];
 	}
 
 	//add elements to Matrix
-	inline void set(const T& t, const unsigned r, const unsigned c)
+	void set(const T& t, const unsigned r, const unsigned c)
 	{
 		m[r][c] = t;
 	}
@@ -100,7 +99,7 @@ public:
 	}
 
 private:
-	//constructor
+	//allocates space in the matrix
 	void allocate(const unsigned _rows, const unsigned _cols)
 	{
 		m = new T*[_rows];
@@ -110,7 +109,7 @@ private:
 		}
 	}
 
-	//destructor
+	//deallocates space in the matrix
 	void deallocate()
 	{
 		if (nullptr == m)

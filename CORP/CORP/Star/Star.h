@@ -6,20 +6,26 @@
 class Star
 {
 protected:
-	Matrix<int> _matrix;
+
 	int _numberOfFacets;
-	int _numberOFVertices;
+	int _numberOfVertices;
 	int _lowerBound;
 	int _upperBound;
 	int _starRows;
 	int _starCols;
 	int _vertex;
+	int _facetsPerVertex;
+
 public:
+		
+	Matrix<int> _matrix;
+	Matrix<int> _vertexMatrix;
+		
 	//Constructor
 	Star(Matrix<int>* matrix);
 
 	//Copy Constructor
-	Star();
+	Star( const Star& original);
 
 	//Destructor
 	~Star();
@@ -43,10 +49,8 @@ public:
 	int numberOfFacets();
 
 	int numberOfVertices();
-	
-	int _starRows();
 
-	int _vertex();
+	int facetsPerVertex();
 };
 
 
