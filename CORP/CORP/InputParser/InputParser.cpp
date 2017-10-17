@@ -19,6 +19,8 @@ int InputParser::getRowCount() {
 		std::cout << "looped\n";
 		rows++;
 	}
+	_is.clear();
+	_is.seekg(0, std::ios::beg);
 	return rows+1;
 }
 
@@ -31,6 +33,8 @@ int InputParser::getColumnCount() {
 	while (ss >> num) {
 		cols++;
 	}
+	_is.clear();
+	_is.seekg(0, std::ios::beg);
 	return cols+1;
 }
 
@@ -49,8 +53,7 @@ void InputParser::parse() {
 	std::cout << "PARSING\n";
 	int i = 0, j = 0;
 	std::string str;
-	_is.clear();
-	_is.seekg(0, std::ios::beg);
+	
 	while (std::getline(_is, str))
 	{
 		std::istringstream ss(str);
