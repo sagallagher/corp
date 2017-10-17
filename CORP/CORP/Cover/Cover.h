@@ -11,18 +11,20 @@
 #ifndef _COVER_GUARD_
 #define _COVER_GUARD_
 #include "../Boolset/BoolSet.h";
+#include "../Star/Star.h";
 
 class Cover
 {
 protected:
 	
-	BoolSet _bitVector;							//Boolset representing selected vertices
-	//Star _star;								//the star object holding shape information
+    
 
 public:
-	Cover();									//Constructor
+    BoolSet _bitVector;							//Boolset representing selected vertices
+    Star _star;                                 //the star object holding shape information
+    
+	Cover(Star star);							//Constructor
 	Cover(const Cover& original);				//copy constructor
-	Cover& operator=(const Cover& original);	//overloaded equals
 	~Cover();									//Destructor
 	bool& operator[](int index);				//overloaded brackets
 	bool operator[](int index) const;			//overloaded brackets
@@ -33,8 +35,7 @@ public:
 	double coverPercent();						//what percent of facets are covered
 	int facetsCovered();						//how many facets are covered
 	int facets();								//total number of facets
-	//void setStar(Star star);					//sets the star to a new star object										
-
+    int vertices();								//total number of vertices
 };
 
 #endif

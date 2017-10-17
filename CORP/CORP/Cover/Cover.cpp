@@ -11,28 +11,23 @@
 #include "Cover.h"
 
 //constructor
-Cover::Cover()
+Cover::Cover(Star star)
 {
-	//TODO: constructor, take a star as the perameter
-
+    _star = star;
+    _bitVector = new boolset(_star.numberOfVertices());
 }
 
 //copy constructor
 Cover::Cover(const Cover & original)
 {
+    _star = original._star;
+    _bitVector = original._bitVector;
 }
-
-/*
-//overloaded equals
-Cover & Cover::operator=(const Cover & original)
-{
-	// TODO: insert return statement here
-}*/
 
 //destructor
 Cover::~Cover()
 {
-
+    //TODO: destructor
 }
 
 //overloaded brackets
@@ -62,27 +57,64 @@ void Cover::deselect(int index)
 //checks if the given vertex list is a valid cover
 bool Cover::checkCover()
 {
-	//TODO: check through bitvector, make a temp boolset to represent facets, turn on, if temporary boolset is all true, it is a cover
-	return false;
+    Boolset tempSet = new Boolset(_star.numberOfFacets());
+    for(int i = 0; i < _bitVector.length(); i++)
+    {
+        if(_bitVector[i])
+        {
+            for(int j = 0; j < _star._vertexMatrix.getCols(); j++)
+            {
+                tempSet.setTrue(_star._vertexMatrix.get(i, j));
+            }
+        }
+    }
+    return tempSet.allTrue();
 }
 
 //returns the percent of facets covered by the current vector
 double Cover::coverPercent()
 {
-	//TODO: similar to above, but divides the number covered by the number of facets
-	return 0.0;
+    Boolset tempSet = new Boolset(_star.numberOfFacets());
+    for(int i = 0; i < _bitVector.length(); i++)
+    {
+        if(_bitVector[i])
+        {
+            for(int j = 0; j < _star._vertexMatrix.getCols(); j++)
+            {
+                tempSet.setTrue(_star._vertexMatrix.get(i, j));
+            }
+        }
+    }
+    return (double)tempSet.numberSelected()/length();
 }
 
 //returns the number of facets covered
 int Cover::facetsCovered()
 {
-	//TODO: similar to above but returns number of facets
-	return 0;
+    Boolset tempSet = new Boolset(_star.numberOfFacets());
+    for(int i = 0; i < _bitVector.length(); i++)
+    {
+        if(_bitVector[i])
+        {
+            for(int j = 0; j < _star._vertexMatrix.getCols(); j++)
+            {
+                tempSet.setTrue(_star._vertexMatrix.get(i, j));
+            }
+        }
+    }
+    return tempSet.numberSelected();
+
 }
 
 //returns the total number of facets
 int Cover::facets()
 {
-	//TODO: return the number of facets from the star
-	return 0;
+    return _star.numberOfFacets();
 }
+
+//returns the total number of vertices
+int Cover::facets()
+{
+    return _star.numberOfVertices();
+}
+
