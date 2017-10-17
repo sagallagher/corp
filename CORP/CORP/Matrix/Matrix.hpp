@@ -101,11 +101,25 @@ public:
 		return OS;
 	}
 	*/
-	Matrix& operator= (Matrix& rhs) {
+
+	Matrix<T>& operator= (Matrix<T>& rhs) {
 		m = rhs.m;
 		_rows = rhs._rows;
 		_cols = rhs._cols;
 		return *this;
+
+		//kill prev
+		// deallocate(this->m)
+
+		//allocate
+		// allocate(this->m, that.rows, that.cols)
+
+		// copy (nested loops)
+
+		// return *this
+
+		// cant point at old matrix because it is deleted
+
 
 	}
 
@@ -121,6 +135,7 @@ private:
 	}
 
 	//deallocates space in the matrix
+	// deallocate (this -> m)
 	void deallocate()
 	{
 		if (nullptr == m)
