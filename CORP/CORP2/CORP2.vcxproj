@@ -121,6 +121,7 @@
     <ClInclude Include="..\CORP\InputParser\InputParser.h" />
     <ClInclude Include="..\CORP\Matrix\Matrix.hpp" />
     <ClInclude Include="..\CORP\OptionContainer\OptionContainer.h" />
+    <ClInclude Include="..\CORP\Star\Star.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CORP\Boolset\BoolSet.cpp" />
@@ -130,6 +131,7 @@
     <ClCompile Include="..\CORP\InputParser\InputParser.cpp" />
     <ClCompile Include="..\CORP\main.cpp" />
     <ClCompile Include="..\CORP\OptionContainer\OptionContainer.cpp" />
+    <ClCompile Include="..\CORP\Star\Star.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
