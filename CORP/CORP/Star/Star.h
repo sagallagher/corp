@@ -25,10 +25,10 @@ public:
 	Star(Matrix<int>* matrix);
 	Star();
 	//Copy Constructor
-	Star( const Star& original);
+	Star(Star& original);
 
 	//Destructor
-	~Star();
+	//~Star();
 
 	//Returns the number of rows
 	int rows( int& r, int& c); 

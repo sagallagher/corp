@@ -77,8 +77,7 @@ public:
 	}
 
 	//puts out contents of Matrix as a single string
-	std::string toString()
-	{
+	std::string toString() {
 
 		std::string result;
 		for (int i = 0; i < _rows-1; i++)

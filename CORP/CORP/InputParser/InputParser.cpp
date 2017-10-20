@@ -7,10 +7,7 @@ InputParser::InputParser(std::ifstream& in) : _is{ in }
 	parse();
 }
 
-InputParser::~InputParser()
-{
-
-}
+InputParser::~InputParser() {}
 
 int InputParser::getRowCount() {
 	std::string str;
@@ -76,7 +73,6 @@ void InputParser::parse() {
 
 }
 
-Matrix<int>* InputParser::getMatrix()
-{
+Matrix<int>* InputParser::getMatrix() {
 	return _dataMatrix;
 }

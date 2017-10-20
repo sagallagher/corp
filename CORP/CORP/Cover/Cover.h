@@ -23,8 +23,8 @@ public:
     BoolSet _bitVector;							//Boolset representing selected vertices
     Star _star;                                 //the star object holding shape information
     
-	Cover(Star& star);							//Constructor
-	Cover(const Cover& original);				//copy constructor
+	Cover(const Star& star);							//Constructor
+	Cover(Cover& original);				//copy constructor
 	~Cover();									//Destructor
 	bool& operator[](int index);				//overloaded brackets
 	bool operator[](int index) const;			//overloaded brackets

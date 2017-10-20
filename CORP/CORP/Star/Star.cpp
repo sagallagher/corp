@@ -23,22 +23,24 @@ Star::Star(Matrix<int>* matrix)
 }
 
 //Copy Constructor
-Star::Star(const Star& original)
+Star::Star(Star& original)
 {
 	_upperBound = original.upperBound();
 	_lowerBound = original.lowerBound();
 	_numberOfFacets = _matrix.getRows();
-	_numberOfVertices = maxVal;
+	_numberOfVertices = _matrix.getCols();
 
 }
 
 //Destructor
+/*
 Star::~Star()
 {
 	//TODO: DOUBLE CHECK THIS IS CORRECT
 	delete _matrix;
 	delete _vertexMatrix;
 }
+*/
 
 //Returns the number of rows
 int Star::rows(int& r, int& c)
@@ -83,6 +85,7 @@ int Star::facetsPerVertex()
     return _facetsPerVertex;
 }
 
+/*
 //old function to set secondary matrix **INEFICIENT**
 void ineficientMatrixConvert()
 {
@@ -104,7 +107,9 @@ void ineficientMatrixConvert()
         }
     }
 }
+*/
 
+/*
 //sets secondary matrix
 void matrixConvert()
 {
@@ -121,15 +126,17 @@ void matrixConvert()
         }
     }
 }
+*/
+
 
 //calculates and sets bounds
-void calculateBounds()
+void Star::calculateBounds()
 {
     int count = 0;
     int maxVal = 0;
-    for (int i = 0; i < _matrix.getRows; i++)
+    for (int i = 0; i < _matrix.getRows(); i++)
     {
-        for (int j = 0; j < _matrix.getCols; j++)
+        for (int j = 0; j < _matrix.getCols(); j++)
         {
             int val = _matrix.get(i, j);
             if (val == 1)
@@ -145,6 +152,7 @@ void calculateBounds()
     _numberOfVertices = maxVal;
 
 }
+*
 
 
 

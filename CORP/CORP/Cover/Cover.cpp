@@ -11,7 +11,7 @@
 #include "Cover.h"
 
 //constructor
-Cover::Cover(Star& star)
+Cover::Cover(const Star &star)
 {
 	Star astar(star);
 	_star = astar;
@@ -20,7 +20,7 @@ Cover::Cover(Star& star)
 }
 
 //copy constructor
-Cover::Cover(const Cover & original)
+Cover::Cover(Cover & original)
 {
     _star = original._star;
     _bitVector = original._bitVector;
