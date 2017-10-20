@@ -11,11 +11,12 @@
 #include "Cover.h"
 
 //constructor
-Cover::Cover(Star star)
+Cover::Cover(Star& star)
 {
-	Star star;
-	_star(star);
-	_bitVector(_star.numberOfVertices());
+	Star astar(star);
+	_star = astar;
+	BoolSet bs(_star.numberOfVertices());
+	_bitVector = bs;
 }
 
 //copy constructor

@@ -23,7 +23,7 @@ public:
 		
 	//Constructor
 	Star(Matrix<int>* matrix);
-
+	Star();
 	//Copy Constructor
 	Star( const Star& original);
 

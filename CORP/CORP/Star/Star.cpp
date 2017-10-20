@@ -4,8 +4,10 @@
 
 */
 
-#include "Star.h"
 
+
+#include "Star.h"
+Star::Star() {}
 //Constructor
 Star::Star(Matrix<int>* matrix)
 {
