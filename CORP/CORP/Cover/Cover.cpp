@@ -13,8 +13,9 @@
 //constructor
 Cover::Cover(Star star)
 {
-    _star = star;
-    _bitVector = new boolset(_star.numberOfVertices());
+	Star star;
+	_star(star);
+	_bitVector(_star.numberOfVertices());
 }
 
 //copy constructor
@@ -57,7 +58,7 @@ void Cover::deselect(int index)
 //checks if the given vertex list is a valid cover
 bool Cover::checkCover()
 {
-    Boolset tempSet = new Boolset(_star.numberOfFacets());
+    BoolSet tempSet(_star.numberOfFacets());
     for(int i = 0; i < _bitVector.length(); i++)
     {
         if(_bitVector[i])
@@ -74,7 +75,7 @@ bool Cover::checkCover()
 //returns the percent of facets covered by the current vector
 double Cover::coverPercent()
 {
-    Boolset tempSet = new Boolset(_star.numberOfFacets());
+    BoolSet tempSet(_star.numberOfFacets());
     for(int i = 0; i < _bitVector.length(); i++)
     {
         if(_bitVector[i])
@@ -85,13 +86,13 @@ double Cover::coverPercent()
             }
         }
     }
-    return (double)tempSet.numberSelected()/length();
+    return (double)tempSet.numberSelected()/tempSet.length();
 }
 
 //returns the number of facets covered
 int Cover::facetsCovered()
 {
-    Boolset tempSet = new Boolset(_star.numberOfFacets());
+    BoolSet tempSet(_star.numberOfFacets());
     for(int i = 0; i < _bitVector.length(); i++)
     {
         if(_bitVector[i])

@@ -11,7 +11,7 @@ protected:
 
 public:
 
-	virtual bool run(std::Matrix<int>()) = 0;
+	virtual bool run(Matrix<int>()) = 0;
 
 	
 };

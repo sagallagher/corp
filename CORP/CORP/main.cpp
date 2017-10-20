@@ -4,7 +4,8 @@
 #include"InputParser\InputParser.h"
 #include <fstream>
 #include <string>
-
+#include"Star\Star.h"
+#include"Cover\Cover.h"
 
 
 int main(int argc, char const *argv[]) {
@@ -41,6 +42,20 @@ int main(int argc, char const *argv[]) {
 	std::string dm = dataMatrix->toString();
 	std::cout << "displaying outcome\n";
 	std::cout << dataMatrix->toString() << std::endl;
+
+	const Star dataStar(dataMatrix);
+
+	Cover cover(dataStar);
+
+	//4 6 10 15 21 
+	std::vector<int> solution = { 4,6,10,15,21 };
+
+	for (auto i = solution.begin(); i != solution.end(); i++) {
+		cover.select(*i - 1);
+	}
+
+	cover.checkCover();
+
 
 	
 
