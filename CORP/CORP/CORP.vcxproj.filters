@@ -39,6 +39,9 @@
     <ClInclude Include="Cover\Cover.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Star\Star.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputParser\InputParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Star\Star.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
