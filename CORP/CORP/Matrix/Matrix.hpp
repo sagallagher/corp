@@ -102,21 +102,35 @@ public:
 	}
 	*/
 
-	Matrix<T>& operator= (Matrix<T>& rhs) {
+	Matrix<T>& operator= ( const Matrix<T>& rhs) 
+	{
 		m = rhs.m;
 		_rows = rhs._rows;
 		_cols = rhs._cols;
 		return *this;
 
 		//kill prev
-		// deallocate(this->m)
+		deallocate(this->m)
 
 		//allocate
-		// allocate(this->m, that.rows, that.cols)
+		allocate(this->m, m._rows, m._cols)
 
 		// copy (nested loops)
+		if (m != nullptr)
+		{ 
+			for (int i = 0; i < _rows; i++)
+			{
+				m[i] = new Matrix<T>[_rows];
 
-		// return *this
+				for (j = 0; j < _cols; j++)
+				{
+					m[i][j] = rhs.n[i][j];
+				}
+			}
+			return *this
+		}
+
+		
 
 		// cant point at old matrix because it is deleted
 
