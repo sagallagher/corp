@@ -135,7 +135,6 @@ private:
 	}
 
 	//deallocates space in the matrix
-	// deallocate (this -> m)
 	void deallocate()
 	{
 		if (nullptr == m)
