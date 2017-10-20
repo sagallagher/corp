@@ -46,20 +46,25 @@ public:
 	//return the matrix obj
 	Matrix<int> & getMatrix();
 
+    //returns the number of facets
 	int numberOfFacets();
 
+    //returns the number of vertices
 	int numberOfVertices();
 
+    //returns the number of facets converging at each vertex
 	int facetsPerVertex();
+    
+    //uses nested for loops to create the secondary matrix **POTENTIALLY INEFICIENT**
+    void ineficientMatrixConvert();
+    
+    //new function to create the secondary matrix
+    void matrixConvert();
+    
+    //caulculates and sets the bounds
+    void calculateBounds();
+
 };
-
-
-/*
-Lower and upper bounds
-find lower and upper bounds in constructor
-passed in a matrix in constructor parameter
-
-*/
 
 
 #endif
