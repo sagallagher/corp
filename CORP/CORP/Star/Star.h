@@ -31,10 +31,10 @@ public:
 	//~Star();
 
 	//Returns the number of rows
-	int rows( int& r, int& c); 
+	int rows(); 
 
 	//Returns the number of columns
-	int cols( int& r, int& c);
+	int cols();
 
 
 	//Valculates the theoretical minimum vertices
@@ -44,7 +44,7 @@ public:
 	int upperBound();
 
 	//return the matrix obj
-	Matrix<int> & getMatrix();
+	//Matrix<int> & getMatrix();
 
     //returns the number of facets
 	int numberOfFacets();
@@ -56,10 +56,10 @@ public:
 	int facetsPerVertex();
     
     //uses nested for loops to create the secondary matrix **POTENTIALLY INEFICIENT**
-    void ineficientMatrixConvert();
+   // void ineficientMatrixConvert();
     
     //new function to create the secondary matrix
-    void matrixConvert();
+    //void matrixConvert();
     
     //caulculates and sets the bounds
     void calculateBounds();

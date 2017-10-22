@@ -6,6 +6,7 @@
 #include <string>
 #include"Star\Star.h"
 #include"Cover\Cover.h"
+#include"Boolset\BoolSet.h"
 
 
 int main(int argc, char const *argv[]) {
@@ -43,21 +44,23 @@ int main(int argc, char const *argv[]) {
 	std::cout << "displaying outcome\n";
 	std::cout << dataMatrix->toString() << std::endl;
 
-	const Star dataStar(dataMatrix);
+	//UP TO THIS POINT WORKS!!!!!@
+
+	Star dataStar(dataMatrix);
 
 	Cover cover(dataStar);
 
 	//4 6 10 15 21 
-	std::vector<int> solution = { 4,6,10,15,21 };
+	std::vector<int> solution = { 4,6,10,15,21};
 
-	for (auto i = solution.begin(); i != solution.end(); i++) {
-		cover.select(*i - 1);
+	for (int i = 0; i < solution.size(); i++) 
+	{
+		cover.select(solution[i]);
+		std::cout << "element selected:\t" << solution[i] << std::endl;
 	}
 
-	cover.checkCover();
-
-
-	
+	//std::cout << "Facets covered: " << cover.facetsCovered() << "out of " << cover.facets() << "\n";
+	//std::cout << cover.checkCover() << std::endl;
 
 	return 0;
 }

@@ -16,6 +16,7 @@ own loops iterating through input to add multiple values
 */
 //analyis N/A
 
+#include<string>
 
 template <typename T> class Matrix
 
@@ -38,6 +39,8 @@ public:
 	{
 		m = nullptr;
 		allocate(rows, cols);
+		// = rows;
+		//_cols = cols;
 	}
 
 	~Matrix()
@@ -85,7 +88,7 @@ public:
 			for (int j = 0; j < _cols-1; j++) {
 				result.append(std::to_string(m[i][j]));
 				result.append(" ");
-				std::cout << "pushed onto string:\t" << std::to_string(m[i][j]) << std::endl;
+	
 			}
 			result.append("\n");
 		}
@@ -101,33 +104,35 @@ public:
 	}
 	*/
 
-	Matrix<T>& operator= ( const Matrix<T>& rhs) 
+	Matrix<T>& operator= ( const Matrix<T>* rhs) 
 	{
-		m = rhs.m;
-		_rows = rhs._rows;
-		_cols = rhs._cols;
-		return *this;
-
 		//kill prev
-		deallocate(this->m)
-
+		//deallocate(this->m);
+		std::cout << "called overloaded =\n";
 		//allocate
-		allocate(this->m, m._rows, m._cols)
-
+		allocate(rhs->_rows, rhs->_cols);
+		std::cout << "realocated\n";
 		// copy (nested loops)
 		if (m != nullptr)
 		{ 
+			_rows = rhs->getRows();
+			_cols = rhs->getCols();
+			std::cout << "if statement was true\n";
+			//ROWS AND COLS CORRECT AT THIS POINT!!!!!!!!
 			for (int i = 0; i < _rows; i++)
 			{
-				m[i] = new Matrix<T>[_rows];
+				//std::cout << "looped through a row\t" << i << std::endl;
 
-				for (j = 0; j < _cols; j++)
+				for (int j = 0; j < _cols; j++)
 				{
-					m[i][j] = rhs.n[i][j];
+					//std::cout << "looped through a column\t" << j << std::endl;
+					m[i][j] = rhs->get(i, j);
 				}
 			}
-			return *this
 		}
+		std::cout << "END OF EQUALS CHECK: \t" << _rows << " " << _cols << "\n";
+		//std::cout << "skipped all that\n";
+		return *this;
 
 		
 
@@ -138,12 +143,23 @@ public:
 
 private:
 	//allocates space in the matrix
-	void allocate(const unsigned _rows, const unsigned _cols)
+	void allocate(const unsigned rows, const unsigned cols)
 	{
-		m = new T*[_rows];
-		for (int i = 0; i < _rows; i++)
+		_rows = rows;
+		_cols = cols;
+		m = new T*[rows];
+		for (int i = 0; i < rows; i++)
 		{
-			m[i] = new T[_cols];
+			m[i] = new T[cols];
+		}
+	}
+
+	void allocate(Matrix<T>* lhs, const unsigned rows, const unsigned cols)
+	{
+		lhs.m = new T*[rows];
+		for (int i = 0; i < rows; i++)
+		{
+			lhs[i] = new T[cols];
 		}
 	}
 

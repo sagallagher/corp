@@ -11,12 +11,17 @@
 #include "Cover.h"
 
 //constructor
-Cover::Cover(const Star &star)
+Cover::Cover(Star &star)
 {
+	std::cout << "ROWS AND COLS 1:\t" << star.rows() << " " << star.cols() << std::endl;
 	Star astar(star);
-	_star = astar;
+	_star = star;
+	std::cout << "ROWS AND COLS 2:\t" << _star.rows() << " " << _star.cols() << std::endl;
 	BoolSet bs(_star.numberOfVertices());
 	_bitVector = bs;
+	//TODO:output verifiers
+	std::cout <<"ROWS AND COLS final:\t" << _star.rows() << " " << _star.cols() << std::endl;
+
 }
 
 //copy constructor
@@ -115,7 +120,7 @@ int Cover::facets()
 }
 
 //returns the total number of vertices
-int Cover::facets()
+int Cover::vertices()
 {
     return _star.numberOfVertices();
 }

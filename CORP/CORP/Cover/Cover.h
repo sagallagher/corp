@@ -10,6 +10,7 @@
 
 #ifndef _COVER_GUARD_
 #define _COVER_GUARD_
+#include<iostream>
 #include "../Boolset/BoolSet.h";
 #include "../Star/Star.h";
 
@@ -23,7 +24,7 @@ public:
     BoolSet _bitVector;							//Boolset representing selected vertices
     Star _star;                                 //the star object holding shape information
     
-	Cover(const Star& star);							//Constructor
+	Cover(Star& star);							//Constructor
 	Cover(Cover& original);				//copy constructor
 	~Cover();									//Destructor
 	bool& operator[](int index);				//overloaded brackets

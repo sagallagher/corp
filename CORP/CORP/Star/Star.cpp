@@ -11,15 +11,25 @@ Star::Star() {}
 //Constructor
 Star::Star(Matrix<int>* matrix)
 {
+	std::cout << "this print og matrix\n";
+	std::cout << matrix->toString();
 	_matrix = matrix;
+
+	std::cout << "PRE CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
+
+
 
 	//calculate bounds
     calculateBounds();
     
+	std::cout << "POST CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
 	//calculate secondary matrix
-    matrixConvert();
+    //matrixConvert();
+	
+	//std::cout << "this should be print a matrix\t";
+	//std::cout << _matrix.toString();
 
-
+	//ROWS AND COLS CORRECT AT THIS POINT
 }
 
 //Copy Constructor
@@ -43,13 +53,13 @@ Star::~Star()
 */
 
 //Returns the number of rows
-int Star::rows(int& r, int& c)
+int Star::rows()
 {
 	return _matrix.getRows();
 }
 
 //Returns the number of columns
-int Star::cols(int& r, int& c)
+int Star::cols()
 {
 	return _matrix.getCols();
 }
@@ -152,7 +162,7 @@ void Star::calculateBounds()
     _numberOfVertices = maxVal;
 
 }
-*
+
 
 
 

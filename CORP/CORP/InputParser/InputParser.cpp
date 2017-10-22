@@ -40,12 +40,11 @@ void InputParser::parse() {
 	std::cout << "making matrix with correct dimensions\n";
 	int cols = getColumnCount();
 	int rows = getRowCount();
-
+	
 	// this can be replaced with overloaded = operator
 	_dataMatrix = new Matrix<int>(rows, cols);
-	_dataMatrix->setRows(rows);
-	_dataMatrix->setCols(cols);
 
+	//AT THIS POINT DATA MATRIX IS CORRECT
 
 	std::cout << "PARSING\n";
 	int i = 0, j = 0;
