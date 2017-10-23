@@ -18,6 +18,8 @@ BoolSet::BoolSet(int size)
 	_length = size;
 	_numberSelected = 0;
 	_values = new bool[_length];
+	clear();
+	std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
 }
 
 //copy constructor
@@ -87,6 +89,7 @@ void BoolSet::setTrueUnchecked(int index)
 {
 	if (!_values[index])
 		_numberSelected++;
+	std::cout << "Set " << index << " to true\n";
 	_values[index] = true;
 }
 
@@ -158,11 +161,30 @@ bool BoolSet::allTrue() const
 void BoolSet::clear() 
 {
 	_numberSelected = 0;
-	std::memset(_values, false, sizeof _values);
+	//std::memset(_values, false, _length);
+	for (int i = 0; i < _length; i++)
+	{
+		_values[i] = false;
+		//std::cout << "Set the value at " << i << " to " << _values[i] << "\n";
+	}
 }
 
 //returns true if all values are false
 bool BoolSet::empty() const 
 {
 	return _numberSelected == 0;
+}
+
+std::string BoolSet::toString()
+{
+	std::string result;
+	result = "";
+	for (int i = 0; i < _length; i++)
+	{
+		if (_values[i])
+			result = result + "1";
+		else
+			result = result + "0";
+	}
+	return result;
 }

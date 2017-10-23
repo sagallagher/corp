@@ -7,7 +7,9 @@ InputParser::InputParser(std::ifstream& in) : _is{ in }
 	parse();
 }
 
-InputParser::~InputParser() {}
+InputParser::~InputParser() {
+	delete _dataMatrix;
+}
 
 int InputParser::getRowCount() {
 	std::string str;
@@ -18,7 +20,7 @@ int InputParser::getRowCount() {
 	}
 	_is.clear();
 	_is.seekg(0, std::ios::beg);
-	return rows+1;
+	return rows;
 }
 
 int InputParser::getColumnCount() {
@@ -32,7 +34,7 @@ int InputParser::getColumnCount() {
 	}
 	_is.clear();
 	_is.seekg(0, std::ios::beg);
-	return cols+1;
+	return cols;
 }
 
 //Stores all values from input file into the Matrix object

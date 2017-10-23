@@ -13,15 +13,16 @@
 //constructor
 Cover::Cover(Star &star)
 {
-	std::cout << "ROWS AND COLS 1:\t" << star.rows() << " " << star.cols() << std::endl;
+	//std::cout << "ROWS AND COLS 1:\t" << star.rows() << " " << star.cols() << std::endl;
 	Star astar(star);
 	_star = star;
-	std::cout << "ROWS AND COLS 2:\t" << _star.rows() << " " << _star.cols() << std::endl;
+	//std::cout << "ROWS AND COLS 2:\t" << _star.rows() << " " << _star.cols() << std::endl;
 	BoolSet bs(_star.numberOfVertices());
 	_bitVector = bs;
+	_bitVector.clear();
 	//TODO:output verifiers
-	std::cout <<"ROWS AND COLS final:\t" << _star.rows() << " " << _star.cols() << std::endl;
-
+	//std::cout <<"ROWS AND COLS final:\t" << _star.rows() << " " << _star.cols() << std::endl;
+	std::cout << "Cover Created: " << toString() << "\n";
 }
 
 //copy constructor
@@ -58,6 +59,13 @@ void Cover::select(int index)
 	_bitVector.setTrue(index);
 }
 
+//selects the vertex at the given index
+void Cover::selectUnchecked(int index)
+{
+	std::cout << "selected index\t" << index << std::endl;
+	_bitVector.setTrueUnchecked(index);
+}
+
 //deselects the vertex at the given index
 void Cover::deselect(int index)
 {
@@ -66,10 +74,12 @@ void Cover::deselect(int index)
 
 //checks if the given vertex list is a valid cover
 bool Cover::checkCover()
-{
+{	
+	//std::cout << "calling numberOfFacets, first line of checkCover\n";
     BoolSet tempSet(_star.numberOfFacets());
     for(int i = 0; i < _bitVector.length(); i++)
     {
+		//std::cout << "started the firest floor loop, length was successfull and so was numberOfFacets\n";
         if(_bitVector[i])
         {
             for(int j = 0; j < _star._vertexMatrix.getCols(); j++)
@@ -77,7 +87,9 @@ bool Cover::checkCover()
                 tempSet.setTrue(_star._vertexMatrix.get(i, j));
             }
         }
-    }
+		//std::cout << "finished a loop of checkCover\n";
+;    }
+	std::cout << "finished all loops in checkCover, about to return something\n";
     return tempSet.allTrue();
 }
 
@@ -126,5 +138,27 @@ int Cover::facets()
 int Cover::vertices()
 {
     return _star.numberOfVertices();
+}
+
+std::string Cover::coverToString()
+{
+	return " ";
+}
+
+std::string Cover::toString()
+{
+	/*
+	std::string result;
+	result = " ";
+
+	for (int i = 0; i < _bitVector.length(); i++)
+	{
+		if (_bitVector.getValue(i))
+			result.append("1");
+		else
+			result.append("0");
+	}
+	*/
+	return _bitVector.toString();
 }
 

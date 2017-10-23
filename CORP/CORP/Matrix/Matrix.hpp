@@ -17,6 +17,7 @@ own loops iterating through input to add multiple values
 //analyis N/A
 
 #include<string>
+#include<iostream>
 
 template <typename T> class Matrix
 
@@ -45,18 +46,21 @@ public:
 
 	~Matrix()
 	{
-		deallocate();
+		//deallocate();
+
 	}
 
 	//get elements from Matrix
 	int get(const unsigned r, const unsigned c) const
 	{
+		//std::cout << "Getting value " << m[r][c] << " at " << r << ", " << c <<"\n";
 		return m[r][c];
 	}
 
 	//add elements to Matrix
 	void set(const T& t, const unsigned r, const unsigned c)
 	{
+		//std::cout << "Setting value at " << r << ", " << c << " to " << t << "\n";
 		m[r][c] = t;
 	}
 
@@ -83,9 +87,9 @@ public:
 	std::string toString() {
 
 		std::string result;
-		for (int i = 0; i < _rows-1; i++)
+		for (int i = 0; i < _rows; i++)
 		{
-			for (int j = 0; j < _cols-1; j++) {
+			for (int j = 0; j < _cols; j++) {
 				result.append(std::to_string(m[i][j]));
 				result.append(" ");
 	
@@ -108,16 +112,16 @@ public:
 	{
 		//kill prev
 		//deallocate(this->m);
-		std::cout << "called overloaded =\n";
+		//std::cout << "called overloaded =\n";
 		//allocate
 		allocate(rhs->_rows, rhs->_cols);
-		std::cout << "realocated\n";
+		//std::cout << "realocated\n";
 		// copy (nested loops)
 		if (m != nullptr)
 		{ 
 			_rows = rhs->getRows();
 			_cols = rhs->getCols();
-			std::cout << "if statement was true\n";
+			//std::cout << "if statement was true\n";
 			//ROWS AND COLS CORRECT AT THIS POINT!!!!!!!!
 			for (int i = 0; i < _rows; i++)
 			{
@@ -130,7 +134,7 @@ public:
 				}
 			}
 		}
-		std::cout << "END OF EQUALS CHECK: \t" << _rows << " " << _cols << "\n";
+		//std::cout << "END OF EQUALS CHECK: \t" << _rows << " " << _cols << "\n";
 		//std::cout << "skipped all that\n";
 		return *this;
 

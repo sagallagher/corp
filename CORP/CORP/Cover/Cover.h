@@ -11,6 +11,7 @@
 #ifndef _COVER_GUARD_
 #define _COVER_GUARD_
 #include<iostream>
+#include<string>
 #include "../Boolset/BoolSet.h";
 #include "../Star/Star.h";
 
@@ -31,12 +32,15 @@ public:
 	bool operator[](int index) const;			//overloaded brackets
 
 	void select(int index);						//selects the vertex at the given index
+	void selectUnchecked(int index);			//selects the vertex at the given index
 	void deselect(int index);					//deselects the vertex at the given index
 	bool checkCover();							//checks if the given vertex list is a valid cover
 	double coverPercent();						//what percent of facets are covered
 	int facetsCovered();						//how many facets are covered
 	int facets();								//total number of facets
     int vertices();								//total number of vertices
+	std::string coverToString();
+	std::string toString();
 };
 
 #endif

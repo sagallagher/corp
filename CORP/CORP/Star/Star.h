@@ -59,7 +59,7 @@ public:
    // void ineficientMatrixConvert();
     
     //new function to create the secondary matrix
-    //void matrixConvert();
+    void matrixConvert();
     
     //caulculates and sets the bounds
     void calculateBounds();

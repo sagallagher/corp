@@ -51,17 +51,25 @@ int main(int argc, char const *argv[]) {
 	Cover cover(dataStar);
 
 	//4 6 10 15 21 
-	std::vector<int> solution = { 4,6,10,15,21};
+	std::vector<int> solution = {1,2,20,23,24};
+
+	std::cout << cover.toString() << "\n";
 
 	std::cout << "SELECTING SOLUTION\n";
-	for (int facet : solution) 
+	for (int vertex : solution) 
 	{
-		cover.select(--facet);
-		std::cout << "element selected:\t" << facet << std::endl;
-	}
+		cover.selectUnchecked(vertex - 1);
+		std::cout << "element selected:\t" << vertex-1 << std::endl;
 
-	//std::cout << "Facets covered: " << cover.facetsCovered() << "out of " << cover.facets() << "\n";
-	//std::cout << cover.checkCover() << std::endl;
+	}
+	
+	std::cout << "end of loop\n";
+	std::cout << cover.checkCover() << std::endl;
+	std::cout << "FACETS COVERED\t" << cover.facetsCovered() << std::endl;
+	std::cout << cover._bitVector.length() << "\n";
+	std::cout << cover.toString() << "\n";
+
+
 
 	return 0;
 }

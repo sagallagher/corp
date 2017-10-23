@@ -10,6 +10,7 @@
 
 #ifndef _BOOLSET_GUARD_
 #define _BOOLSET_GUARD_
+#include<string>
 
 class BoolSet
 {
@@ -40,6 +41,7 @@ public:												//empty constructor
 	bool allTrue() const;							//returns true if every value in the array is true
 	void clear();									//sets every entry to false
 	bool empty() const;								//returns true if all values are false
+	std::string toString();
 
 };
 

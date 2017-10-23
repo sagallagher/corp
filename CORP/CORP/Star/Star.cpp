@@ -7,6 +7,7 @@
 
 
 #include "Star.h"
+#include<vector>
 Star::Star() {}
 //Constructor
 Star::Star(Matrix<int>* matrix)
@@ -15,16 +16,17 @@ Star::Star(Matrix<int>* matrix)
 	std::cout << matrix->toString();
 	_matrix = matrix;
 
-	std::cout << "PRE CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
+	//std::cout << "PRE CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
 
 
 
 	//calculate bounds
     calculateBounds();
     
-	std::cout << "POST CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
+	//std::cout << "POST CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
 	//calculate secondary matrix
-    //matrixConvert();
+	//std::cout << "GETTING TEST VALUES: " << _matrix.get(0, 0) << " from 0,0 " << _matrix.get(8, 5) << " from 8,5 \n";
+    matrixConvert();
 	
 	//std::cout << "this should be print a matrix\t";
 	//std::cout << _matrix.toString();
@@ -119,24 +121,33 @@ void ineficientMatrixConvert()
 }
 */
 
-/*
+
 //sets secondary matrix
-void matrixConvert()
+void Star::matrixConvert()
 {
+	//std::cout << "INSIDE MATRIX CONVERT, SAMPLE VALUES:" << _matrix.get(0, 0) << " from 0,0 " << _matrix.get(8, 5) << " from 8,5 \n";
     _vertexMatrix = new Matrix<int>(_numberOfFacets, _facetsPerVertex);
-    int indexArray[_vertexMatrix.getRows()];
-    
+    std::vector<int> indexArray(_vertexMatrix.getRows(), 0);
+	//std::cout << "CONVERTING MATRIX...";
     for (int i = 0; i < _matrix.getRows(); i++)
     {
         for (int j = 0; j < _matrix.getCols(); j++)
         {
+
             //loops through the list of vertices, for each one, puts the index number(facet number) in the new matrix
-            _vertexMatrix[_matrix[i][j]][indexArray[i]] = i;
+			//Print out indexMatrixtestString << "\n";
+			//for (auto it = indexArray.begin(); it != indexArray.end(); it++) std::cout << *it;
+			//std::cout << std::endl;
+			_vertexMatrix.set(i, _matrix.get(i, j), indexArray.at(i));
             indexArray[i]++;
         }
     }
+	std::cout << "THIS IS THE OLD FACET MATRIX!\n";
+	std::cout << _matrix.toString() << "\n";
+	std::cout << "THIS IS THE NEW VERTEX MATRIX!\n";
+	std::cout << _vertexMatrix.toString() << "\n";
 }
-*/
+
 
 
 //calculates and sets bounds
@@ -156,10 +167,10 @@ void Star::calculateBounds()
         }
     }
     _facetsPerVertex = count;
-    _upperBound = maxVal;
+    _upperBound = maxVal + 1;
     _lowerBound = _matrix.getRows() / count;
     _numberOfFacets = _matrix.getRows();
-    _numberOfVertices = maxVal;
+    _numberOfVertices = maxVal + 1;
 }
 
 
