@@ -27,7 +27,9 @@ Cover::Cover(Star &star)
 //copy constructor
 Cover::Cover(Cover & original)
 {
+	// need an overlaoded equals for star
     _star = original._star;
+
     _bitVector = original._bitVector;
 }
 
@@ -52,6 +54,7 @@ bool Cover::operator[](int index) const
 //selects the vertex at the given index
 void Cover::select(int index)
 {
+	std::cout << "selected index\t" << index << std::endl;
 	_bitVector.setTrue(index);
 }
 

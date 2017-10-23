@@ -43,14 +43,14 @@ Star::Star(Star& original)
 }
 
 //Destructor
-/*
+
 Star::~Star()
 {
 	//TODO: DOUBLE CHECK THIS IS CORRECT
-	delete _matrix;
-	delete _vertexMatrix;
+	//delete _matrix;
+	//delete _vertexMatrix;
 }
-*/
+
 
 //Returns the number of rows
 int Star::rows()
@@ -160,7 +160,6 @@ void Star::calculateBounds()
     _lowerBound = _matrix.getRows() / count;
     _numberOfFacets = _matrix.getRows();
     _numberOfVertices = maxVal;
-
 }
 
 

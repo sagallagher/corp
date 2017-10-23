@@ -53,10 +53,11 @@ int main(int argc, char const *argv[]) {
 	//4 6 10 15 21 
 	std::vector<int> solution = { 4,6,10,15,21};
 
-	for (int i = 0; i < solution.size(); i++) 
+	std::cout << "SELECTING SOLUTION\n";
+	for (int facet : solution) 
 	{
-		cover.select(solution[i]);
-		std::cout << "element selected:\t" << solution[i] << std::endl;
+		cover.select(--facet);
+		std::cout << "element selected:\t" << facet << std::endl;
 	}
 
 	//std::cout << "Facets covered: " << cover.facetsCovered() << "out of " << cover.facets() << "\n";

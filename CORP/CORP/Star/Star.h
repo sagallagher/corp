@@ -28,7 +28,7 @@ public:
 	Star(Star& original);
 
 	//Destructor
-	//~Star();
+	~Star();
 
 	//Returns the number of rows
 	int rows(); 

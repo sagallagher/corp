@@ -10,6 +10,7 @@
 
 #include "BoolSet.h"
 # include <string>
+#include<iostream>
 
 //constructor
 BoolSet::BoolSet(int size) 
@@ -74,8 +75,10 @@ void BoolSet::setTrue(int index)
 {
 	if (index >= _length || index < 0)
 		return;
-	if(!_values[index])
+	if (!_values[index]) {
+		std::cout << "Set " << index << " to true\n";
 		_numberSelected++;
+	}
 	_values[index] = true;
 }
 
