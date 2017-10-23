@@ -50,7 +50,13 @@ int main(int argc, char const *argv[]) {
 
 	Cover cover(dataStar);
 
-	//4 6 10 15 21 
+	//SOLUTIONS TESTED BY HAND AND VERIFIED:
+	// 1  2 20 23 24
+	// 1  5 19 20 24
+	// 1  6 11 13 20
+	// 1  8 12 13 19
+	// 2  4  5 15 24
+	// 2  5  7 12 24
 	std::vector<int> solution = {1,2,20,23,24};
 
 	std::cout << cover.toString() << "\n";

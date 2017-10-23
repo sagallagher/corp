@@ -23,13 +23,13 @@ protected:
 
 public:
     BoolSet _bitVector;							//Boolset representing selected vertices
+	BoolSet _facetVector;						//Boolset representing covered facets
     Star _star;                                 //the star object holding shape information
     
 	Cover(Star& star);							//Constructor
-	Cover(Cover& original);				//copy constructor
+	Cover(Cover& original);						//copy constructor
 	~Cover();									//Destructor
-	bool& operator[](int index);				//overloaded brackets
-	bool operator[](int index) const;			//overloaded brackets
+	Cover& operator=(const Cover& original);	//overloaded equals
 
 	void select(int index);						//selects the vertex at the given index
 	void selectUnchecked(int index);			//selects the vertex at the given index

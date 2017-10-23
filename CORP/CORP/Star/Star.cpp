@@ -16,22 +16,9 @@ Star::Star(Matrix<int>* matrix)
 	std::cout << matrix->toString();
 	_matrix = matrix;
 
-	//std::cout << "PRE CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
-
-
-
 	//calculate bounds
     calculateBounds();
-    
-	//std::cout << "POST CALCULATION TEST: \t" << _matrix.getRows() << " " << _matrix.getCols() << "\n";
-	//calculate secondary matrix
-	//std::cout << "GETTING TEST VALUES: " << _matrix.get(0, 0) << " from 0,0 " << _matrix.get(8, 5) << " from 8,5 \n";
     matrixConvert();
-	
-	//std::cout << "this should be print a matrix\t";
-	//std::cout << _matrix.toString();
-
-	//ROWS AND COLS CORRECT AT THIS POINT
 }
 
 //Copy Constructor
@@ -48,9 +35,7 @@ Star::Star(Star& original)
 
 Star::~Star()
 {
-	//TODO: DOUBLE CHECK THIS IS CORRECT
-	//delete _matrix;
-	//delete _vertexMatrix;
+
 }
 
 
@@ -122,13 +107,12 @@ void ineficientMatrixConvert()
 */
 
 
-//sets secondary matrix
+//sets secondary matrix NOT WORKING
 void Star::matrixConvert()
 {
-	//std::cout << "INSIDE MATRIX CONVERT, SAMPLE VALUES:" << _matrix.get(0, 0) << " from 0,0 " << _matrix.get(8, 5) << " from 8,5 \n";
+	/*
     _vertexMatrix = new Matrix<int>(_numberOfFacets, _facetsPerVertex);
     std::vector<int> indexArray(_vertexMatrix.getRows(), 0);
-	//std::cout << "CONVERTING MATRIX...";
     for (int i = 0; i < _matrix.getRows(); i++)
     {
         for (int j = 0; j < _matrix.getCols(); j++)
@@ -146,6 +130,7 @@ void Star::matrixConvert()
 	std::cout << _matrix.toString() << "\n";
 	std::cout << "THIS IS THE NEW VERTEX MATRIX!\n";
 	std::cout << _vertexMatrix.toString() << "\n";
+	*/
 }
 
 

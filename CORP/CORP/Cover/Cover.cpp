@@ -13,25 +13,25 @@
 //constructor
 Cover::Cover(Star &star)
 {
-	//std::cout << "ROWS AND COLS 1:\t" << star.rows() << " " << star.cols() << std::endl;
 	Star astar(star);
 	_star = star;
-	//std::cout << "ROWS AND COLS 2:\t" << _star.rows() << " " << _star.cols() << std::endl;
-	BoolSet bs(_star.numberOfVertices());
-	_bitVector = bs;
+	BoolSet vertex(_star.numberOfVertices());
+	_bitVector = vertex;
 	_bitVector.clear();
-	//TODO:output verifiers
-	//std::cout <<"ROWS AND COLS final:\t" << _star.rows() << " " << _star.cols() << std::endl;
-	std::cout << "Cover Created: " << toString() << "\n";
+
+	BoolSet facet(_star.numberOfFacets());
+	_facetVector = facet;
+	_facetVector.clear();
 }
 
 //copy constructor
 Cover::Cover(Cover & original)
 {
-	// need an overlaoded equals for star
     _star = original._star;
 
     _bitVector = original._bitVector;
+
+	_facetVector = original._facetVector;
 }
 
 //destructor
@@ -40,16 +40,13 @@ Cover::~Cover()
     //TODO: destructor
 }
 
-//overloaded brackets
-bool & Cover::operator[](int index)
+Cover & Cover::operator=(const Cover & original)
 {
-	return _bitVector[index];
-}
+	_star = original._star;
 
-//overloaded brackets
-bool Cover::operator[](int index) const
-{
-	return _bitVector[index];
+	_bitVector = original._bitVector;
+
+	_facetVector = original._facetVector;
 }
 
 //selects the vertex at the given index
@@ -57,6 +54,16 @@ void Cover::select(int index)
 {
 	std::cout << "selected index\t" << index << std::endl;
 	_bitVector.setTrue(index);
+	for (int i = 0; i < _star.rows(); i++)
+	{
+		for (int j = 0; j < _star.cols(); j++)
+		{
+			if (_star._matrix.get(i, j) == index)
+			{
+				_facetVector.setTrue(i);
+			}
+		}
+	}
 }
 
 //selects the vertex at the given index
@@ -64,22 +71,33 @@ void Cover::selectUnchecked(int index)
 {
 	std::cout << "selected index\t" << index << std::endl;
 	_bitVector.setTrueUnchecked(index);
+
+	for (int i = 0; i < _star.rows(); i++)
+	{
+		for (int j = 0; j < _star.cols(); j++)
+		{
+			if (_star._matrix.get(i, j) == index)
+			{
+				_facetVector.setTrue(i);
+			}
+		}
+	}
 }
 
 //deselects the vertex at the given index
 void Cover::deselect(int index)
 {
 	_bitVector.setValue(index, false);
+	//TODO: remove facets from _facetVector
 }
 
-//checks if the given vertex list is a valid cover
+//checks if the given vertex list is a valid cover NOT WORKING: USES SECONDARY MATRIX
+/*
 bool Cover::checkCover()
 {	
-	//std::cout << "calling numberOfFacets, first line of checkCover\n";
     BoolSet tempSet(_star.numberOfFacets());
     for(int i = 0; i < _bitVector.length(); i++)
     {
-		//std::cout << "started the firest floor loop, length was successfull and so was numberOfFacets\n";
         if(_bitVector[i])
         {
             for(int j = 0; j < _star._vertexMatrix.getCols(); j++)
@@ -87,13 +105,20 @@ bool Cover::checkCover()
                 tempSet.setTrue(_star._vertexMatrix.get(i, j));
             }
         }
-		//std::cout << "finished a loop of checkCover\n";
-;    }
-	std::cout << "finished all loops in checkCover, about to return something\n";
+    }
     return tempSet.allTrue();
 }
+*/
 
-//returns the percent of facets covered by the current vector
+//checks if the given vertex list is a valid cover
+bool Cover::checkCover()
+{
+	return _facetVector.allTrue();
+}
+
+
+//returns the percent of facets covered by the current vector NOT WORKING: USES SECONDARY MATRIX
+/*
 double Cover::coverPercent()
 {
     BoolSet tempSet(_star.numberOfFacets());
@@ -109,8 +134,16 @@ double Cover::coverPercent()
     }
     return (double)tempSet.numberSelected()/tempSet.length();
 }
+*/
 
-//returns the number of facets covered
+//returns the percent of facets covered by the current vector
+double Cover::coverPercent()
+{
+	return (double)_facetVector.numberSelected() / _facetVector.length();
+}
+
+//returns the number of facets covered NOT WORKING: USES SECONDARY MATRIX
+/*
 int Cover::facetsCovered()
 {
     BoolSet tempSet(_star.numberOfFacets());
@@ -126,6 +159,13 @@ int Cover::facetsCovered()
     }
     return tempSet.numberSelected();
 
+}
+*/
+
+//returns the number of facets covered
+int Cover::facetsCovered()
+{
+	return _facetVector.numberSelected();
 }
 
 //returns the total number of facets
@@ -147,18 +187,6 @@ std::string Cover::coverToString()
 
 std::string Cover::toString()
 {
-	/*
-	std::string result;
-	result = " ";
-
-	for (int i = 0; i < _bitVector.length(); i++)
-	{
-		if (_bitVector.getValue(i))
-			result.append("1");
-		else
-			result.append("0");
-	}
-	*/
 	return _bitVector.toString();
 }
 

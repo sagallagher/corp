@@ -19,7 +19,7 @@ BoolSet::BoolSet(int size)
 	_numberSelected = 0;
 	_values = new bool[_length];
 	clear();
-	std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
+	//std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
 }
 
 //copy constructor
