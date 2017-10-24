@@ -47,6 +47,8 @@ Cover & Cover::operator=(const Cover & original)
 	_bitVector = original._bitVector;
 
 	_facetVector = original._facetVector;
+
+	return *this;
 }
 
 //selects the vertex at the given index
