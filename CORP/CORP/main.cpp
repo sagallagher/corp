@@ -42,11 +42,10 @@ bool checkSolutions(Cover& cover, std::string solutions_file) {
 	return allTrue;
 }
 
-
-
 int main(int argc, char const *argv[]) {
 
 	const std::string DEFAULT_INPUT = "../../../data/24cell_facets.txt";
+	const std::string DEFAULT_SOLUTION_SET = "../../../data/24cell_corelist.txt";
 
 	Config::initialize(argc, argv);
 
@@ -54,9 +53,10 @@ int main(int argc, char const *argv[]) {
 	std::ifstream is;
 
 	std::string inputData = Config::getInstance()->pull("AdjacencyList",DEFAULT_INPUT);
-	std::cout << "inputData:\t" << inputData << std::endl;
+
 	is.open(inputData);
-	std::cout << "Data file opened\n";
+
+
 	if (!is)
 	{
 		std::cerr << "Unable to open file " << inputData << " for reading.";
@@ -66,38 +66,26 @@ int main(int argc, char const *argv[]) {
 	//Create InputParser object
 	InputParser parser(is);
 	std::cout << "Data file parsed\n";
+
 	//End of file stream
 	is.close();
 
-
-
-	Matrix<int>* dataMatrix = parser.getMatrix();
-
-
-
-	std::string dm = dataMatrix->toString();
-
-	std::cout << dataMatrix->toString() << std::endl;
-
-	Star dataStar(dataMatrix);
-
-	Cover cover(dataStar);
-
-	//SOLUTIONS TESTED BY HAND AND VERIFIED:
-	// 1  2 20 23 24
-	// 1  5 19 20 24
-	// 1  6 11 13 20
-	// 1  8 12 13 19
-	// 2  4  5 15 24
-	// 2  5  7 12 24
-
+	Cover cover(Star(parser.getMatrix()));
 
 	std::cout << "***CHECKING SOLUTIONS***" << std::endl;
 
-	std::cout << checkSolutions(cover, "../../../data/24cell_corelist.txt");
-	
-
-
+	std::cout << checkSolutions(cover, Config::getInstance()->pull("SolutionSet", DEFAULT_SOLUTION_SET));
 
 	return 0;
 }
+
+
+
+
+//SOLUTIONS TESTED BY HAND AND VERIFIED:
+// 1  2 20 23 24
+// 1  5 19 20 24
+// 1  6 11 13 20
+// 1  8 12 13 19
+// 2  4  5 15 24
+// 2  5  7 12 24
