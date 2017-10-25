@@ -82,55 +82,31 @@ int Star::facetsPerVertex()
     return _facetsPerVertex;
 }
 
-/*
-//old function to set secondary matrix **INEFICIENT**
-void ineficientMatrixConvert()
-{
-    _vertexMatrix = new Matrix<int>(_numberOfFacets, _facetsPerVertex);
-    
-    for (int i = 0; i < _vertexMatrix.getRows(); i++)
-    {
-        int index = 0;
-        for (int j = 0; j < _matrix.getRows(); j++)
-        {
-            for (int k = 0; k < _matrix.getCols(); k++)
-            {
-                if (_matrix.get(j, k) == i)
-                {
-                    _vertexMatrix.set(j, i, index);
-                    index++;
-                }
-            }
-        }
-    }
-}
-*/
-
-
 //sets secondary matrix NOT WORKING
 void Star::matrixConvert()
 {
-	/*
-    _vertexMatrix = new Matrix<int>(_numberOfFacets, _facetsPerVertex);
+    _vertexMatrix = new Matrix<int>(_numberOfVertices, _facetsPerVertex);
     std::vector<int> indexArray(_vertexMatrix.getRows(), 0);
-    for (int i = 0; i < _matrix.getRows(); i++)
+    int curVertex = 0;
+    int curFacet = 0;
+    //loop through original matrix
+    for (int curRow = 0; curRow < _matrix.getRows(); curRow++)
     {
-        for (int j = 0; j < _matrix.getCols(); j++)
+        for (int curCol = 0; curCol < _matrix.getCols(); curCol++)
         {
-
-            //loops through the list of vertices, for each one, puts the index number(facet number) in the new matrix
-			//Print out indexMatrixtestString << "\n";
-			//for (auto it = indexArray.begin(); it != indexArray.end(); it++) std::cout << *it;
-			//std::cout << std::endl;
-			_vertexMatrix.set(i, _matrix.get(i, j), indexArray.at(i));
-            indexArray[i]++;
+            //get the current vertex and facet
+            curVertex = _matrix.get(curRow, curCol);
+            curFacet = curRow;
+            //insert that facet into the new matrix
+            _vertexMatrix.set(curFacet, curVertex, indexArray[curVertex]);
+            //incriment index
+            indexArray[curVertex]++;
         }
     }
 	std::cout << "THIS IS THE OLD FACET MATRIX!\n";
 	std::cout << _matrix.toString() << "\n";
 	std::cout << "THIS IS THE NEW VERTEX MATRIX!\n";
 	std::cout << _vertexMatrix.toString() << "\n";
-	*/
 }
 
 
