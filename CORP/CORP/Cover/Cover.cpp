@@ -9,7 +9,9 @@
 */
 
 #include "Cover.h"
+Cover::Cover() {
 
+}
 //constructor
 Cover::Cover(Star &star)
 {
@@ -54,7 +56,6 @@ Cover & Cover::operator=(const Cover & original)
 //selects the vertex at the given index
 void Cover::select(int index)
 {
-	std::cout << "selected index\t" << index << std::endl;
 	_bitVector.setTrue(index);
 	for (int i = 0; i < _star.rows(); i++)
 	{

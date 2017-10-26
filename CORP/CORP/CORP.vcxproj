@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithm\Algorithm.h" />
+    <ClInclude Include="Algorithm\NaiveAlgorithm\NaiveAlgorithm.h" />
     <ClInclude Include="Boolset\BoolSet.h" />
     <ClInclude Include="Boolset\WeightedBoolSet.h" />
     <ClInclude Include="Config\Config.h" />
@@ -167,6 +169,8 @@
     <ClCompile Include="..\UNIT_TEST\BoolSet\TEST_Boolset.cpp" />
     <ClCompile Include="..\UNIT_TEST\Config\TEST_Config.cpp" />
     <ClCompile Include="..\UNIT_TEST\OptionContainer\TEST_OptionContainer.cpp" />
+    <ClCompile Include="Algorithm\Algorithm.cpp" />
+    <ClCompile Include="Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp" />
     <ClCompile Include="Boolset\BoolSet.cpp" />
     <ClCompile Include="Boolset\WeightedBoolSet.cpp" />
     <ClCompile Include="Config\Config.cpp" />

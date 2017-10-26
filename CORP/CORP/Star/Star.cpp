@@ -8,6 +8,8 @@
 
 #include "Star.h"
 #include<vector>
+#include<algorithm>
+
 Star::Star() {}
 //Constructor
 Star::Star(Matrix<int>* matrix)
@@ -38,6 +40,33 @@ Star::~Star()
 
 }
 
+bool inVector(std::vector<int>& v, int element) {
+	return std::find(v.begin(), v.end(), element) != v.end();
+}
+
+std::vector<int> Star::getAdjacent(int vertex) {
+	std::cout << "RESTARTING\n";
+	std::vector<int> result = {};
+	bool in_row;
+	for (int i = 0; i < rows(); i++) {
+		in_row = false;
+		for (int j = 0; j < cols(); j++) {
+			if (_matrix.get(i, j) == vertex && !in_row) {
+				j = 0;
+				in_row = true;
+			}
+			else if (in_row && !inVector(result, vertex)) {
+				result.push_back(_matrix.get(i, j));
+			}
+		}
+	}
+
+	std::cout << "Adjacent to " << vertex << ":\t";
+	for (int i : result) std::cout << i << " ";
+	std::cout << std::endl;
+
+	return result;
+}
 
 //Returns the number of rows
 int Star::rows()

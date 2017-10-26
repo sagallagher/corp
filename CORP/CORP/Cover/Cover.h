@@ -25,7 +25,7 @@ public:
     BoolSet _bitVector;							//Boolset representing selected vertices
 	BoolSet _facetVector;						//Boolset representing covered facets
     Star _star;                                 //the star object holding shape information
-    
+	Cover();
 	Cover(Star& star);							//Constructor
 	Cover(Cover& original);						//copy constructor
 	~Cover();									//Destructor

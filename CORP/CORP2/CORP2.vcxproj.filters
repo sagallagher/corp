@@ -36,16 +36,16 @@
     <ClInclude Include="..\CORP\Matrix\Matrix.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CORP\Algorithm\Algorithm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.h">
+    <ClInclude Include="..\CORP\Star\Star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\CORP\Star\Star.h">
+    <ClInclude Include="..\CORP\Algorithm\Algorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,6 +72,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\CORP\Star\Star.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\Algorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

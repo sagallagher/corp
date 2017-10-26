@@ -2,7 +2,7 @@
 #define  _STAR_GUARD_
 #include "../Matrix/Matrix.hpp"
 #include <iostream>
-
+#include<vector>
 class Star
 {
 protected:
@@ -21,6 +21,8 @@ public:
 	Matrix<int> _matrix;
 	Matrix<int> _vertexMatrix;
 		
+	std::vector<int> getAdjacent(int vertex);
+
 	//Constructor
 	Star(Matrix<int>* matrix);
 	Star();

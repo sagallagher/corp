@@ -124,6 +124,8 @@
     <ClInclude Include="..\CORP\Star\Star.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\CORP\Algorithm\Algorithm.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp" />
     <ClCompile Include="..\CORP\Boolset\BoolSet.cpp" />
     <ClCompile Include="..\CORP\Boolset\WeightedBoolSet.cpp" />
     <ClCompile Include="..\CORP\Config\Config.cpp" />

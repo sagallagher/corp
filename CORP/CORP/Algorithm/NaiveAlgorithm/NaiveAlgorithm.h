@@ -1,13 +1,22 @@
 #ifndef _NAIVE_ALGORITHM_GUARD
 #define _NAIVE_ALGORITHM_GUARD 1
 #include"../Algorithm.h"
-#include"../../Matrix/matrix.hpp"
+#include"../../Cover/Cover.h"
 
-class NaiveAlgorithm : Algorithm {
+
+class NaiveAlgorithm : public Algorithm {
+
 public:
-	NaiveAlgorithm();
-	virtual bool run(std::Matrix<int>());
-
+	bool run();
+	NaiveAlgorithm(Cover& cover);
+	Cover _cover;
+	std::vector<std::vector<int>> getSolutionSet();
+	std::string getSolutionSetToString();
+private:
+	void runHelper(
+		Cover cover,
+		std::vector<int> solution,
+		int currentVertex);
 };
 
 
