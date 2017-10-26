@@ -8,6 +8,9 @@
 #include"Cover\Cover.h"
 #include"Boolset\BoolSet.h"
 #include<sstream>
+#include"Algorithm\NaiveAlgorithm\NaiveAlgorithm.h"
+#include<vector>
+
 
 
 bool checkSolution(Cover& cover, std::vector<int> solution) {
@@ -75,6 +78,23 @@ int main(int argc, char const *argv[]) {
 	std::cout << "***CHECKING SOLUTIONS***" << std::endl;
 
 	std::cout << checkSolutions(cover, Config::getInstance()->pull("SolutionSet", DEFAULT_SOLUTION_SET));
+	std::vector<int> solution = { 1,2,3,4,5 };
+	std::cout << checkSolution(cover, solution);
+
+
+
+	
+	Cover naive_cover(Star(parser.getMatrix()));
+	NaiveAlgorithm alg(naive_cover);
+
+	std::cout << "\nRUNNING NAIVE ALGORITHM\n";
+	alg.run();
+
+	std::cout << "result:\t" << alg.run() << std::endl;
+
+	std::cout << "updated\n";
+	
+
 
 	return 0;
 }
