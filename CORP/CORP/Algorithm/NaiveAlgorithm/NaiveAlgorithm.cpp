@@ -5,6 +5,8 @@
 // the initial cover is taken in the contructor
 NaiveAlgorithm::NaiveAlgorithm(Cover& cover) : _cover{ cover } {}
 
+NaiveAlgorithm::NaiveAlgorithm() {}
+
 bool NaiveAlgorithm::run() {
 	
 	// vector to store each individual solution
@@ -43,8 +45,13 @@ void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution, int curre
 		cover.select(current_vertex);
 
 		// if a solution was found, save it
-		if (cover.checkCover()) _solution_set.push_back(solution);
-		
+		if (cover.checkCover()) {
+			std::cout << "FOUND SOLUTION\n\n\n\n\n\n\n";
+			_solution_set.push_back(solution);
+		}
+		displaySolution(solution);
+	
+
 		// explore the next vertex, passing a copy of the current solution and cover
 		runHelper(cover, solution, ++current_vertex);
 

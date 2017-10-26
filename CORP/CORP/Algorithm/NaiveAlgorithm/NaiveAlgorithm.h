@@ -9,9 +9,9 @@ class NaiveAlgorithm : public Algorithm {
 public:
 	bool run();
 	NaiveAlgorithm(Cover& cover);
+	NaiveAlgorithm();
 	Cover _cover;
-	std::vector<std::vector<int>> getSolutionSet();
-	std::string getSolutionSetToString();
+
 private:
 	void runHelper(
 		Cover cover,
