@@ -15,7 +15,7 @@ Cover::Cover() {
 //constructor
 Cover::Cover(Star &star)
 {
-	Star astar(star);
+	//Star astar(star);
 	_star = star;
 	BoolSet vertex(_star.numberOfVertices());
 	_bitVector = vertex;

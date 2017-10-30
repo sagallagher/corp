@@ -45,6 +45,16 @@ bool checkSolutions(Cover& cover, std::string solutions_file) {
 	return allTrue;
 }
 
+void printCover(Cover& cov)
+{
+	std::cout << "Matrix: \n" << cov._star._matrix.toString() << "\n";
+	std::cout << "Vertex list: " << cov._bitVector.toString() << "\n";
+	std::cout << "Facet list: " << cov._facetVector.toString() << "\n";
+	std::cout << "Facets covered: " << cov.facetsCovered() << "\n";
+	std::cout << "Is cover?: " << cov.checkCover() << "\n";
+	std::cout << "Percent Covered: " << cov.checkCover() << "\n";
+}
+
 int main(int argc, char const *argv[]) {
 
 	const std::string DEFAULT_INPUT = "../../../data/24cell_facets.txt";
@@ -75,26 +85,42 @@ int main(int argc, char const *argv[]) {
 
 	Cover cover(Star(parser.getMatrix()));
 
-	std::cout << "***CHECKING SOLUTIONS***" << std::endl;
+	//std::cout << "***CHECKING SOLUTIONS***" << std::endl;
 
-	std::cout << checkSolutions(cover, Config::getInstance()->pull("SolutionSet", DEFAULT_SOLUTION_SET));
+	//std::cout << checkSolutions(cover, Config::getInstance()->pull("SolutionSet", DEFAULT_SOLUTION_SET));
 	std::vector<int> solution = { 1,2,3,4,5 };
-	std::cout << checkSolution(cover, solution);
-
-
-
+	//std::cout << checkSolution(cover, solution);
 	
-	Cover naive_cover(Star(parser.getMatrix()));
-	NaiveAlgorithm alg(naive_cover);
+	//Cover naive_cover(Star(parser.getMatrix()));
+	NaiveAlgorithm alg(cover);
+	//alg.sarahTestRun(cover, 0);
 
-	std::cout << "\nRUNNING NAIVE ALGORITHM\n";
+	//std::cout << "\nRUNNING NAIVE ALGORITHM\n";
 	alg.run();
 
-	std::cout << "result:\t" << alg.run() << std::endl;
+	//std::cout << "result:\t" << alg.run() << std::endl;
 
+	/*
+	cover.select(0);
+	cover.select(1);
+	cover.select(2);
+	cover.select(7);
+	cover.select(20);
+	printCover(cover);
+	printCover(Cover(cover));
 	std::cout << "updated\n";
-	
+	*/
 
+	std::cout << "soltutions: " << std::endl;
+
+	for (std::vector<int> solution : alg.getSolutionSet()) 
+	{
+		for (int vertex : solution)
+		{
+			std::cout << vertex << " ";
+		}
+		std::cout << std::endl;
+	}
 
 	return 0;
 }

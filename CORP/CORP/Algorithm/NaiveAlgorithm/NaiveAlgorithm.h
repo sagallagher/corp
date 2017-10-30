@@ -9,17 +9,18 @@
 class NaiveAlgorithm : public Algorithm {
 
 public:
+	int testInt;
 	bool run();
-	std::vector<int> sarahTestRun(int startIndex = 0);
+	std::vector<int> sarahTestRun(Cover &testCover, int startIndex = 0);
 	NaiveAlgorithm(Cover& cover);
 	NaiveAlgorithm();
 	Cover _cover;
+	std::vector<std::vector<int>> getSolutionSet();
 
 private:
 	void runHelper(
 		Cover cover,
-		std::vector<int> solution,
-		int currentVertex);
+		std::vector<int> solution);
 };
 
 
