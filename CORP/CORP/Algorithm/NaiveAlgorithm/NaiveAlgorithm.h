@@ -10,7 +10,6 @@ class NaiveAlgorithm : public Algorithm {
 
 public:
 	bool run(Cover& cover);
-	std::vector<std::vector<int>> getSolutionSet();
 
 private:
 	void runHelper(

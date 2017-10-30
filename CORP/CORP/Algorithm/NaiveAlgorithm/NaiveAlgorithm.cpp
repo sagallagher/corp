@@ -2,14 +2,6 @@
 #include<vector>
 #include<algorithm>
 
-
-// used to display vectors that contain possible solutions
-void displaySolution(std::vector<int> solution) {
-	std::cout << "solution:\t";
-	for (int i : solution) std::cout << i << " ";
-	std::cout << std::endl;
-}
-
 bool NaiveAlgorithm::run(Cover& cover) {
 
 	// call recursive helper method
@@ -54,5 +46,5 @@ void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution) {
 
 }
 
-std::vector<std::vector<int>> NaiveAlgorithm::getSolutionSet() { return _solution_set; }
+
 

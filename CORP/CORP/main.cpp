@@ -65,73 +65,38 @@ int main(int argc, char const *argv[]) {
 	//Open file stream for data
 	std::ifstream is;
 
+	// store the path to the file containing the adjacency matrix
 	std::string inputData = Config::getInstance()->pull("AdjacencyList",DEFAULT_INPUT);
 
+	// use the input file stream to open that file
 	is.open(inputData);
 
-
-	if (!is)
-	{
+	// return -1 if the input file could not be opened
+	if (!is) {
 		std::cerr << "Unable to open file " << inputData << " for reading.";
-		return 1;
+		return -1;
 	}
 
-	//Create InputParser object
+	// send the input file stream to an InputParser object to parse the data 
 	InputParser parser(is);
 	std::cout << "Data file parsed\n";
 
 	//End of file stream
 	is.close();
 
+	// create a cover to be passed to the algorithm
 	Cover cover(Star(parser.getMatrix()));
 
-	//std::cout << "***CHECKING SOLUTIONS***" << std::endl;
-
-	//std::cout << checkSolutions(cover, Config::getInstance()->pull("SolutionSet", DEFAULT_SOLUTION_SET));
-	std::vector<int> solution = { 1,2,3,4,5 };
-	//std::cout << checkSolution(cover, solution);
-	
-	//Cover naive_cover(Star(parser.getMatrix()));
+	// create a new NaiveAlgorithm object
 	NaiveAlgorithm alg;
-	//alg.sarahTestRun(cover, 0);
 
-	//std::cout << "\nRUNNING NAIVE ALGORITHM\n";
+	// run the algorithm, passing it the initial cover to use
 	alg.run(cover);
 
-	//std::cout << "result:\t" << alg.run() << std::endl;
 
-	/*
-	cover.select(0);
-	cover.select(1);
-	cover.select(2);
-	cover.select(7);
-	cover.select(20);
-	printCover(cover);
-	printCover(Cover(cover));
-	std::cout << "updated\n";
-	*/
-
+	// display the solutions returned by alg
 	std::cout << "soltutions: " << std::endl;
-
-	for (std::vector<int> solution : alg.getSolutionSet()) 
-	{
-		for (int vertex : solution)
-		{
-			std::cout << vertex << " ";
-		}
-		std::cout << std::endl;
-	}
+	std::cout << alg.toString() << std::endl;
 
 	return 0;
 }
-
-
-
-
-//SOLUTIONS TESTED BY HAND AND VERIFIED:
-// 1  2 20 23 24
-// 1  5 19 20 24
-// 1  6 11 13 20
-// 1  8 12 13 19
-// 2  4  5 15 24
-// 2  5  7 12 24
