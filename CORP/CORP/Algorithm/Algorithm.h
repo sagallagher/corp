@@ -7,9 +7,8 @@
 class Algorithm {
 
 public:
-	Algorithm(Cover& cover);
-	Algorithm();
-	virtual bool run() = 0;
+
+	virtual bool run(Cover& cover) = 0;
 	virtual std::vector<std::vector<int>> getSolutionSet() = 0;
 
 protected:

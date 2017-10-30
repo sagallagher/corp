@@ -92,11 +92,11 @@ int main(int argc, char const *argv[]) {
 	//std::cout << checkSolution(cover, solution);
 	
 	//Cover naive_cover(Star(parser.getMatrix()));
-	NaiveAlgorithm alg(cover);
+	NaiveAlgorithm alg;
 	//alg.sarahTestRun(cover, 0);
 
 	//std::cout << "\nRUNNING NAIVE ALGORITHM\n";
-	alg.run();
+	alg.run(cover);
 
 	//std::cout << "result:\t" << alg.run() << std::endl;
 
