@@ -139,18 +139,19 @@ void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution)
 	}
 
 
-	
 	//loop through every vertex in the cover
 	//std::cout << "looping through vertices...\n";
 	for (int vertex = 0; vertex < cover.vertices(); vertex++)
 	{
 
-		Cover temp_cover(cover);
-		std::vector<int> temp_solution = solution;
+
+
+		
 
 		if (!inSolution(solution, vertex))
 		{
-			
+			Cover temp_cover(cover);
+			std::vector<int> temp_solution = solution;
 
 			//std::cout << "current ";
 			//displaySolution(solution);
@@ -159,10 +160,8 @@ void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution)
 			temp_cover.select(vertex);
 			runHelper(temp_cover, temp_solution);
 		}
-
-		
-
 	}
+
 	return;
 	//if i is not contained in solution
 		//call runHelper(cover, solution.push_back(i))

@@ -170,23 +170,28 @@ private:
 	//deallocates space in the matrix
 	void deallocate()
 	{
+		
 		if (nullptr == m)
 		{
 			//do nothing
 			return;
 		}
-
+		
 		//release memory
-		for (int i = 0; i < _rows; i++)
+		for (int i = 0; i < _rows-1; i++)
 		{
+			std::cout << "releasing mem\t" << i << std::endl;
 			delete[] m[i];
+			m[i] = nullptr;
 		}
+		std::cout << "delting m\n";
 		delete[] m;
-
+		std::cout << "m deleted\n";
 		//reset
 		_cols = 0;
 		_rows = 0;
 		m = nullptr;
+		std::cout << "m is now nullptr\n";
 	}
 
 
