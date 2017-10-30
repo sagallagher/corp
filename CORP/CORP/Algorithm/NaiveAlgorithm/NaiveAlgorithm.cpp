@@ -29,16 +29,16 @@ void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution) {
 
 	// for each vertex, go to every other vertex
 	for (int vertex = cover.vertices()-1; vertex >= 0 ; vertex--) {
-			// create a temporary cover and solution set for each branch
-			Cover temp_cover(cover);
-			std::vector<int> temp_solution = solution;
+		// create a temporary cover and solution set for each branch
+		Cover temp_cover(cover);
+		std::vector<int> temp_solution = solution;
 
-			// push the current node to the solution
-			temp_solution.push_back(vertex);
-			// turn on the current vertex in the cover
-			temp_cover.select(vertex);
+		// push the current node to the solution
+		temp_solution.push_back(vertex);
+		// turn on the current vertex in the cover
+		temp_cover.select(vertex);
 
-			runHelper(temp_cover, temp_solution);
+		runHelper(temp_cover, temp_solution);
 
 		// order doesn't matter, don't pursue repetitive solutions and don't pick the same vertex twice
 		if (!solution.empty() && vertex <= solution.at(solution.size() - 1)) return;
