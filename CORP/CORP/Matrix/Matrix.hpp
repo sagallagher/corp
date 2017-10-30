@@ -178,7 +178,7 @@ private:
 		}
 		
 		//release memory
-		for (int i = 0; i < _rows-1; i++)
+		for (int i = 0; i < _rows; i++)
 		{
 			std::cout << "releasing mem\t" << i << std::endl;
 			delete[] m[i];
@@ -187,9 +187,7 @@ private:
 		std::cout << "delting m\n";
 		delete[] m;
 		std::cout << "m deleted\n";
-		//reset
-		_cols = 0;
-		_rows = 0;
+
 		m = nullptr;
 		std::cout << "m is now nullptr\n";
 	}

@@ -72,39 +72,6 @@ std::vector<int> NaiveAlgorithm::sarahTestRun(Cover &testCover, int startIndex)
 
 }
 
-/*
-// find every possible solution
-void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution, int current_vertex) {
-
-	// if solution size exceeds upper bound, stop exploring that solution
-	if (solution.size() > cover._star.upperBound()) return;
-
-
-
-	// for each vertex
-	while (current_vertex < cover.vertices()) {
-
-		// if a solution was found, save it
-		if (cover.checkCover()) {
-			_solution_set.push_back(solution);
-			return;
-		}
-
-		// push the vertex to the current solution
-		solution.push_back(current_vertex);
-
-		// select the vertex in the current cover
-		cover.select(current_vertex);
-
-		displaySolution(solution);
-
-		// explore the next vertex, passing a copy of the current solution and cover
-		return runHelper(cover, solution, ++current_vertex);
-
-	}
-}
-
-*/
 
 bool inSolution(std::vector<int> solution, int element) {
 	return (std::find(solution.begin(), solution.end(), element) != solution.end());
@@ -112,62 +79,37 @@ bool inSolution(std::vector<int> solution, int element) {
 
 void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution) 
 {
-	testInt++;
-	//Check solution
-	//std::cout << "recurse # " << testInt << " solution: ";
-	//displaySolution(solution);
 
-	//std::cout << "IS THIS A SOLUTION???? Results say: " << cover.checkCover() << "!!!!\n";
-	//std::cout << "FACETS COVERED: " << cover._facetVector.toString() << "\n";
-	
-	if (testInt % 100000 == 0) std::cout << testInt << std::endl;
+	// we know min solution for 24cell is no greater than 5, so don't check past there
 	if (solution.size() > 5) return;
 	
+	// if we found a solution, save it to _solution_set
 	if (cover.checkCover())
 	{
-		//if solution is valid
-		//add it to the list of solutions
-		//if (testInt % 100000 == 0) {
-	//	std::cout << "*********************************\n";
-	//	std::cout << "  SOLUTION FOUND ON RECURSE " << testInt << "\n";
-	//	std::cout << "*********************************\n";
-		displaySolution(solution);
 		_solution_set.push_back(solution);
-		//}
-		//then return
+		// kill this branch because every solution following will be a solution of greater length
 		return;
 	}
 
-
-	//loop through every vertex in the cover
-	//std::cout << "looping through vertices...\n";
-	for (int vertex = 0; vertex < cover.vertices(); vertex++)
+	// for each vertex, go to every other vertex
+	for (int vertex = cover.vertices()-1; vertex >= 0 ; vertex--)
 	{
-
-
-
-		
-
-		if (!inSolution(solution, vertex))
-		{
+			// create a temporary cover and solution set for each branch
 			Cover temp_cover(cover);
 			std::vector<int> temp_solution = solution;
 
-			//std::cout << "current ";
-			//displaySolution(solution);
-			//std::cout << "Selecting vertex " << vertex << "\n";
+			// push the current node to the solution
 			temp_solution.push_back(vertex);
+			// turn on the current vertex in the cover
 			temp_cover.select(vertex);
+
 			runHelper(temp_cover, temp_solution);
-		}
+
+		// order doesn't matter, don't pursue repetitive solutions and don't pick the same vertex twice
+		if (!solution.empty() && vertex <= solution.at(solution.size() - 1)) return;
 	}
 
-	return;
-	//if i is not contained in solution
-		//call runHelper(cover, solution.push_back(i))
-
 }
-
 
 std::vector<std::vector<int>> NaiveAlgorithm::getSolutionSet() { return _solution_set; }
 
