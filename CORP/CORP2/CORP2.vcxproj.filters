@@ -48,6 +48,9 @@
     <ClInclude Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CORP\OptionContainer\OptionContainer.cpp">
@@ -78,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\CORP\Algorithm\Algorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

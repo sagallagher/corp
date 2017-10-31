@@ -16,4 +16,14 @@ std::string Algorithm::toString() {
 	return result;
 }
 
-std::vector<std::vector<int>> Algorithm::getSolutionSet() { return _solution_set; }
+std::vector<std::vector<int>> Algorithm::getSolutionSet() { 
+
+	// increment all vertices by 1 before returning the solution set
+	std::vector<std::vector<int>> result = _solution_set;
+
+	for (std::vector<int> solution : result) 
+		for (int vertex : solution) vertex++;
+
+	return result;
+
+}

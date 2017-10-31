@@ -10,7 +10,8 @@
 #include<sstream>
 #include"Algorithm\NaiveAlgorithm\NaiveAlgorithm.h"
 #include<vector>
-
+#include"Algorithm\AlgorithmSelect\AlgorithmSelect.h"
+#include"Algorithm\Algorithm.h"
 
 
 bool checkSolution(Cover& cover, std::vector<int> solution) {
@@ -84,19 +85,10 @@ int main(int argc, char const *argv[]) {
 	//End of file stream
 	is.close();
 
-	// create a cover to be passed to the algorithm
-	Cover cover(Star(parser.getMatrix()));
+	// create an environment for an algorithm to be selected
+	AlgorithmSelect algorithm_select(Cover((Star(parser.getMatrix()))));
 
-	// create a new NaiveAlgorithm object
-	NaiveAlgorithm alg;
+	// choose an algorithm and display the solution set
+	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm")->toString();
 
-	// run the algorithm, passing it the initial cover to use
-	alg.run(cover);
-
-
-	// display the solutions returned by alg
-	std::cout << "soltutions: " << std::endl;
-	std::cout << alg.toString() << std::endl;
-
-	return 0;
 }

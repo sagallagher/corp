@@ -113,6 +113,7 @@
   <ItemGroup>
     <ClInclude Include="..\CORP\Algorithm\Algorithm.h" />
     <ClInclude Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.h" />
+    <ClInclude Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.h" />
     <ClInclude Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.h" />
     <ClInclude Include="..\CORP\Boolset\BoolSet.h" />
     <ClInclude Include="..\CORP\Boolset\WeightedBoolSet.h" />
@@ -125,6 +126,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CORP\Algorithm\Algorithm.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.cpp" />
     <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp" />
     <ClCompile Include="..\CORP\Boolset\BoolSet.cpp" />
     <ClCompile Include="..\CORP\Boolset\WeightedBoolSet.cpp" />
