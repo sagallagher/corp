@@ -11,14 +11,12 @@ public:
 
 	AlgorithmRunner(Algorithm* algorithm_to_run);
 
-	void repair(Cover& cover);
-
-	bool start();
+	bool start(Cover& cover);
 
 
 private:
 	Algorithm* _algorithm;
-	Cover _cover;
+
 };
 
 

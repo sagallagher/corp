@@ -3,12 +3,13 @@
 #include"../Algorithm.h"
 
 class AlgorithmSelect {
-public:
 
+public:
 	AlgorithmSelect(Cover& cover);
 	Algorithm* selectAlgorithm(std::string choice);
 	
 
 private:
 	Cover _cover;
+
 };

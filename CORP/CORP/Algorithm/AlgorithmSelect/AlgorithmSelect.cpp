@@ -9,11 +9,7 @@ Algorithm* AlgorithmSelect::selectAlgorithm(std::string choice) {
 	if (choice == "NaiveAlgorithm") {
 		NaiveAlgorithm* alg = new NaiveAlgorithm;
 		AlgorithmRunner runner(alg);
-		runner.repair(_cover);
-		runner.start();
+		runner.start(_cover);
 		return alg;
 	}
-	else std::cout << "error" << std::endl;
-
-	
 }
