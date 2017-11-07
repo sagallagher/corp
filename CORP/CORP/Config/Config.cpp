@@ -17,7 +17,10 @@ Config* Config::_instance = 0;
 
 Config::Config() {}
 
-Config::~Config() { delete _instance; }
+Config::~Config() { 
+	delete _instance; 
+	_instance = nullptr;
+}
 
 bool Config::initialize(int argc,const char** cmdparams) {
 
@@ -31,7 +34,7 @@ bool Config::initialize(int argc,const char** cmdparams) {
   if(_instance) delete _instance;
 
   // create a new instance of Config
-  _instance = new Config();
+  Config::_instance = new Config;
 
   // extract first parameter from cmd parameters and store it as a string
   std::string cfg_file_name = cmdparams[1];

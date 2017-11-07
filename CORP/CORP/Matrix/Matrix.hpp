@@ -54,7 +54,6 @@ public:
 
 	~Matrix()
 	{
-		//deallocate();
 
 	}
 
@@ -163,15 +162,6 @@ private:
 		for (int i = 0; i < rows; i++)
 		{
 			m[i] = new T[cols];
-		}
-	}
-
-	void allocate(Matrix<T>* lhs, const unsigned rows, const unsigned cols)
-	{
-		lhs.m = new T*[rows];
-		for (int i = 0; i < rows; i++)
-		{
-			lhs[i] = new T[cols];
 		}
 	}
 

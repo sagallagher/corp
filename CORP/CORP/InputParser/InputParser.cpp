@@ -9,14 +9,11 @@
 #include "InputParser.h"
 #include<sstream>
 
-InputParser::InputParser(std::ifstream& in) : _is{ in }
-{
-	std::cout << "CONSTRUCTED INPUT PARSER\n";
-	parse();
-}
+InputParser::InputParser(std::ifstream& in) : _is{ in } { parse(); }
 
 InputParser::~InputParser() {
-	delete _dataMatrix;
+	delete _dataMatrix; 
+	_dataMatrix = nullptr; 
 }
 
 int InputParser::getRowCount() {
@@ -47,28 +44,23 @@ int InputParser::getColumnCount() {
 
 //Stores all values from input file into the Matrix object
 void InputParser::parse() {
-	std::cout << "making matrix with correct dimensions\n";
+
 	int cols = getColumnCount();
 	int rows = getRowCount();
 	
-	// this can be replaced with overloaded = operator
 	_dataMatrix = new Matrix<int>(rows, cols);
 
-	//AT THIS POINT DATA MATRIX IS CORRECT
-
-	std::cout << "PARSING\n";
 	int i = 0, j = 0;
+
 	std::string str;
 	
-	while (std::getline(_is, str))
-	{
+	while (std::getline(_is, str)) {
 		std::istringstream ss(str);
 		std::cout << "made string stream\n";
 		int num;
 		std::cout << "looping through row\n";
 		// loop through each int in the line
-		while (ss >> num)
-		{
+		while (ss >> num) {
 			std::cout << "looped once\n";
 			// append that int to "row" vector; num-1 because index starts at 0
 			_dataMatrix->set(num-1, i, j);
@@ -82,6 +74,4 @@ void InputParser::parse() {
 
 }
 
-Matrix<int>* InputParser::getMatrix() {
-	return _dataMatrix;
-}
+Matrix<int>* InputParser::getMatrix() { return _dataMatrix; }

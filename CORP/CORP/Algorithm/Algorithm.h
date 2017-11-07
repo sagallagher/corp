@@ -10,11 +10,7 @@ public:
 
 	// every algorithm should overwrite this and use run() as the function to start the algorithm
 	virtual bool run(Cover& cover) = 0;
-
-
-
-	// output toString to a text file
-	void write(std::string file_path);
+	
 
 protected:
 

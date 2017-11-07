@@ -42,5 +42,7 @@ std::string AlgorithmRunner::toString() {
 
 	return result;
 }
+// output toString to a text file
+	void write(std::string file_path);
 
 
