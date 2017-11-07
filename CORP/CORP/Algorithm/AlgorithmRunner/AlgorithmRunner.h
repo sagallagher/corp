@@ -13,10 +13,13 @@ public:
 
 	bool start(Cover& cover);
 
+	std::vector<std::vector<int>> getSolutionSet();
+
+	std::string toString();
 
 private:
 	Algorithm* _algorithm;
-
+	std::vector<std::vector<int>> _solutions;
 };
 
 

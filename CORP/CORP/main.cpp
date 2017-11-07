@@ -100,6 +100,7 @@ int main(int argc, char const *argv[]) {
 
 	// choose an algorithm and display the solution set
 	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm")->toString();
+
 	std::cout << "Dumping Memory Leaks" << std::endl;
 	_CrtDumpMemoryLeaks();
 

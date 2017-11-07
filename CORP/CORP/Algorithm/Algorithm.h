@@ -11,11 +11,7 @@ public:
 	// every algorithm should overwrite this and use run() as the function to start the algorithm
 	virtual bool run(Cover& cover) = 0;
 
-	// return a 2d vector with the solutions as each row
-	std::vector<std::vector<int>> getSolutionSet();
 
-	// return a string representation of _solution_set
-	std::string toString();
 
 	// output toString to a text file
 	void write(std::string file_path);

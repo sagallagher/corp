@@ -1,12 +1,14 @@
 #include<string>
 #include"../../Cover/Cover.h"
 #include"../Algorithm.h"
+#include "../AlgorithmRunner/AlgorithmRunner.h"
 
 class AlgorithmSelect {
 
 public:
 	AlgorithmSelect(Cover& cover);
-	Algorithm* selectAlgorithm(std::string choice);
+
+	AlgorithmRunner* selectAlgorithm(std::string choice);
 	
 
 private:
