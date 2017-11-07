@@ -19,7 +19,7 @@ bool AlgorithmRunner::start(Cover& cover) {
 
 std::vector<std::vector<int>> AlgorithmRunner::getSolutionSet() {
 	// increment all vertices by 1 before returning the solution set
-	std::vector<std::vector<int>> result = _solutions;
+	std::vector<std::vector<int>> result = _algorithm->_solution_set;
 
 	for (std::vector<int> solution : result)
 		for (int vertex : solution) vertex++;
@@ -42,7 +42,6 @@ std::string AlgorithmRunner::toString() {
 
 	return result;
 }
-// output toString to a text file
-	void write(std::string file_path);
+
 
 

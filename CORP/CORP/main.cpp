@@ -91,16 +91,15 @@ int main(int argc, char const *argv[]) {
 	// send the input file stream to an InputParser object to parse the data 
 	InputParser parser(is);
 	std::cout << "Data file parsed\n";
-
 	//End of file stream
 	is.close();
-	/**
+	
 	// create an environment for an algorithm to be selected
 	AlgorithmSelect algorithm_select(Cover((Star(parser.getMatrix()))));
 
 	// choose an algorithm and display the solution set
-	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm")->toString();
-	*/
+	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm").toString();
+	
 	std::cout << "Dumping Memory Leaks" << std::endl;
 	_CrtDumpMemoryLeaks();
 

@@ -3,7 +3,7 @@
 
 #include"../Algorithm.h"
 #include "../NaiveAlgorithm/NaiveAlgorithm.h"
-
+#include<vector>
 class AlgorithmRunner {
 
 public:

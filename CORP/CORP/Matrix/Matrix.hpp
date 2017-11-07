@@ -54,7 +54,8 @@ public:
 
 	~Matrix()
 	{
-
+		//delete[] m;
+		//m = nullptr;
 	}
 
 	//get elements from Matrix

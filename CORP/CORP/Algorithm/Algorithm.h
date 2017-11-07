@@ -10,12 +10,13 @@ public:
 
 	// every algorithm should overwrite this and use run() as the function to start the algorithm
 	virtual bool run(Cover& cover) = 0;
-	
-
-protected:
-
 	// used to store all solutions found by an algorithm
 	std::vector<std::vector<int>> _solution_set;
+	
+
+
+
+	
 
 };
 
