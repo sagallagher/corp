@@ -1,3 +1,12 @@
+#define _CRTDBG_MAP_ALLOC
+#include<iostream>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif
+
+
 #include<iostream>
 #include"Config/Config.h"
 #include"OptionContainer/OptionContainer.h"
@@ -58,8 +67,8 @@ void printCover(Cover& cov)
 
 int main(int argc, char const *argv[]) {
 
-	const std::string DEFAULT_INPUT = "../../../data/24cell_facets.txt";
-	const std::string DEFAULT_SOLUTION_SET = "../../../data/24cell_corelist.txt";
+	const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
+	const std::string DEFAULT_SOLUTION_SET = "../../data/24cell_corelist.txt";
 
 	Config::initialize(argc, argv);
 
@@ -74,7 +83,8 @@ int main(int argc, char const *argv[]) {
 
 	// return -1 if the input file could not be opened
 	if (!is) {
-		std::cerr << "Unable to open file " << inputData << " for reading.";
+		std::cout << "Unable to open file " << inputData << " for reading.";
+		system("pause");
 		return -1;
 	}
 
@@ -90,5 +100,7 @@ int main(int argc, char const *argv[]) {
 
 	// choose an algorithm and display the solution set
 	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm")->toString();
+	std::cout << "Dumping Memory Leaks" << std::endl;
+	_CrtDumpMemoryLeaks();
 
 }
