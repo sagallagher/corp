@@ -1,12 +1,13 @@
 #ifndef _GENETIC_ALGORITHM_
 #define _GENETIC_ALGORITHM_
 
-#include"Crossover/Crossover.h"
-#include"InitializePopulation/InitializePopulation.h"
-#include"Mutation/Mutation.h"
-#include"ParentSelection/ParentSelection.h"
-#include"SurvivorSelection/SurvivorSelection.h"
-#include"Chromosome/Chromosome.h"
+#include"Crossover/GeneticOperator/Crossover.h"
+#include"InitializePopulation/GeneticOperator/InitializePopulation.h"
+#include"Mutation/GeneticOperator/Mutation.h"
+#include"ParentSelection/GeneticOperator/ParentSelection.h"
+#include"SurvivorSelection/GeneticOperator/SurvivorSelection.h"
+#include"Chromosome/GeneticOperator/Chromosome.h"
+#include"Genotype/GeneticOperator/Genotype.h"
 
 class GeneticAlgorithm {
 
@@ -26,8 +27,8 @@ private:
   // store pointer to a InitializePopulation
   InitializePopulation* _initialize_population;
 
-  // vector of chromosomes to represent the genotype
-  std::vector<Chromosome> _genotype;
+  // store a population of chromosomes
+  Genotype _genotype;
 
 public:
 

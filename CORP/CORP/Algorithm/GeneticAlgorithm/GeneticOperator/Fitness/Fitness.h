@@ -12,7 +12,7 @@ public:
 
   virtual Fitness() = 0;
 
-  //
+  // set the fitness of each chromosome
   virtual start(std::vector<Chromosome>& genotype) = 0;
 
 };
