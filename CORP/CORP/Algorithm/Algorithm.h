@@ -1,5 +1,6 @@
 #ifndef _Algorithm_Guard_
 #define _Algorithm_Guard_ 1
+
 #include"../Matrix/matrix.hpp"
 #include"../Cover/Cover.h"
 #include<vector>
@@ -12,12 +13,6 @@ public:
 	virtual bool run(Cover& cover) = 0;
 	// used to store all solutions found by an algorithm
 	std::vector<std::vector<int>> _solution_set;
-	
-
-
-
-	
-
 };
 
 #endif

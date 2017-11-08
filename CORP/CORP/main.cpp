@@ -101,6 +101,7 @@ int main(int argc, char const *argv[]) {
 	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm").toString();
 	
 	std::cout << "Dumping Memory Leaks" << std::endl;
+	
 	_CrtDumpMemoryLeaks();
 
 }
