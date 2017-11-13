@@ -11,7 +11,7 @@ private:
   Config();
 
   // delete the instance of Config when done with it
-  ~Config();
+  virtual ~Config();
 
   // parse config file
   bool parse(std::string& cfg_file_name);

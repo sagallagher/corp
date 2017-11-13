@@ -10,7 +10,7 @@ class GeneticOperator {
 
 public:
 
-  virtual start(Genotype& genotype) = 0
+  virtual start(Genotype& genotype) = 0;
 
 };
 

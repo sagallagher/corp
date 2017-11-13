@@ -31,7 +31,10 @@ bool Config::initialize(int argc,const char** cmdparams) {
   }
 
   // if an instance already exists, delete it before creating a new one
-  if(_instance) delete _instance;
+  if (_instance) {
+	  delete _instance;
+	  _instance = nullptr;
+  }
 
   // create a new instance of Config
   Config::_instance = new Config;
