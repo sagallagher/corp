@@ -44,10 +44,10 @@ public:
 		_rows = 0;
 	}
 
-	Matrix(const unsigned rows, const unsigned cols)
+	Matrix(unsigned _rows, unsigned _cols)
 	{
 		m = nullptr;
-		allocate(rows, cols);
+		allocate(_rows, _cols);
 		// = rows;
 		//_cols = cols;
 	}
@@ -59,14 +59,14 @@ public:
 	}
 
 	//get elements from Matrix
-	int get(const unsigned r, const unsigned c) const
+	int get(unsigned r, unsigned c) const
 	{
 		//std::cout << "Getting value " << m[r][c] << " at " << r << ", " << c <<"\n";
 		return m[r][c];
 	}
 
 	//add elements to Matrix
-	void set(const T& t, const unsigned r, const unsigned c)
+	void set(const T& t, unsigned r, unsigned c)
 	{
 		//std::cout << "Setting value at " << r << ", " << c << " to " << t << "\n";
 		m[r][c] = t;
@@ -108,13 +108,6 @@ public:
 
 	}
 
-	/*
-	friend std::ostream& operator << (std::ostream&  OS, const Matrix<T> &_matrix)
-	{
-		OS << _matrix.toString();
-		return OS;
-	}
-	*/
 
 	Matrix<T>& operator= ( const Matrix<T>* rhs) 
 	{
@@ -154,19 +147,19 @@ public:
 	}
 
 private:
-	//allocates space in the matrix
-	void allocate(const unsigned rows, const unsigned cols)
+
+	void allocate(unsigned rows, unsigned cols)
 	{
 		_rows = rows;
 		_cols = cols;
 		m = new T*[rows];
-		for (int i = 0; i < rows; i++)
+		for (int c = 0; c < rows; c++)
 		{
-			m[i] = new T[cols];
+			m[c] = new T[cols];
 		}
 	}
 
-	//deallocates space in the matrix
+
 	void deallocate()
 	{
 		
@@ -177,11 +170,11 @@ private:
 		}
 		
 		//release memory
-		for (int i = 0; i < _rows; i++)
+		for (int r = 0; r < _rows; r++)
 		{
-			std::cout << "releasing mem\t" << i << std::endl;
-			delete[] m[i];
-			m[i] = nullptr;
+			std::cout << "releasing mem\t" << r << std::endl;
+			delete[] m[r];
+			m[r] = nullptr;
 		}
 		std::cout << "delting m\n";
 		delete[] m;
