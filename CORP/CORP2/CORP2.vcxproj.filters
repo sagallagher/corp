@@ -80,9 +80,6 @@
     <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\CORP\Algorithm\Algorithm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

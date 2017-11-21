@@ -17,10 +17,7 @@ Config* Config::_instance = 0;
 
 Config::Config() {}
 
-Config::~Config() { 
-	delete _instance; 
-	_instance = nullptr;
-}
+Config::~Config() { delete _instance; }
 
 bool Config::initialize(int argc,const char** cmdparams) {
 
@@ -32,10 +29,7 @@ bool Config::initialize(int argc,const char** cmdparams) {
   }
 
   // if an instance already exists, delete it before creating a new one
-  if (_instance) {
-	  delete _instance;
-	  _instance = nullptr;
-  }
+  if (_instance) { delete _instance; }
 
   // create a new instance of Config
   Config::_instance = new Config;
@@ -60,7 +54,7 @@ bool Config::parse(std::string& cfg_file_path) {
   // if there is a problem finding the configuration file, print an
   // error and return false
   if(!cfg) {
-    std::cerr << "Could not find configuration file";
+    std::cerr << "Could not find configuration file:\t" << cfg_file_path << std::endl;
     return false;
   }
 

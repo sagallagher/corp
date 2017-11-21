@@ -13,13 +13,14 @@
 AlgorithmRunner::AlgorithmRunner(Algorithm* algorithm_to_run) : _algorithm { algorithm_to_run } {}
 
 
-bool AlgorithmRunner::start(Cover& cover) {
-	return _algorithm->run(cover);
+bool AlgorithmRunner::start(Cover& cover, Config* config) {
+	_solutions = _algorithm->run(cover, config);
+	return _solutions.size() != 0;
 }
 
 std::vector<std::vector<int>> AlgorithmRunner::getSolutionSet() {
 	// increment all vertices by 1 before returning the solution set
-	std::vector<std::vector<int>> result = _algorithm->_solution_set;
+	std::vector<std::vector<int>> result = _solutions;
 
 	for (std::vector<int> solution : result)
 		for (int vertex : solution) vertex++;

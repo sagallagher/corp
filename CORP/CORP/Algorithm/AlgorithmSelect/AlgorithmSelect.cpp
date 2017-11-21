@@ -11,13 +11,14 @@
 
 
 
-AlgorithmSelect::AlgorithmSelect(Cover& cover) : _cover{ cover } {}
+AlgorithmSelect::AlgorithmSelect(Cover& cover, Config* config) : _cover{ cover }, _config{config} {}
+
 
 AlgorithmRunner AlgorithmSelect::selectAlgorithm(std::string choice) {
 	if (choice == "NaiveAlgorithm") {
 		NaiveAlgorithm* alg = new NaiveAlgorithm;
 		AlgorithmRunner runner(alg);
-		runner.start(_cover);
+		runner.start(_cover, _config);
 		AlgorithmRunner result = runner;
 		return result;
 	}

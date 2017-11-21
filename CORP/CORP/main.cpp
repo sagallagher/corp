@@ -103,10 +103,12 @@ int main(int argc, char const *argv[]) {
 
 	Cover cover(star);
 	// create an environment for an algorithm to be selected
-	AlgorithmSelect algorithm_select(cover);
+	AlgorithmSelect algorithm_select(cover, Config::getInstance());
 
 	// choose an algorithm and display the solution set
-	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm").toString();
+	AlgorithmRunner runner = algorithm_select.selectAlgorithm("NaiveAlgorithm");
+
+	std::cout << runner.toString();
 	
 	std::cout << "Dumping Memory Leaks" << std::endl;
 	

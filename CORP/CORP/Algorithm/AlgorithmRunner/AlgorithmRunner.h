@@ -3,6 +3,8 @@
 
 #include"../Algorithm.h"
 #include "../NaiveAlgorithm/NaiveAlgorithm.h"
+#include"../../Config/Config.h"
+
 #include<vector>
 class AlgorithmRunner {
 
@@ -10,7 +12,7 @@ public:
 	AlgorithmRunner(Algorithm* algorithm_to_run);
 
 	// run the algorithm provided in the constructor with the given cover
-	bool start(Cover& cover);
+	bool start(Cover& cover, Config* config);
 
 	// get 2d vector representation of solution set
 	std::vector<std::vector<int>> getSolutionSet();

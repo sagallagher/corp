@@ -7,15 +7,16 @@
 #endif
 
 #include"NaiveAlgorithm.h"
+#include"../../Config/Config.h"
 #include<vector>
 #include<algorithm>
 
-bool NaiveAlgorithm::run(Cover& cover) {
-
+std::vector<std::vector<int>> NaiveAlgorithm::run(Cover& cover, Config* config) {
+	std::vector<std::vector<int>> solution_set;
 	// call recursive helper method
-	runHelper(cover);
+	runHelper(cover, solution_set);
 
-	return true;
+	return solution_set;
 }
 
 // return true if an element is a vector
@@ -23,7 +24,7 @@ bool inSolution(std::vector<int> solution, int element) {
 	return (std::find(solution.begin(), solution.end(), element) != solution.end());
 }
 
-void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution) {
+void NaiveAlgorithm::runHelper(Cover cover, std::vector<std::vector<int>>& _solution_set, std::vector<int> solution) {
 
 	// we know min solution for 24cell is no greater than 5, so don't check past there
 	if (solution.size() > 5) return;
@@ -46,7 +47,7 @@ void NaiveAlgorithm::runHelper(Cover cover, std::vector<int> solution) {
 		// turn on the current vertex in the cover
 		temp_cover.select(vertex);
 
-		runHelper(temp_cover, temp_solution);
+		runHelper(temp_cover,_solution_set, temp_solution);
 
 		// order doesn't matter, don't pursue repetitive solutions and don't pick the same vertex twice
 		if (!solution.empty() && vertex <= solution.at(solution.size() - 1)) return;

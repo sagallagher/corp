@@ -125,7 +125,6 @@
     <ClInclude Include="..\CORP\Star\Star.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\CORP\Algorithm\Algorithm.cpp" />
     <ClCompile Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.cpp" />
     <ClCompile Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.cpp" />
     <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp" />

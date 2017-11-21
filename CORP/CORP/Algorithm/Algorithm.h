@@ -4,15 +4,15 @@
 #include"../Matrix/matrix.hpp"
 #include"../Cover/Cover.h"
 #include<vector>
+#include"../../Config/Config.h"
 
 class Algorithm {
 
 public:
 
 	// every algorithm should overwrite this and use run() as the function to start the algorithm
-	virtual bool run(Cover& cover) = 0;
-	// used to store all solutions found by an algorithm
-	std::vector<std::vector<int>> _solution_set;
+	virtual std::vector<std::vector<int>> run(Cover& cover, Config* config) = 0;
+
 };
 
 #endif

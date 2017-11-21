@@ -7,12 +7,13 @@
 class AlgorithmSelect {
 
 public:
-	AlgorithmSelect(Cover& cover);
+	AlgorithmSelect(Cover& cover, Config* config);
 
 	AlgorithmRunner selectAlgorithm(std::string choice);
 	
 
 private:
 	Cover _cover;
+	Config* _config;
 
 };

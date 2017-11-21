@@ -5,15 +5,17 @@
 #include<vector>
 #include<string>
 #include<iostream>
+#include"../../Config/Config.h"
 
 class NaiveAlgorithm : public Algorithm {
 
 public:
-	bool run(Cover& cover);
+	std::vector<std::vector<int>> run(Cover& cover, Config* config);
 
 private:
 	void runHelper(
 		Cover cover,
+		std::vector<std::vector<int>>& _solution_set,
 		std::vector<int> solution = {});
 };
 
