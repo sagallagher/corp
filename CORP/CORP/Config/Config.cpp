@@ -38,9 +38,8 @@ bool Config::initialize(int argc,const char** cmdparams) {
   std::string cfg_file_name = cmdparams[1];
 
   // parse the file path
-  _instance -> parse(cfg_file_name);
+  return _instance -> parse(cfg_file_name);
 
-  return true;
 }
 
 // return the instance of Config

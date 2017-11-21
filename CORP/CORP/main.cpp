@@ -72,6 +72,7 @@ int main(int argc, char const *argv[]) {
 
 	if (!Config::initialize(argc, argv)) {
 		std::cout << "Config file could be parsed" << std::endl;
+		system("pause");
 		return -1;
 	}
 
