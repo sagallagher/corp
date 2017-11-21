@@ -20,10 +20,10 @@
 
 Star::Star() {}
 //Constructor
-Star::Star(Matrix<int>* matrix)
+Star::Star(Matrix<int>& matrix)
 {
 	std::cout << "this print og matrix\n";
-	std::cout << matrix->toString();
+	std::cout << matrix.toString();
 	_matrix = matrix;
 
 	//calculate bounds
@@ -122,7 +122,7 @@ int Star::facetsPerVertex()
 //sets secondary matrix NOT WORKING
 void Star::matrixConvert()
 {
-    _vertexMatrix = new Matrix<int>(_numberOfVertices, _facetsPerVertex);
+    _vertexMatrix = Matrix<int>(_numberOfVertices, _facetsPerVertex);
     std::vector<int> indexArray(_vertexMatrix.getRows(), 0);
     int curVertex = 0;
     int curFacet = 0;

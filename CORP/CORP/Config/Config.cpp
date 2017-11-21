@@ -25,8 +25,9 @@ Config::~Config() {
 bool Config::initialize(int argc,const char** cmdparams) {
 
   // ensure atleast one command line argument was provided
-  if (argc == 1) {
+  if (argc <= 1) {
     std::cerr << "Configuration file required\n";
+	system("pause");
     return false;
   }
 

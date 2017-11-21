@@ -70,7 +70,10 @@ int main(int argc, char const *argv[]) {
 	const std::string DEFAULT_INPUT = "../../data/24cell_facets.txt";
 	const std::string DEFAULT_SOLUTION_SET = "../../data/24cell_corelist.txt";
 
-	Config::initialize(argc, argv);
+	if (!Config::initialize(argc, argv)) {
+		std::cout << "Config file could be parsed" << std::endl;
+		return -1;
+	}
 
 	//Open file stream for data
 	std::ifstream is;
@@ -93,15 +96,20 @@ int main(int argc, char const *argv[]) {
 	std::cout << "Data file parsed\n";
 	//End of file stream
 	is.close();
-	/*
+	
+	Matrix<int> data_matrix = parser.getMatrix();
+
+	Star star(data_matrix);
+
+	Cover cover(star);
 	// create an environment for an algorithm to be selected
-	AlgorithmSelect algorithm_select(Cover((Star(parser.getMatrix()))));
+	AlgorithmSelect algorithm_select(cover);
 
 	// choose an algorithm and display the solution set
 	std::cout << algorithm_select.selectAlgorithm("NaiveAlgorithm").toString();
 	
 	std::cout << "Dumping Memory Leaks" << std::endl;
-	*/
+	
 	_CrtDumpMemoryLeaks();
 
 }

@@ -24,7 +24,7 @@ public:
 	std::vector<int> getAdjacent(int vertex);
 
 	//Constructor
-	Star(Matrix<int>* matrix);
+	Star(Matrix<int>& matrix);
 	Star();
 	//Copy Constructor
 	Star(Star& original);

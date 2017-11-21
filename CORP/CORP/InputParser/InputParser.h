@@ -26,13 +26,13 @@ class InputParser
 
 	public:
 		InputParser(std::ifstream& in);
-		virtual ~InputParser();
-		Matrix<int>* getMatrix();
-		int getRowCount();
-		int getColumnCount();
+		Matrix<int> getMatrix();
+		
 
 	private:
-		Matrix<int>* _dataMatrix;
+		Matrix<int> _dataMatrix;
 		void parse();
+		int getRowCount();
+		int getColumnCount();
 };
 #endif
