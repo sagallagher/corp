@@ -72,8 +72,8 @@ bool OptionContainer::push(const std::string& key,const std::string& value) {
 }
 
 // pull a key's int value
-int OptionContainer::pull(const std::string& key, const int value) const {
-
+int OptionContainer::pull(const std::string& key, const int value) const
+{
   for(auto pair : _intOptions) {
 
     if(std::strcmp(std::get<0>(pair).c_str(), key.c_str()) == 0) {

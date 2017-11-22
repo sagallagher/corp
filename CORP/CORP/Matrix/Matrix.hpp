@@ -6,192 +6,141 @@
 #define new DEBUG_NEW
 #endif
 
-#ifndef _MATRIX_GUARD_
-#define _MATRIX_GUARD_
-//Austin Gladfelter
-//Generic, isolated matrix utility class
-//contains functions: get, set, getRows, getCols, toString
-//constructor and destructor located at the bottom
-/*
-Matrix is a dynamic 2 dimensional array.
-_rows is a dynamic array of pointers.
-The pointers in _rows[] point to arrays _cols
--There is only one _rows array and multiple _cols arrays
-Type must be specified when calling Matrix
+#ifndef _MATRIX_GUARD
+#define _MATRIX_GUARD 1
 
-The set function adds one element at a time - code calling this function must have its
-own loops iterating through input to add multiple values
-*/
-//analyis N/A
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <cstring>
 
-#include<string>
-#include<iostream>
-
-template <typename T> class Matrix
-
+template <typename T>
+class Matrix
 {
-	unsigned _rows;
-	unsigned _cols;
-	T **m;
+protected:
+    T* _matrix;
+    unsigned _rows;
+    unsigned _columns;
 
 public:
+    //
+    // For default initialization only
+    //
+    Matrix() : _matrix{ nullptr }, _rows{ 0 }, _columns{ 0 }
+    {}
 
+    //
+    // Rectangular matrix
+    //
+    Matrix(unsigned rows, unsigned cols) : _rows(rows), _columns(cols)
+    {
+        _matrix = new T[rows * cols];
+        clear();
+    }
 
-	Matrix()
-	{
-		m = nullptr;
-		_cols = 0;
-		_rows = 0;
-	}
+    //
+    // Square matrix
+    //
+    Matrix(unsigned rows) : _rows(rows), _columns(rows)
+    {
+        _matrix = new T[rows * rows];
+        clear();
+    }
 
-	Matrix(const unsigned rows, const unsigned cols)
-	{
-		m = nullptr;
-		allocate(rows, cols);
-		// = rows;
-		//_cols = cols;
-	}
+    //
+    // Copy Construction
+    //
+    Matrix(const Matrix<T>& rhs) : _rows{ rhs._rows }, _columns{rhs._columns}
+    {
+        // Allocate parallel array
+        this->_matrix = new T[_rows * _columns];
 
-	~Matrix()
-	{
-		//delete[] m;
-		//m = nullptr;
-	}
+        // Copy contents 
+        memcpy(this->_matrix, rhs._matrix, _rows * _columns * sizeof(T));
+    }
 
-	//get elements from Matrix
-	int get(const unsigned r, const unsigned c) const
-	{
-		//std::cout << "Getting value " << m[r][c] << " at " << r << ", " << c <<"\n";
-		return m[r][c];
-	}
+    virtual ~Matrix()
+    {
+        delete[] _matrix;
+        _matrix = nullptr;
+    }
 
-	//add elements to Matrix
-	void set(const T& t, const unsigned r, const unsigned c)
-	{
-		//std::cout << "Setting value at " << r << ", " << c << " to " << t << "\n";
-		m[r][c] = t;
-	}
+    unsigned numRows() const { return _rows; }
+    unsigned numColumns() const { return _columns; }
 
-	//retrieve dimensions
-	int getRows() const
-	{
-		return _rows;
-	}
+    // Zero out the array
+    void clear()
+    {
+        memset(_matrix, T{}, _rows * _columns * sizeof(T));
+    }
 
-	int getCols() const
-	{
-		return _cols;
-	}
+    const Matrix<T>& operator= (const Matrix<T>& rhs)
+    {
+        // check for self-assignment
+        if (&rhs == this) return *this;
 
-	void setRows(int num) {
-		_rows = num;
-	}
+        //
+        // Kill old array, acquire dimensions, and reallocate the array.
+        //
+        delete[] this->_matrix;
 
-	void setCols(int num) {
-		_cols = num;
-	}
+        _rows = rhs.numRows();
+        _columns = rhs.numColumns();
 
-	//puts out contents of Matrix as a single string
-	std::string toString() {
+        this->_matrix = new T[_rows * _columns];
 
-		std::string result;
-		for (int i = 0; i < _rows; i++)
-		{
-			for (int j = 0; j < _cols; j++) {
-				result.append(std::to_string(m[i][j]));
-				result.append(" ");
-	
-			}
-			result.append("\n");
-		}
-		return result;
+        //
+        // Copy contents 
+        //
+        memcpy(this->_matrix, rhs._matrix, _rows * _columns * sizeof(T));
 
-	}
+        return *this;
+    }
 
-	/*
-	friend std::ostream& operator << (std::ostream&  OS, const Matrix<T> &_matrix)
-	{
-		OS << _matrix.toString();
-		return OS;
-	}
-	*/
+    //
+    // Returns M[i][j] : We calculate as matrix[offset = i * cols + j];
+    //
+    inline T get(unsigned r, unsigned c) const
+    {
+        return _matrix[r * _columns + c];
+    }
 
-	Matrix<T>& operator= ( const Matrix<T>* rhs) 
-	{
-		//kill prev
-		//deallocate(this->m);
-		//std::cout << "called overloaded =\n";
-		//allocate
-		allocate(rhs->_rows, rhs->_cols);
-		//std::cout << "realocated\n";
-		// copy (nested loops)
-		if (m != nullptr)
-		{ 
-			_rows = rhs->getRows();
-			_cols = rhs->getCols();
-			//std::cout << "if statement was true\n";
-			//ROWS AND COLS CORRECT AT THIS POINT!!!!!!!!
-			for (int i = 0; i < _rows; i++)
-			{
-				//std::cout << "looped through a row\t" << i << std::endl;
+    //
+    // Sets M[i][j] : We calculate as matrix[offset = i * cols + j];
+    //
+    inline void set(unsigned r, unsigned c, const T& val)
+    {
+        //std::cout << "M[" << r << "][" << c << "] = M[" << r * _columns + c << "] = " << val << std::endl;
+        _matrix[r * _columns + c] = val;
+        //std::cout << "M[" << r << "][" << c << "] = M[" << r * _columns + c << "] = " << _matrix[r * _columns + c] << std::endl;
+    }
 
-				for (int j = 0; j < _cols; j++)
-				{
-					//std::cout << "looped through a column\t" << j << std::endl;
-					m[i][j] = rhs->get(i, j);
-				}
-			}
-		}
-		//std::cout << "END OF EQUALS CHECK: \t" << _rows << " " << _cols << "\n";
-		//std::cout << "skipped all that\n";
-		return *this;
+    //
+    // toString
+    //
+    std::string toString() const
+    {
+        std::string str = "";
 
-		
+        for (unsigned r = 0; r < _rows; r++)
+        {
+            for (unsigned c = 0; c < _columns; c++)
+            {
 
-		// cant point at old matrix because it is deleted
+                str += std::to_string(this->get(r, c));
+                if (c - 1 != _columns) str += " "; // formatting
+            }
+            str += "\n";
+        }
 
+        return str;
+    }
 
-	}
-
-private:
-	//allocates space in the matrix
-	void allocate(const unsigned rows, const unsigned cols)
-	{
-		_rows = rows;
-		_cols = cols;
-		m = new T*[rows];
-		for (int i = 0; i < rows; i++)
-		{
-			m[i] = new T[cols];
-		}
-	}
-
-	//deallocates space in the matrix
-	void deallocate()
-	{
-		
-		if (nullptr == m)
-		{
-			//do nothing
-			return;
-		}
-		
-		//release memory
-		for (int i = 0; i < _rows; i++)
-		{
-			std::cout << "releasing mem\t" << i << std::endl;
-			delete[] m[i];
-			m[i] = nullptr;
-		}
-		std::cout << "delting m\n";
-		delete[] m;
-		std::cout << "m deleted\n";
-
-		m = nullptr;
-		std::cout << "m is now nullptr\n";
-	}
-
-
+    friend std::ostream& operator<<(std::ostream& os, const Matrix<T>& m)
+    {
+        os << m.toString();
+        return os;
+    }
 };
 
 #endif

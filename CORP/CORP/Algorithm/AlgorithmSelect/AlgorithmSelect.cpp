@@ -11,15 +11,19 @@
 
 
 
-AlgorithmSelect::AlgorithmSelect(Cover& cover, Config* config) : _cover{ cover }, _config{config} {}
+AlgorithmSelect::AlgorithmSelect(const Cover& cover, const Config* config) :
+    _cover{ cover }, _config{config}
+{}
 
 
-AlgorithmRunner AlgorithmSelect::selectAlgorithm(std::string choice) {
-	if (choice == "NaiveAlgorithm") {
-		NaiveAlgorithm* alg = new NaiveAlgorithm;
-		AlgorithmRunner runner(alg);
-		runner.start(_cover, _config);
-		AlgorithmRunner result = runner;
-		return result;
-	}
-}
+//AlgorithmRunner AlgorithmSelect::selectAlgorithm(const std::string& choice)
+//{
+//	if (choice == "NaiveAlgorithm")
+//    {
+//		AlgorithmRunner runner(new NaiveAlgorithm());
+//
+//        runner.start(_cover, _config);
+//
+//        return runner;
+//	}
+//}

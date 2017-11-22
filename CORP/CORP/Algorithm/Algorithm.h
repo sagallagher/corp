@@ -1,18 +1,27 @@
 #ifndef _Algorithm_Guard_
 #define _Algorithm_Guard_ 1
 
-#include"../Matrix/matrix.hpp"
-#include"../Cover/Cover.h"
-#include<vector>
-#include"../../Config/Config.h"
+#define _CRTDBG_MAP_ALLOC
+#include<iostream>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif
 
-class Algorithm {
 
+#include <vector>
+#include "../Star/Star.h"
+
+class Algorithm
+{
 public:
-
 	// every algorithm should overwrite this and use run() as the function to start the algorithm
-	virtual std::vector<std::vector<int>> run(Cover& cover, Config* config) = 0;
+	virtual void run(Star* star) = 0;
+    std::vector<std::vector<int>> getSolutions() const { return _solutions; }
 
+protected:
+    std::vector<std::vector<int>> _solutions;
 };
 
 #endif

@@ -8,20 +8,29 @@
 *
 */
 
+
 #ifndef _BOOLSET_GUARD_
 #define _BOOLSET_GUARD_
 #include<string>
 
+#define _CRTDBG_MAP_ALLOC
+#include<iostream>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif
+
 class BoolSet
 {
 protected:
-	static const int _max = 600;					//max number of vertices allowed
+	static const int _MAX = 600;					//max number of vertices allowed
 	int _length;									//how many booleans are used in the set
 	int _numberSelected;							//how many booleans are currently true
-	bool* _values = nullptr;						//the booleans stored
+	bool* _values;						            //the booleans stored
 
 public:												//empty constructor
-	BoolSet(int size = _max);						//constructor
+	BoolSet(int size = _MAX);						//constructor
 	BoolSet(const BoolSet& original);				//copy constructor
 	BoolSet& operator=(const BoolSet& original);	//overloaded equals
 	virtual ~BoolSet();								//destructor
@@ -41,7 +50,7 @@ public:												//empty constructor
 	bool allTrue() const;							//returns true if every value in the array is true
 	void clear();									//sets every entry to false
 	bool empty() const;								//returns true if all values are false
-	std::string toString();
+	std::string toString() const;
 
 };
 

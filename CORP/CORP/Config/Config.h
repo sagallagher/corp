@@ -4,14 +4,20 @@
 #include"../OptionContainer/OptionContainer.h"
 #include<string.h>
 
-class Config : public OptionContainer {
+#define _CRTDBG_MAP_ALLOC
+#include<iostream>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif
+
+class Config : public OptionContainer
+{
 
 private:
   // consturctor to be used by initialize()
   Config();
-
-  // delete the instance of Config when done with it
-  virtual ~Config();
 
   // parse config file
   bool parse(std::string& cfg_file_name);
@@ -22,13 +28,14 @@ protected:
   static Config* _instance;
 
 public:
-
   // return the instance of Config
   static Config* getInstance();
 
   // initialize an instance of Config
   static bool initialize(int argc, const char**);
 
+  // CTA: added to delete the singleton; no way to invoke destructor.
+  static void cleanUp();
 };
 
 #endif

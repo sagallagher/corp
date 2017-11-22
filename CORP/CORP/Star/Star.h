@@ -7,14 +7,15 @@ class Star
 {
 protected:
 
-	int _numberOfFacets;
-	int _numberOfVertices;
+	//int _numberOfFacets;
+	//int _numberOfVertices;
 	int _lowerBound;
 	int _upperBound;
+    int _facetsPerVertex;
+
 	int _starRows;
 	int _starCols;
 	int _vertex;
-	int _facetsPerVertex;
 
 public:
 		
@@ -24,38 +25,40 @@ public:
 	std::vector<int> getAdjacent(int vertex);
 
 	//Constructor
-	Star(Matrix<int>& matrix);
-	Star();
+	Star(const Matrix<int>& matrix);
+private:
+	//Star();
 	//Copy Constructor
-	Star(Star& original);
+	Star(const Star& original);
 
+public:
 	//Destructor
-	~Star();
+	virtual ~Star();
 
 	//Returns the number of rows
-	int rows(); 
+	int rows() const; 
 
 	//Returns the number of columns
-	int cols();
+	int cols() const;
 
 
 	//Valculates the theoretical minimum vertices
-	int lowerBound();
+	int lowerBound() const;
 
 	//Calculates the theoretical maximum vertices
-	int upperBound();
+	int upperBound() const;
 
 	//return the matrix obj
 	//Matrix<int> & getMatrix();
 
     //returns the number of facets
-	int numberOfFacets();
+	int numberOfFacets() const;
 
     //returns the number of vertices
-	int numberOfVertices();
+	int numberOfVertices() const;
 
     //returns the number of facets converging at each vertex
-	int facetsPerVertex();
+	int facetsPerVertex() const;
     
     //uses nested for loops to create the secondary matrix **POTENTIALLY INEFICIENT**
    // void ineficientMatrixConvert();

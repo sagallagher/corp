@@ -16,31 +16,30 @@
 *
 */
 
+#include <iostream>
+#include <string>
+
 #include "BoolSet.h"
-# include <string>
-#include<iostream>
 
 //constructor
-BoolSet::BoolSet(int size) 
+BoolSet::BoolSet(int size) : _length{ size }, _numberSelected{ 0 }, _values{ nullptr }
 {
-	_length = size;
-	_numberSelected = 0;
 	_values = new bool[_length];
 	clear();
-	//std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
+	std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
 }
 
 //copy constructor
-BoolSet::BoolSet(const BoolSet & original) 
+BoolSet::BoolSet(const BoolSet& original) 
 {
-	_length = original.length();
+	_length = original._length;
 	_numberSelected = original._numberSelected;
 	_values = new bool[_length];
-	std::memcpy(_values, original._values, sizeof _values);
+	std::memcpy(_values, original._values, sizeof(_values));
 }
 
 //overloaded equals
-BoolSet & BoolSet::operator=(const BoolSet & original) 
+BoolSet& BoolSet::operator=(const BoolSet & original) 
 {
 	_length = original.length();
 	_numberSelected = original._numberSelected;
@@ -59,7 +58,7 @@ BoolSet & BoolSet::operator=(const BoolSet & original)
 //destructor
 BoolSet::~BoolSet() 
 {
-	delete[]_values;
+	delete[] _values;
 	_values = nullptr;
 }
 
@@ -189,7 +188,7 @@ bool BoolSet::empty() const
 	return _numberSelected == 0;
 }
 
-std::string BoolSet::toString()
+std::string BoolSet::toString() const
 {
 	std::string result;
 	result = "";

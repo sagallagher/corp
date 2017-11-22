@@ -18,28 +18,28 @@
 #include<vector>
 #include<algorithm>
 
-Star::Star() {}
+//Star::Star() {}
 //Constructor
-Star::Star(Matrix<int>& matrix)
-{
-	std::cout << "this print og matrix\n";
-	std::cout << matrix.toString();
-	_matrix = matrix;
 
+Star::Star(const Matrix<int>& matrix) :
+    _matrix{ matrix }
+{
 	//calculate bounds
     calculateBounds();
-    matrixConvert();
+
+    // matrixConvert();
+    // CTA: Needs to be a pointer to a matrix.
 }
 
 //Copy Constructor
-Star::Star(Star& original)
-{
-	_upperBound = original.upperBound();
-	_lowerBound = original.lowerBound();
-	_numberOfFacets = _matrix.getRows();
-	_numberOfVertices = _matrix.getCols();
-
-}
+Star::Star(const Star& original)
+{}
+// CTA: Disallow copying of Star...only one needed
+//	_upperBound = original.upperBound();
+//	_lowerBound = original.lowerBound();
+//	//_numberOfFacets = _matrix.numRows();
+//	//_numberOfVertices = _matrix.numColumns();
+//}
 
 //Destructor
 
@@ -48,11 +48,13 @@ Star::~Star()
 
 }
 
+//CTA: Ug
 bool inVector(std::vector<int>& v, int element) {
 	return std::find(v.begin(), v.end(), element) != v.end();
 }
 
-std::vector<int> Star::getAdjacent(int vertex) {
+std::vector<int> Star::getAdjacent(int vertex) 
+{
 	std::cout << "RESTARTING\n";
 	std::vector<int> result = {};
 	bool in_row;
@@ -77,59 +79,38 @@ std::vector<int> Star::getAdjacent(int vertex) {
 }
 
 //Returns the number of rows
-int Star::rows()
-{
-	return _matrix.getRows();
-}
+int Star::rows() const { return _matrix.numRows(); }
 
 //Returns the number of columns
-int Star::cols()
-{
-	return _matrix.getCols();
-}
+int Star::cols() const { return _matrix.numColumns(); }
 
 
 //Valculates the theoretical minimum vertices
-int Star::lowerBound()
-{
-	return _lowerBound;
-}
+int Star::lowerBound() const { return _lowerBound; }
 
 //Calculates the theoretical maximum vertices
-int Star::upperBound()
-{
-	return _upperBound;
-}
+int Star::upperBound() const { return _upperBound; }
 
 //return the number of facets
-int Star::numberOfFacets()
-{
-	return _numberOfFacets;
-}
+int Star::numberOfFacets() const { return _matrix.numRows(); }
 
 //return the number of vertices
-int Star::numberOfVertices()
-{
-	return _numberOfVertices;
-}
+int Star::numberOfVertices() const { return _upperBound; } // _matrix.numColumns(); }
 
 //return the number of facets converging at each vertex
-int Star::facetsPerVertex()
-{
-    return _facetsPerVertex;
-}
+int Star::facetsPerVertex() const { return _facetsPerVertex;  }
 
 //sets secondary matrix NOT WORKING
 void Star::matrixConvert()
 {
-    _vertexMatrix = Matrix<int>(_numberOfVertices, _facetsPerVertex);
-    std::vector<int> indexArray(_vertexMatrix.getRows(), 0);
+    _vertexMatrix = Matrix<int>(numberOfVertices(), _facetsPerVertex);
+    std::vector<int> indexArray(_vertexMatrix.numRows(), 0);
     int curVertex = 0;
     int curFacet = 0;
     //loop through original matrix
-    for (int curRow = 0; curRow < _matrix.getRows(); curRow++)
+    for (int curRow = 0; curRow < _matrix.numRows(); curRow++)
     {
-        for (int curCol = 0; curCol < _matrix.getCols(); curCol++)
+        for (int curCol = 0; curCol < _matrix.numColumns(); curCol++)
         {
             //get the current vertex and facet
             curVertex = _matrix.get(curRow, curCol);
@@ -146,16 +127,14 @@ void Star::matrixConvert()
 	std::cout << _vertexMatrix.toString() << "\n";
 }
 
-
-
 //calculates and sets bounds
 void Star::calculateBounds()
 {
     int count = 0;
     int maxVal = 0;
-    for (int i = 0; i < _matrix.getRows(); i++)
+    for (int i = 0; i < _matrix.numRows(); i++)
     {
-        for (int j = 0; j < _matrix.getCols(); j++)
+        for (int j = 0; j < _matrix.numColumns(); j++)
         {
             int val = _matrix.get(i, j);
             if (val == 1)
@@ -164,11 +143,12 @@ void Star::calculateBounds()
                 maxVal = val;
         }
     }
+
     _facetsPerVertex = count;
-    _upperBound = maxVal + 1;
-    _lowerBound = _matrix.getRows() / count;
-    _numberOfFacets = _matrix.getRows();
-    _numberOfVertices = maxVal + 1;
+    _upperBound = maxVal;
+    _lowerBound = _matrix.numRows() / count;
+    //_numberOfFacets = _matrix.numRows();
+    //_numberOfVertices = maxVal + 1;
 }
 
 

@@ -20,7 +20,7 @@ protected:
 	int* _weights = nullptr;							//weights for the values stored
 
 public:
-	WeightedBoolSet(int size = _max);					//constructor
+	WeightedBoolSet(int size = _MAX);					//constructor
 	WeightedBoolSet(const WeightedBoolSet& original);	//copy constructor
 	~WeightedBoolSet();									//destructor
 

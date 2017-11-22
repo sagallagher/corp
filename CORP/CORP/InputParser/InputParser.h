@@ -13,6 +13,14 @@
 */
 //analysis - How long does it take?
 
+#define _CRTDBG_MAP_ALLOC
+#include<iostream>
+#include <crtdbg.h>
+#ifdef _DEBUG
+#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new DEBUG_NEW
+#endif
+
 #include "../OptionContainer/OptionContainer.h"
 #include "../Matrix/Matrix.hpp"
 #include <iostream>
@@ -26,13 +34,8 @@ class InputParser
 
 	public:
 		InputParser(std::ifstream& in);
-		Matrix<int> getMatrix();
-		
+        Matrix<int>* parse();
 
 	private:
-		Matrix<int> _dataMatrix;
-		void parse();
-		int getRowCount();
-		int getColumnCount();
 };
 #endif

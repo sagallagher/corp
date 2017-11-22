@@ -7,19 +7,16 @@
 #include<iostream>
 #include"../../Config/Config.h"
 
-class NaiveAlgorithm : public Algorithm {
-
+class NaiveAlgorithm : public Algorithm
+{
 public:
-	std::vector<std::vector<int>> run(Cover& cover, Config* config);
+	void run(Star* star);
 
 private:
 	void runHelper(
-		Cover cover,
-		std::vector<std::vector<int>>& _solution_set,
+		const Cover& cover,
+        int MAX_SIZE = 10,
 		std::vector<int> solution = {});
 };
-
-
-
 
 #endif 

@@ -4,8 +4,8 @@
 #include<vector>
 #include<string>
 
-
-class OptionContainer {
+class OptionContainer
+{
 
 private:
   // continers to hold different data types that keys in the config
@@ -27,7 +27,8 @@ private:
   bool evalBool(const std::string& value) const;
 
   // does the key exist in any container?
-  bool key_exists(const std::string& key) const;
+  // CTA: unusued
+  // bool key_exists(const std::string& key) const;
 
 public:
 
