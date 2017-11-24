@@ -108,9 +108,9 @@ void Star::matrixConvert()
     int curVertex = 0;
     int curFacet = 0;
     //loop through original matrix
-    for (int curRow = 0; curRow < _matrix.numRows(); curRow++)
+    for (unsigned curRow = 0; curRow < _matrix.numRows(); curRow++)
     {
-        for (int curCol = 0; curCol < _matrix.numColumns(); curCol++)
+        for (unsigned curCol = 0; curCol < _matrix.numColumns(); curCol++)
         {
             //get the current vertex and facet
             curVertex = _matrix.get(curRow, curCol);

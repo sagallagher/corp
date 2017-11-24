@@ -23,7 +23,7 @@
     <ProjectGuid>{EB16A42E-9256-4A4C-9AA8-E33DD583691B}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CORP</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectSubType>NativeUnitTestProject</ProjectSubType>
     <ProjectName>TEST_CORP</ProjectName>
   </PropertyGroup>
