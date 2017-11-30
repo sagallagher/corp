@@ -31,8 +31,8 @@ Matrix<int>* InputParser::parse()
         for (unsigned c = 0; c < columns; c++)
         {
             _is >> tempVal;
-            //std::cout << tempVal << " ";
             matrix->set(r, c, tempVal);
+			std::cout << "TempVal\t" << tempVal << std::endl;
             std::cout << matrix->get(r, c) << " ";
         }
         std::cout << std::endl;

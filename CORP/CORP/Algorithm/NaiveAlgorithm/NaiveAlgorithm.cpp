@@ -19,7 +19,7 @@ void NaiveAlgorithm::run(Star* star)
     //int max = -1;
     //config->pull("MAX_SOLUTION", max);
 
-	runHelper(baseCover, 5);
+	runHelper(0,baseCover, 5);
 
     std::cout << "Execution complete." << std::endl;
 }
@@ -31,37 +31,37 @@ bool inSolution(const std::vector<T>& solution, const T& element)
 	return std::find(solution.begin(), solution.end(), element) != solution.end();
 }
 
-void NaiveAlgorithm::runHelper(const Cover& cover, int MAX_SIZE, std::vector<int> solution)
+void NaiveAlgorithm::runHelper(int vertex,const Cover& cover, int MAX_SIZE, std::vector<int> solution)
 {
-    //static unsigned long long coverCount = 0;
-    //coverCount++;
-    //if (coverCount % 10000 == 0)
-    //{
-    //    std::cout << "Checking cover: " << coverCount << std::endl;
-    //}
+	//static unsigned long long coverCount = 0;
+	//coverCount++;
+	//if (coverCount % 10000 == 0)
+	//{
+	//    std::cout << "Checking cover: " << coverCount << std::endl;
+	//}
 
 	// we know min solution, so don't check past there
 	if (solution.size() > MAX_SIZE) return;
-	
+
 	// if we found a solution, save it to _solution_set
 	if (cover.checkCover())
-    {
+	{
 		_solutions.push_back(solution);
 
-        static int sol = 0;
-        std::cout << "Solution " << sol++ << ": " << std::endl;
-        for (auto val : solution)
-            std::cout << val << " ";
-        std::cout << std::endl;
+		static int sol = 0;
+		std::cout << "Solution " << sol++ << ": " << std::endl;
+		for (auto val : solution)
+			std::cout << val << " ";
+		std::cout << std::endl;
 
-        // kill this branch because every solution following will be a solution of greater length
+		// kill this branch because every solution following will be a solution of greater length
 		return;
 	}
 
 	// for each vertex, go to every other vertex
-//    for (int vertex = 0; vertex < cover.vertices(); vertex++)
-    for (int vertex = cover.vertices() - 1; vertex >= 0 ; vertex--)
-    {
+	//    for (int vertex = 0; vertex < cover.vertices(); vertex++)
+	for (int vertex = cover.vertices(); vertex >= 0; vertex--)
+	{
 		// create a temporary cover and solution set for each branch
 		Cover temp_cover(cover);
 		std::vector<int> temp_solution = solution;
@@ -72,7 +72,7 @@ void NaiveAlgorithm::runHelper(const Cover& cover, int MAX_SIZE, std::vector<int
 		// turn on the current vertex in the cover
 		temp_cover.select(vertex);
 
-		runHelper(temp_cover, MAX_SIZE, temp_solution);
+		runHelper(vertex,temp_cover, MAX_SIZE, temp_solution);
 
 		// order doesn't matter, don't pursue repetitive solutions and don't pick the same vertex twice
 		if (!solution.empty() && vertex <= solution.at(solution.size() - 1)) return;

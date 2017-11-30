@@ -35,7 +35,8 @@ BoolSet::BoolSet(const BoolSet& original)
 	_length = original._length;
 	_numberSelected = original._numberSelected;
 	_values = new bool[_length];
-	std::memcpy(_values, original._values, sizeof(_values));
+	for (int i = 0; i < _length; i++) _values[i] = original._values[i];
+
 }
 
 //overloaded equals
@@ -44,14 +45,9 @@ BoolSet& BoolSet::operator=(const BoolSet & original)
 	_length = original.length();
 	_numberSelected = original._numberSelected;
 	_values = new bool[_length];
-	//std::memcpy(_values, original._values, sizeof _values);
-	for (int i = 0; i < _length; i++)
-	{
-		//std::cout << "original value at " << i << " is " << original._values[i] << "\n";
-		_values[i] = original._values[i];
-		//std::cout << "value at " << i << " set to " << _values[i] << "\n";
-		
-	}
+
+	for (int i = 0; i < _length; i++) _values[i] = original._values[i];
+
 	return *this;
 }
 
