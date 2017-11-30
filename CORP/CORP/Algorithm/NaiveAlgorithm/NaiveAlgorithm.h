@@ -14,7 +14,6 @@ public:
 
 private:
 	void runHelper(
-		int vertex,
 		const Cover& cover,
         int MAX_SIZE = 10,
 		std::vector<int> solution = {});

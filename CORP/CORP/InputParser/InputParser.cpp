@@ -32,7 +32,6 @@ Matrix<int>* InputParser::parse()
         {
             _is >> tempVal;
             matrix->set(r, c, tempVal);
-			std::cout << "TempVal\t" << tempVal << std::endl;
             std::cout << matrix->get(r, c) << " ";
         }
         std::cout << std::endl;
@@ -41,24 +40,3 @@ Matrix<int>* InputParser::parse()
     _is.close();
     return matrix;
 }
-//
-//int InputParser::getRowCount() {
-//    std::string str;
-//    int rows = 0;
-//    while (std::getline(_is, str)) { rows++; }
-//    _is.clear();
-//    _is.seekg(0, std::ios::beg);
-//    return rows;
-//}
-//
-//int InputParser::getColumnCount() {
-//    std::string line;
-//    std::getline(_is, line);
-//    std::istringstream ss(line);
-//    int num;
-//    int cols = 0;
-//    while (ss >> num) { cols++; }
-//    _is.clear();
-//    _is.seekg(0, std::ios::beg);
-//    return cols;
-//}
