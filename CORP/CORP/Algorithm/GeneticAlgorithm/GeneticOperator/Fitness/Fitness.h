@@ -1,19 +1,14 @@
 #ifndef _FITNESS_GUARD_
 #define _FITNESS_GUARD_
 
-#include"../Chromosome/Chromosome.h"
-#include<vector>
+#include"../../Genotype/Genotype.h"
 
 class Fitness {
 
-private:
-
 public:
 
-  virtual Fitness() = 0;
-
-  // set the fitness of each chromosome
-  virtual start(std::vector<Chromosome>& genotype) = 0;
+	// set the fitness of each chromosome in 
+	virtual bool setFitness(Genotype&) = 0;
 
 };
 

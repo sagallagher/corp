@@ -1,30 +1,58 @@
 #include"GeneticAlgorithm.h"
+#include"GeneticOperator\InitGenotype\RandomInitGenotype\RandomInitGenotype.h"
+#include"Genotype\Genotype.h"
 
-GeneticAlgorithm(Crossover& crossover,
-    Mutation& mutation,
-    ParentSelection& parent_selection,
-    SurvivorSelection& survivor_selection,
-    InitializePopulation& initialize_population)
-    : _crossover { crossover},
-    _mutation { mutation },
-    _parent_selection { parent_selection },
-    _survivor_selection { survivor_selection },
-    _initialize_population { initialize_population } {}
 
-bool GeneticAlgorithm::run() {
 
-  // return a genotype
-  _initialize_population.start();
 
-  while(/*termination condition not met*/) {
+#include"GeneticOperator\Mutation\BitFlipMutation\BitFlipMutation.h"
+#include"GeneticOperator\Fitness\CoverPercentRatioFitness\CoverPercentRatioFitness.h"
+void GeneticAlgorithm::run(Star* star) 
+{
 
-    // take in _population
-    _fitness.start();
-    _crossover.start();
-    _mutation.start();
-    _survivor_selection.start();
 
-  }
+	// the size of the initial genotype
+	const int INIT_GENOTYPE_SIZE = 10;
 
-  return true;
+	RandomInitGenotype rig;
+	Genotype geno;
+	BitFlipMutation bitflip;
+	CoverPercentRatioFitness fit;
+
+	geno= rig.fillGenotype(star, INIT_GENOTYPE_SIZE);
+	std::cout << "fillGenotype\n";
+	std::cout << geno.toString() << "-------\n" << std::endl;
+
+
+	bitflip.mutateGenotype(geno);
+	std::cout << "mutateGenotype\n";
+	std::cout << geno.toString() << "-------\n" << std::endl;
+
+	fit.setFitness(geno);
+	std::cout << "setFitness\n";
+	std::cout << geno.toString() << "-------\n" << std::endl;
+	
+
+	
+
+	system("pause");
+
+
+
+	/*// loop until termination condition is met
+	while (1 = 1) {
+
+		// calulate the fitness
+		if (!_fitness->start()) return false;
+
+		// perform the cross over
+		if (!_crossover.start()) return false;
+
+		// mutate the genotype
+		if (!_mutation.start()) return false;
+
+	}*/
+
 }
+
+

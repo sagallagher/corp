@@ -18,6 +18,8 @@
 
 #include "Cover.h"
 
+
+Cover::Cover() {}
 //constructor
 Cover::Cover(Star* star) :
     _bitVector(star->numberOfVertices()),
@@ -31,6 +33,7 @@ Cover::Cover(const Cover& original) :
     _bitVector{ original._bitVector },
     _facetVector { original._facetVector}
 {}
+
 
 //destructor
 Cover::~Cover()
@@ -187,4 +190,3 @@ std::string Cover::toString() const
 {
 	return _bitVector.toString();
 }
-

@@ -1,45 +1,34 @@
+/**
+*  file:	GeneticAlgorithm.h
+*  author:	Steven Gallagher
+*  date:	12/05/2017
+*  updated:	12/05/2017
+*
+*  Execute a genetic algorithm with the provided
+*  genetic operators.
+*
+*
+*/
+
+
+
 #ifndef _GENETIC_ALGORITHM_
 #define _GENETIC_ALGORITHM_
 
-#include"Crossover/GeneticOperator/Crossover.h"
-#include"InitializePopulation/GeneticOperator/InitializePopulation.h"
-#include"Mutation/GeneticOperator/Mutation.h"
-#include"ParentSelection/GeneticOperator/ParentSelection.h"
-#include"SurvivorSelection/GeneticOperator/SurvivorSelection.h"
-#include"Chromosome/GeneticOperator/Chromosome.h"
-#include"Genotype/GeneticOperator/Genotype.h"
+#include"GeneticOperator\GeneticOperator.h"
+#include"GeneticOperator\Crossover\Crossover.h"
+#include"GeneticOperator\InitGenotype\InitGenotype.h"
+#include"GeneticOperator\Mutation\Mutation.h"
+#include"../Algorithm.h"
 
-class GeneticAlgorithm {
+class GeneticAlgorithm : public Algorithm {
 
-private:
-  // take in 2 parents, return population
-  Crossover* _crossover;
 
-  // take in genotype, return mutated genotype
-  Mutation* _mutation;
-
-  // take in population, return parents
-  ParentSelection* _parent_selection;
-
-  // store pointer to a SurvivorSelection
-  SurvivorSelection* _survivor_selection;
-
-  // store pointer to a InitializePopulation
-  InitializePopulation* _initialize_population;
-
-  // store a population of chromosomes
-  Genotype _genotype;
 
 public:
 
   // run the genetic algorithm
-  bool run(Cover& cover);
-
-  GeneticAlgorithm(Crossover& crossover,
-    Mutation& mutation,
-    ParentSelection& parent_selection,
-    SurvivorSelection& survivor_selection,
-    InitializePopulation& initialize_population);
+  void run(Star* star);
 
 
 };

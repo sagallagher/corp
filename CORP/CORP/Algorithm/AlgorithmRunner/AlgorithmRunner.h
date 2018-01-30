@@ -45,6 +45,7 @@ public:
 	// get string representation of solution set
 	std::string toString() const
     {
+		if (getSolutionSet().size() == 0) return "No solutions found";
         std::string result = "";
 
         int count = 1;

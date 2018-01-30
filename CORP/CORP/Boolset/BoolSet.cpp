@@ -21,12 +21,14 @@
 
 #include "BoolSet.h"
 
+
+
 //constructor
 BoolSet::BoolSet(int size) : _length{ size }, _numberSelected{ 0 }, _values{ nullptr }
 {
 	_values = new bool[_length];
 	clear();
-	std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
+	//std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
 }
 
 //copy constructor

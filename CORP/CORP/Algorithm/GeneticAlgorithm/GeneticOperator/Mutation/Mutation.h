@@ -1,19 +1,12 @@
 #ifndef _MUTATION_GUARD_
 #define _MUTATION_GUARD_
 
-#include"../Chromosome/Chromosome.h"
-#include<vector>
-
+#include "../GeneticOperator.h"
 class Mutation {
 
+
 private:
-
-public:
-
-    virtual Mutation() = 0;
-
-    // apply a mutation to the genotype
-    virtual start(std::vector<Chromosome>& genotype) = 0;
+	virtual bool mutateGenotype(Genotype&) = 0;
 
 };
 

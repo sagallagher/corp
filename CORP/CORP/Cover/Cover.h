@@ -37,6 +37,8 @@ public:
     //Cover() {}                                  // Disallow default construction
 
 public:
+
+	Cover();
     Cover(Star* star);					//Constructor
     Cover(const Cover& original);				//copy constructor
     ~Cover();									//Destructor

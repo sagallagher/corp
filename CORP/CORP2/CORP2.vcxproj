@@ -114,6 +114,18 @@
     <ClInclude Include="..\CORP\Algorithm\Algorithm.h" />
     <ClInclude Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.h" />
     <ClInclude Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticAlgorithm.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Crossover\Crossover.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Crossover\OnePointCrossover\OnePointCrossover.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\CoverPercentRatioFitness\CoverPercentRatioFitness.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\Fitness.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\GeneticOperator.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\InitGenotype.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\RandomInitGenotype.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Mutation\BitFlipMutation\BitFlipMutation.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Mutation\Mutation.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Chromosome\Chromsome.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Genotype.h" />
     <ClInclude Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.h" />
     <ClInclude Include="..\CORP\Boolset\BoolSet.h" />
     <ClInclude Include="..\CORP\Boolset\WeightedBoolSet.h" />
@@ -129,6 +141,13 @@
   <ItemGroup>
     <ClCompile Include="..\CORP\Algorithm\AlgorithmRunner\AlgorithmRunner.cpp" />
     <ClCompile Include="..\CORP\Algorithm\AlgorithmSelect\AlgorithmSelect.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticAlgorithm.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Crossover\OnePointCrossover\OnePointCrossover.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\CoverPercentRatioFitness\CoverPercentRatioFitness.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\RandomInitGenotype.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Mutation\BitFlipMutation\BitFlipMutation.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Chromosome\Chromsome.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Genotype.cpp" />
     <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp" />
     <ClCompile Include="..\CORP\Boolset\BoolSet.cpp" />
     <ClCompile Include="..\CORP\Boolset\WeightedBoolSet.cpp" />
