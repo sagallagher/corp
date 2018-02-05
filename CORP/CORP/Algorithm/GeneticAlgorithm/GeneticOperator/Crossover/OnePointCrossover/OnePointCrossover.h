@@ -1,14 +1,30 @@
+/*
+*  file:	CoverPercentRatio.h
+*  author:	Steven Gallagher
+*  date:	12/05/2017
+*  updated:	1/30/2017
+*
+* get fitness based on cover percent and number selected
+*
+*/
+
+
 #include"../Crossover.h"
 
 class OnePointCrossover : Crossover {
 
+private:
+	// return 2 least fit chromosomes
+	std::vector<int> getLeastFit(Genotype&);
+
+	// return vector of 2 most fit chromosomes
+	std::vector<Chromosome> getMostFit(Genotype&);
+
+
 public:
 
-private:
-	bool performCrossover(Genotype&);
+	// swap tail ends of most fit chromosomes
+	// replace least fit chromosomes with result
+	bool performCrossover(Genotype&, Star*);
 
-	bool selectSurvivors(Genotype&);
-
-
-	
 };

@@ -1,4 +1,4 @@
-/**
+/*
 *  file:	CoverPercentRatio.h
 *  author:	Steven Gallagher
 *  date:	12/05/2017

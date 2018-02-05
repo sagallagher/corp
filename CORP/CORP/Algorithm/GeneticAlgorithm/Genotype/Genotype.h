@@ -29,9 +29,12 @@ public:
 	// add a new chromosome to the genotype
 	bool appendChromosome(Chromosome &chromosome);
 
+	bool removeChromosome(int index);
+
 	// string representation of genotype
 	std::string toString();
 
+	Chromosome getMostFit();
 
 };
 

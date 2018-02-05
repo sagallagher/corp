@@ -48,6 +48,7 @@ BoolSet& BoolSet::operator=(const BoolSet & original)
 	_numberSelected = original._numberSelected;
 	_values = new bool[_length];
 
+
 	for (int i = 0; i < _length; i++) _values[i] = original._values[i];
 
 	return *this;

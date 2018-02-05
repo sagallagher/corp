@@ -20,8 +20,6 @@
 
 class RandomInitGenotype : public InitGenotype
 {
-
-
 private:
 	// return a randomly generated chromosome
 	Chromosome getRandomChromosome(Star* star);

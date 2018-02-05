@@ -1,3 +1,14 @@
+/*
+*  file:	RandomInitGenotype.cpp
+*  author:	Steven Gallagher
+*  date:	12/05/2017
+*  updated:	1/30/2017
+*
+* get fitness based on cover percent and number selected
+*
+*/
+
+
 #include"RandomInitGenotype.h"
 #include"../../../Genotype/Genotype.h"
 #include"../../../../../Star/Star.h"
@@ -25,7 +36,7 @@ Cover RandomInitGenotype::getRandomCover(Star* star)
 	Cover temp_cover(star);
 
 	// generate i random numbers between 0 and the length of the bitvector
-	int number_of_vertices_to_flip = rand() % temp_cover._facetVector.length();
+	int number_of_vertices_to_flip = rand() % temp_cover._bitVector.length();
 
 
 	int rand_index;

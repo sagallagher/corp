@@ -89,6 +89,16 @@ void Cover::selectUnchecked(int index)
 void Cover::deselect(int index)
 {
 	_bitVector.setValue(index, false);
+	for (int i = 0; i < _star->rows(); i++)
+	{
+		for (int j = 0; j < _star->cols(); j++)
+		{
+			if (_star->_matrix.get(i, j) == index)
+			{
+				_facetVector.setValue(index, false);
+			}
+		}
+	}
 	//TODO: remove facets from _facetVector
 }
 

@@ -21,11 +21,11 @@ class Validator
   public:
     bool checkSolution(Cover& cover, std::vector<int> solution)
     {
-        for (int vertex : solution) cover.selectUnchecked(vertex - 1);
+        for (int vertex : solution) cover.select(vertex);
 
         return cover.checkCover();
     }
-
+	/*
     bool checkSolutions(Cover& cover, std::string solutions_file) {
         std::ifstream solutions(solutions_file);
 
@@ -50,6 +50,7 @@ class Validator
         solutions.close();
         return allTrue;
     }
+	*/
 };
 
 #endif

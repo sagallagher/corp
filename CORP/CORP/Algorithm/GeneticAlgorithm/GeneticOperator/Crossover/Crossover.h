@@ -1,18 +1,24 @@
+/*
+*  file:	Corssover.h
+*  author:	Steven Gallagher
+*  date:	12/05/2017
+*  updated:	1/30/2017
+*
+* Replace chromosomes in genotype with generated offspring
+*
+*/
+
 #ifndef _CROSSOVER_GUARD_
 #define _CROSSOVER_GUARD_
 
 #include"../GeneticOperator.h"
 
-class Crossover : GeneticOperator {
+class Crossover {
 
 private:
 
 	// perform a crossover and produce offspring
-	virtual bool performCrossover(Genotype&) = 0;
-
-	// replace members in genotype with offspring
-	virtual bool selectSurvivors(Genotype&) = 0;
-
+	virtual bool performCrossover(Genotype&, Star* star) = 0;
 	
 };
 
