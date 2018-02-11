@@ -127,6 +127,7 @@
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Chromosome\Chromsome.h" />
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Genotype.h" />
     <ClInclude Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.h" />
+    <ClInclude Include="..\CORP\Algorithm\RandomSolutionAlgorithm\RandomSolutionAlgorithm.h" />
     <ClInclude Include="..\CORP\Boolset\BoolSet.h" />
     <ClInclude Include="..\CORP\Boolset\WeightedBoolSet.h" />
     <ClInclude Include="..\CORP\Config\Config.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="..\CORP\InputParser\InputParser.h" />
     <ClInclude Include="..\CORP\Matrix\Matrix.hpp" />
     <ClInclude Include="..\CORP\OptionContainer\OptionContainer.h" />
+    <ClInclude Include="..\CORP\SolutionGenorator.h" />
     <ClInclude Include="..\CORP\Star\Star.h" />
     <ClInclude Include="Executor.hpp" />
     <ClInclude Include="Validator.hpp" />
@@ -149,6 +151,7 @@
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Chromosome\Chromsome.cpp" />
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\Genotype\Genotype.cpp" />
     <ClCompile Include="..\CORP\Algorithm\NaiveAlgorithm\NaiveAlgorithm.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\RandomSolutionAlgorithm\RandomSolutionAlgorithm.cpp" />
     <ClCompile Include="..\CORP\Boolset\BoolSet.cpp" />
     <ClCompile Include="..\CORP\Boolset\WeightedBoolSet.cpp" />
     <ClCompile Include="..\CORP\Config\Config.cpp" />
@@ -156,6 +159,7 @@
     <ClCompile Include="..\CORP\InputParser\InputParser.cpp" />
     <ClCompile Include="..\CORP\main.cpp" />
     <ClCompile Include="..\CORP\OptionContainer\OptionContainer.cpp" />
+    <ClCompile Include="..\CORP\SolutionGenerator.cpp" />
     <ClCompile Include="..\CORP\Star\Star.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -28,6 +28,7 @@
 #include "../CORP/Algorithm/AlgorithmRunner/AlgorithmRunner.h"
 #include "../CORP/Algorithm/GeneticAlgorithm/GeneticAlgorithm.h"
 #include"../CORP2/Validator.hpp"
+#include"../CORP/Algorithm/RandomSolutionAlgorithm/RandomSolutionAlgorithm.h";
 
 class Executor
 {
@@ -84,15 +85,15 @@ private:
     void run()
     {
         // choose an algorithm and display the solution set
-        AlgorithmRunner<GeneticAlgorithm> runner;
+        AlgorithmRunner<RandomSolutionAlgorithm> runner;
 
         Star* star = new Star(*_matrix);
 
-		Cover cover(star);
-		Validator val;
-		std::vector<int> sol = { 2 ,3 ,21, 23, 24 };
-		std::cout << "IS SOLUTION?\t" << val.checkSolution(cover, sol) << std::endl;
-		system("pause");
+		//Cover cover(star);
+		//Validator val;
+		//std::vector<int> sol = { 2 ,3 ,21, 23, 24 };
+		//std::cout << "IS SOLUTION?\t" << val.checkSolution(cover, sol) << std::endl;
+		//system("pause");
 		
 
 		
