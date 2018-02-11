@@ -10,7 +10,7 @@
 *  file:	Cover.cpp
 *  author:	Sarah McGlasson
 *  date:	10/1/2017
-*  updated:	10/12/2017
+*  updated:	2/11/2018
 *
 *  This class contains a boolset and takes a star object to control vertex selection
 *
@@ -89,23 +89,32 @@ void Cover::selectUnchecked(int index)
 void Cover::deselect(int index)
 {
 	_bitVector.setValue(index, false);
-	for (int i = 0; i < _star->rows(); i++)
-	{
-		for (int j = 0; j < _star->cols(); j++)
-		{
-			if (_star->_matrix.get(i, j) == index)
-			{
-				_facetVector.setValue(index, false);
-			}
-		}
-	}
-	//TODO: remove facets from _facetVector
+	rebuildFacetVector();
+}
+
+//deselects the vertex at the given index
+void Cover::rebuildFacetVector()
+{
+	_facetVector.clear();
+  for(int vert = 0; vert < _bitVector.length(); vert++)
+  {
+    for (int i = 0; i < _star->rows(); i++)
+  	{
+  		for (int j = 0; j < _star->cols(); j++)
+  		{
+  			if (_star->_matrix.get(i, j) == vert)
+  			{
+  				_facetVector.setTrue(i);
+  			}
+  		}
+  	}
+  }
 }
 
 //checks if the given vertex list is a valid cover NOT WORKING: USES SECONDARY MATRIX
 /*
 bool Cover::checkCover()
-{	
+{
     BoolSet tempSet(_star->numberOfFacets());
     for(int i = 0; i < _bitVector.length(); i++)
     {
@@ -169,7 +178,6 @@ int Cover::facetsCovered()
         }
     }
     return tempSet.numberSelected();
-
 }
 */
 
