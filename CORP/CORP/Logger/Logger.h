@@ -12,12 +12,7 @@ class Logger
 public:
 	
 	static Logger& mainLog();
-
-	void log(const std::string& message, const std::string& logLevel);
-
-	static const std::string logTypeInfo;
-	static const std::string logTypeDebug;
-	static const std::string logTypeError;
+	void log(const std::string& message);
 
 protected:
 	static Logger* pointMainLog;
@@ -31,8 +26,7 @@ protected:
 
 	static const std::string fileName;
 	static std::ofstream outputStream;
-	void logHelper(const std::string& message,
-		const std::string& logLevel);
+	void logHelper(const std::string& message);
 
 private:
 //Default Constructor
@@ -42,8 +36,6 @@ private:
 
 	Logger(const Logger&);
 	Logger& operator=(const Logger&);
-
-	static std::mutex logMutex;
 };
 
 #endif // !_LOGGER_GUARD
