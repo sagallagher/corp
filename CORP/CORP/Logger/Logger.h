@@ -4,17 +4,20 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <mutex>
 
 class Logger
 {
 
 public:
 	
+							//reference to the main Logger object
 	static Logger& mainLog();
+
+							//Logs the message to the output file
 	void log(const std::string& message);
 
 protected:
+							//Pointer to the Log object
 	static Logger* pointMainLog;
 	
 	friend class Reset;
@@ -25,11 +28,13 @@ protected:
 	};
 
 	static const std::string fileName;
-	static std::ofstream outputStream;
+
+							//OutputStream can't be static, apparently
+	std::ofstream outputStream;
 	void logHelper(const std::string& message);
 
 private:
-//Default Constructor
+							//Default Constructor
 	Logger();
 // ? virtual ?
 	virtual ~Logger();

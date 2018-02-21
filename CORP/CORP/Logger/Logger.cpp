@@ -33,7 +33,6 @@ Logger::Logger()				//Initialize the log object
 
 void Logger::log(const std::string& message)
 								//Writes the given log message to the file
-								//at the given log level.
 {
 	//std::lock_guard<std::mutex> guard(logMutex);
 	logHelper(message);
