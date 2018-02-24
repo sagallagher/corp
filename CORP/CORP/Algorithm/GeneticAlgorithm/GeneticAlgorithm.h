@@ -56,7 +56,7 @@ public:
 		STEP_SIZE = Config::getInstance()->pull("STEP_SIZE", STEP_SIZE);
 
 		// solution output file
-		std::string GA_SOLUTION_FILE = "solutions.txt"
+		std::string GA_SOLUTION_FILE = "solutions.txt";
 		GA_SOLUTION_FILE = Config::getInstance()->pull("GA_SOLUTION_FILE", GA_SOLUTION_FILE);
 
 		// fill the initial population
@@ -112,6 +112,7 @@ public:
 			// perform the crossover on the population
 			_crossover.performCrossover(geno, star);
 
+			// increment generation
 			generation++;
 
 		}

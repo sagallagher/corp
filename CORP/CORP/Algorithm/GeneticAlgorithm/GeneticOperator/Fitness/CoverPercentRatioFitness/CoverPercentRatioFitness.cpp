@@ -22,9 +22,6 @@ bool CoverPercentRatioFitness::setFitness(Genotype& genotype)
 		n = (chromo.getCover()._bitVector.numberSelected());
 
 		chromo.setFitness(10*p - pow(n, 1+(p/250)));
-		//chromo.setFitness((p*100-(.025*n))/100);
-		//chromo.setFitness(chromo.getCover().coverPercent());
-		//chromo.setFitness(numselection);
 	}
 
 	return true;
