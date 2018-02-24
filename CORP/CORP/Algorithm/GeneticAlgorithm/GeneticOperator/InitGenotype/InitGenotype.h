@@ -23,6 +23,8 @@ class InitGenotype
 public:
 	// fill the genotype with chromosomes
 	virtual Genotype fillGenotype(Star* star, int size) = 0;
+
+
 };
 
 #endif

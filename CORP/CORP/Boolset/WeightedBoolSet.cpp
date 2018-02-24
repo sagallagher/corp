@@ -17,6 +17,7 @@
 *
 */
 
+/*
 #include "WeightedBoolSet.h"
 # include <string>
 
@@ -118,3 +119,4 @@ void WeightedBoolSet::clear()
 	std::memset(_values, false, sizeof _values);
 	std::memset(_weights, 0, sizeof _weights);
 }
+*/

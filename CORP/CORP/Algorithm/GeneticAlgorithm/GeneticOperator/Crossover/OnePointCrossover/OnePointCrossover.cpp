@@ -11,6 +11,7 @@
 */
 
 #include"OnePointCrossover.h"
+#include <ctime>
 
 // find the two most fit chromosomes in the genotype
 // select swap the tail ends heads
@@ -26,7 +27,7 @@ bool OnePointCrossover::performCrossover(Genotype& genotype, Star* star)
 	// store them each
 	Chromosome most_fit1 = most_fit.at(0);
 	Chromosome most_fit2 = most_fit.at(1);
-
+	
 	// need covers for child chromosomes
 	Cover temp_cover1(star);
 	Cover temp_cover2(star);
@@ -42,24 +43,32 @@ bool OnePointCrossover::performCrossover(Genotype& genotype, Star* star)
 	//
 	// swap tails
 	//
+	/*std::cout << "\n----------vvvvvvv---------------\n";
+	std::cout << "child1:\t" << child1.getCover().toString() << std::endl;
+	std::cout << "child2:\t" << child2.getCover().toString() << std::endl;
 
-	// get first half of parent1 for child1
-	for (int i = 0; i < most_fit1.getCover()._bitVector.length() / 2; i++)
-		if (most_fit1.getCover()._bitVector[i]) child1.getCover().select(i);
-
-	// get the second half of parent1 for child2
-	for (int i = most_fit1.getCover()._bitVector.length() / 2;
-	i <  most_fit1.getCover()._bitVector.length(); i++) 
-		if (most_fit1.getCover()._bitVector[i]) child2.getCover().select(i);
-
-	// get the first half of parent2 for child2
-	for (int i = 0;i <  most_fit2.getCover()._bitVector.length() / 2; i++) 
-		if (most_fit2.getCover()._bitVector[i]) child2.getCover().select(i);
-
-	// get the second half of parent2 for child1
-	for (int i = most_fit2.getCover()._bitVector.length() / 2;
-	i <  most_fit2.getCover()._bitVector.length(); i++) 
+	std::cout << "swap\n";*/
+	int rand_index = rand() % child1.getCover()._bitVector.length();
+	// get first half of parent2 for child1
+	for (int i = 0; i < rand_index; i++)
+	{
 		if (most_fit2.getCover()._bitVector[i]) child1.getCover().select(i);
+		else child1.getCover().deselect(i);
+	}
+
+
+
+	// get the first half of parent1 for child2
+	for (int i = 0; i < rand_index; i++)
+	{
+		if (most_fit1.getCover()._bitVector[i]) child2.getCover().select(i);
+		else child2.getCover().deselect(i);
+	}
+	/*std::cout << "child1:\t" << child1.getCover().toString()<< std::endl;;
+	std::cout << "child2:\t" << child2.getCover().toString()<< std::endl;;
+	std::cout << "\n------------^^^^^^^^^^-------------\n";*/
+
+
 
 
 
@@ -94,8 +103,11 @@ std::vector<Chromosome> OnePointCrossover::getMostFit(Genotype& genotype)
 {
 
 	// start with top of genotype for future comparisons
-	Chromosome max1 = genotype.getMostFit();
-	Chromosome max2 = genotype.getMostFit();
+	Chromosome max1 = genotype.getChromosomes().at(0);
+	Chromosome max2 = genotype.getChromosomes().at(0);
+
+	max2.setFitness(0);
+	max1.setFitness(0);
 
 
 	// linearly search for the most fit chromosome
@@ -104,7 +116,7 @@ std::vector<Chromosome> OnePointCrossover::getMostFit(Genotype& genotype)
 
 	// linearly search for second most fit chromsoem
 	for (Chromosome& chromo : genotype.getChromosomes()) 
-		if (chromo.getFitness() > max2.getFitness() && chromo.getCover().toString().compare(max1.getCover().toString()) == 0)
+		if (chromo.getFitness() > max2.getFitness() && chromo.getFitness() != max1.getFitness())
 			max2 = chromo;
 
 	// return the two most fit chromosomes
@@ -120,9 +132,6 @@ std::vector<int> OnePointCrossover::getLeastFit(Genotype& genotype)
 	// min chromsomes are indices to make removing them easier
 	int min1 = 0;
 	int min2 = 0;
-
-	// don't want to modify the original genotype
-	Genotype temp_geno = genotype;
 
 	// the index that will be stored into min1,min2
 	int index = 0;
@@ -141,9 +150,9 @@ std::vector<int> OnePointCrossover::getLeastFit(Genotype& genotype)
 	index = 0;
 
 	//find second least fit chromosome
-	for (Chromosome& chromo : temp_geno.getChromosomes()) 
+	for (Chromosome& chromo : genotype.getChromosomes()) 
 	{
-		if (chromo.getFitness() <= genotype.getChromosomes().at(min1).getFitness() && min1 != min2);
+		if (chromo.getFitness() <= genotype.getChromosomes().at(min2).getFitness() && min1 != min2);
 			min2 = index;
 		index++;
 	}

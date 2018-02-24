@@ -18,6 +18,8 @@
 // return a randomly generated chromosome
 Chromosome RandomInitGenotype::getRandomChromosome(Star* star)
 { 
+
+	std::cout << "Star verts:\t" << star->numberOfVertices();
 	// cover to randomly select vertices
 	Cover temp_cover(star);
 

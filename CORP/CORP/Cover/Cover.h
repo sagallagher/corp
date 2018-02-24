@@ -60,6 +60,7 @@ public:
         std::cout << "Is cover?: " << cover.checkCover() << "\n";
         std::cout << "Percent Covered: " << cover.checkCover() << "\n";
     }
+	std::vector<int> ConvertToSet();
 };
 
 #endif

@@ -20,17 +20,108 @@
 #include"GeneticOperator\InitGenotype\InitGenotype.h"
 #include"GeneticOperator\Mutation\Mutation.h"
 #include"../Algorithm.h"
+#include"GeneticAlgorithm.h"
+#include"GeneticOperator\InitGenotype\RandomInitGenotype\RandomInitGenotype.h"
+#include"Genotype\Genotype.h"
+#include<ctime>
+#include"GeneticOperator\Crossover\OnePointCrossover\OnePointCrossover.h"
+#include"GeneticOperator\Mutation\BitFlipMutation\BitFlipMutation.h"
+#include"GeneticOperator\Fitness\CoverPercentRatioFitness\CoverPercentRatioFitness.h"
+#include <fstream>
 
-class GeneticAlgorithm : public Algorithm {
+template <typename TheInitPopulation_T, typename TheMutation_T, 
+	typename TheFitness_T,typename TheCrossover_T>
+class GeneticAlgorithm : public Algorithm 
+{
 
-
+private:
+	TheInitPopulation_T _init_population;
+	TheMutation_T _mutation;
+	TheFitness_T _fitness;
+	TheCrossover_T _crossover;
 
 public:
 
-  // run the genetic algorithm
-  void run(Star* star);
+	void run(Star* star)
+	{
+		// seed random number generation
+		srand(std::time(nullptr));
+
+		// the size of the initial genotype
+		int GENOTYPE_SIZE = 10;
+		GENOTYPE_SIZE = Config::getInstance()->pull("GENOTYPE_SIZE", GENOTYPE_SIZE);
+
+		// number of times to mutate each generation
+		int STEP_SIZE = 1;
+		STEP_SIZE = Config::getInstance()->pull("STEP_SIZE", STEP_SIZE);
+
+		// solution output file
+		std::string GA_SOLUTION_FILE = "solutions.txt"
+		GA_SOLUTION_FILE = Config::getInstance()->pull("GA_SOLUTION_FILE", GA_SOLUTION_FILE);
+
+		// fill the initial population
+		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
+
+		// generation count
+		int generation = 0;
+
+		// outsteam file to write to
+		std::ofstream myfile;
+
+		//  -> mutate -> set fitness -> crossover ->
+		while (true)
+		{
+			// periodically print the genotype and the current generation
+			if (generation % 100 == 0)
+			{
+				std::cout << "Generation:\t" << generation << std::endl;
+
+				std::cout << geno.toString() << std::endl;
+			}
+
+			// perform STEP_SIZE mutations
+			for (int i = 0; i < STEP_SIZE; i++)
+			{
+				// mutate each chromosome in the genotype
+				_mutation.mutateGenotype(geno);
+
+				// check if we have a solution after each mutation
+				for (Chromosome chromo : geno.getChromosomes())
+				{
+					// if a solution is found print it and write it to SOLUTION_FILE
+					if (chromo.getCover().checkCover())
+					{
+						std::cout << "-----------------------------------------\n";
+						// print solution
+						std::cout << "SOLUTION FOUND\n" << std::endl;
+						std::cout << chromo.getCover()._bitVector.length() << "\t|\t" << chromo.getCover()._bitVector.numberSelected() << "\t|\t" << chromo.getCover().toString() << "\n";
+						std::cout << std::endl;
+
+						// write to SOLUTION_FILE
+						myfile.open(GA_SOLUTION_FILE, std::ios::app);
+						myfile << chromo.getCover()._bitVector.length() << "\t|\t" << chromo.getCover()._bitVector.numberSelected() << "\t|\t" << chromo.getCover().toString() << "\n";
+						myfile.close();
+						std::cout << "-----------------------------------------\n";
+					}
+				}
+			}
+
+			// set the fitness of the population
+			_fitness.setFitness(geno);
+
+			// perform the crossover on the population
+			_crossover.performCrossover(geno, star);
+
+			generation++;
+
+		}
+
+	}
 
 
 };
+
+
+
 
 #endif

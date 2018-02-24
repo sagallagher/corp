@@ -161,9 +161,6 @@
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\CoverPercentRatioFitness\CoverPercentRatioFitness.cpp">
       <Filter>Source Files\GeneticAlgorithm</Filter>
     </ClCompile>
-    <ClCompile Include="..\CORP\SolutionGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\CORP\Algorithm\RandomSolutionAlgorithm\RandomSolutionAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -16,7 +16,7 @@ void NaiveAlgorithm::run(Star* star)
     Cover baseCover(star);
 
     //// call recursive helper method
-    int max = 5;
+    int max = 48;
     max = Config::getInstance()->pull("MAX_SOLUTION", max);
 
 	runHelper(baseCover, max);

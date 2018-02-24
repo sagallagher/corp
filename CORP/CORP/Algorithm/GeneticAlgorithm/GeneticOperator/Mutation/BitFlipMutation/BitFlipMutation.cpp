@@ -15,19 +15,35 @@
 bool BitFlipMutation::mutateAll(Genotype& genotype) 
 {
 	Cover cover;
+	int rand_index;
 	for (Chromosome& chromo : genotype.getChromosomes())
 	{
 
 		cover = chromo.getCover();
 
-		int rand_index = rand() % cover._bitVector.length();
 
-		if (cover._bitVector.getValue(rand_index) == 0)
-			cover.select(rand_index);
 
-		else cover.deselect(rand_index);
+			rand_index = rand() % cover._bitVector.length();
 
-		chromo.setCover(cover);
+			if (!cover._bitVector.getValue(rand_index))
+				cover.select(rand_index);
+
+
+			else {
+				//if(rand()%3 == 0) 
+				cover.deselect(rand_index);
+			}
+
+			chromo.setCover(cover);
+		
+		/*else
+		{
+			rand_index = rand() % cover._bitVector.length();
+			while(cover._bitVector.getValue(rand_index))
+				rand_index = rand() % cover._bitVector.length();
+
+			cover.deselect(rand_index);
+		}*/
 		
 	}
 
@@ -37,6 +53,6 @@ bool BitFlipMutation::mutateAll(Genotype& genotype)
 // seed random number generation and mutate chromosomes
 bool BitFlipMutation::mutateGenotype(Genotype& genotype) 
 {
-	srand(std::time(nullptr));
+	
 	return mutateAll(genotype);
 }

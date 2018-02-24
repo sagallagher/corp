@@ -10,6 +10,9 @@
 *
 */
 
+#ifndef _BIT_FLIP_MUTATION_ 
+#define _BIT_FLIP_MUTATION_
+
 #include "../Mutation.h"
 
 class BitFlipMutation : Mutation {
@@ -25,3 +28,4 @@ private:
 	bool mutateAll(Genotype&);
 
 };
+#endif

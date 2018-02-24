@@ -8,6 +8,8 @@
 *
 */
 
+#ifndef _ONE_POINT_CROSSOVER_
+#define _ONE_POINT_CROSSOVER_
 
 #include"../Crossover.h"
 
@@ -28,3 +30,5 @@ public:
 	bool performCrossover(Genotype&, Star*);
 
 };
+
+#endif

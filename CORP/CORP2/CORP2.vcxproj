@@ -159,7 +159,6 @@
     <ClCompile Include="..\CORP\InputParser\InputParser.cpp" />
     <ClCompile Include="..\CORP\main.cpp" />
     <ClCompile Include="..\CORP\OptionContainer\OptionContainer.cpp" />
-    <ClCompile Include="..\CORP\SolutionGenerator.cpp" />
     <ClCompile Include="..\CORP\Star\Star.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

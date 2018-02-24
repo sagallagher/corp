@@ -35,10 +35,8 @@ std::string Genotype::toString()
 
 	for (Chromosome chrom : getChromosomes()) 
 	{
-		std::ostringstream strs;
-		strs << chrom.getFitness();
-		std::string str = strs.str();
-		result += (chrom.getCover().toString() + "\t|\t" + str +"\n");
+	
+		result += (chrom.getCover().toString() + "\t|\t" + std::to_string(chrom.getFitness()) + "\t|\t" + std::to_string(chrom.getCover()._bitVector.numberSelected())+ "\n");
 	}
 
 	return result;

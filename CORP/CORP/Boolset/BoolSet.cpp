@@ -24,10 +24,12 @@
 
 
 //constructor
-BoolSet::BoolSet(int size) : _length{ size }, _numberSelected{ 0 }, _values{ nullptr }
+BoolSet::BoolSet(int size) : _length{ size }, _numberSelected{ 0 }
 {
-	_values = new bool[_length];
-	clear();
+	for (int i = 0; i < size; i++) _values.push_back(false);
+
+	//_values = new bool[_length];
+	//clear();
 	//std::cout << " bitvector start: " << toString() << "bitvector length: " << length() << "\n";
 }
 
@@ -36,8 +38,9 @@ BoolSet::BoolSet(const BoolSet& original)
 {
 	_length = original._length;
 	_numberSelected = original._numberSelected;
-	_values = new bool[_length];
-	for (int i = 0; i < _length; i++) _values[i] = original._values[i];
+	_values = original._values;
+	//_values = new bool[_length];
+	//for (int i = 0; i < _length; i++) _values[i] = original._values[i];
 
 }
 
@@ -46,10 +49,12 @@ BoolSet& BoolSet::operator=(const BoolSet & original)
 {
 	_length = original.length();
 	_numberSelected = original._numberSelected;
-	_values = new bool[_length];
+
+	_values = original._values;
+	//_values = new bool[_length];
 
 
-	for (int i = 0; i < _length; i++) _values[i] = original._values[i];
+	//for (int i = 0; i < _length; i++) _values[i] = original._values[i];
 
 	return *this;
 }
@@ -57,12 +62,12 @@ BoolSet& BoolSet::operator=(const BoolSet & original)
 //destructor
 BoolSet::~BoolSet() 
 {
-	delete[] _values;
-	_values = nullptr;
+	//delete[] _values;
+//	_values = nullptr;
 }
 
 //overloaded brackets
-bool& BoolSet::operator[](int index) 
+bool BoolSet::operator[](int index) 
 {
 	return _values[index];
 }

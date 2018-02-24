@@ -8,6 +8,10 @@
 *
 */
 
+#ifndef _COVER_PERCENT_RATIO_FITNESS_
+#define _COVER_PERCENT_RATIO_FITNESS_
+
+
 #include"../Fitness.h"
 #include"../../GeneticOperator.h"
 
@@ -19,3 +23,5 @@ public:
 	bool setFitness(Genotype&);
 
 };
+
+#endif

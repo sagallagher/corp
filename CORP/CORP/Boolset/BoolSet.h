@@ -11,7 +11,7 @@
 #ifndef _BOOLSET_GUARD_
 #define _BOOLSET_GUARD_
 #include<string>
-
+#include<memory>
 #define _CRTDBG_MAP_ALLOC
 #include<iostream>
 #include <crtdbg.h>
@@ -19,6 +19,7 @@
 #define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
 #define new DEBUG_NEW
 #endif
+#include<vector>
 
 class BoolSet
 {
@@ -26,14 +27,14 @@ protected:
 	static const int _MAX = 600;  //max number of vertices allowed
 	int _length;									//how many booleans are used in the set
 	int _numberSelected;          //how many booleans are currently true
-	bool* _values;                //the booleans stored
+	std::vector<bool> _values;                //the booleans stored
 
 public:
 	BoolSet(int size = _MAX);                       //constructor
 	BoolSet(const BoolSet& original);               //copy constructor
 	BoolSet& operator=(const BoolSet& original);    //overloaded equals
 	virtual ~BoolSet();                             //destructor
-	bool& operator[](int index);                    //overloaded brackets
+	bool operator[](int index);                    //overloaded brackets
 	bool operator[](int index) const;               //overloaded brackets
 
 	int length() const;                             //returns the length of the list

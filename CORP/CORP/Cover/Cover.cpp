@@ -96,6 +96,16 @@ void Cover::deselect(int index)
 void Cover::rebuildFacetVector()
 {
 	_facetVector.clear();
+
+	std::vector<int> set = ConvertToSet();
+
+	for (int i = 0; i < set.size(); i++)
+	{
+		select(set.at(i));
+	}
+}
+
+	/*
   for(int vert = 0; vert < _bitVector.length(); vert++)
   {
     for (int i = 0; i < _star->rows(); i++)
@@ -109,7 +119,8 @@ void Cover::rebuildFacetVector()
   		}
   	}
   }
-}
+  */
+
 
 //checks if the given vertex list is a valid cover NOT WORKING: USES SECONDARY MATRIX
 /*
@@ -134,6 +145,19 @@ bool Cover::checkCover()
 bool Cover::checkCover() const
 {
 	return _facetVector.allTrue();
+}
+
+std::vector<int> Cover::ConvertToSet() 
+{
+	std::vector<int> result = {};
+	for (int i = 0; i < _bitVector.length(); i++)
+	{
+		if (_bitVector[i] == 1) {
+			result.push_back(i);
+		}
+	}
+
+	return result;
 }
 
 

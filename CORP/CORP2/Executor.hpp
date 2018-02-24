@@ -29,6 +29,10 @@
 #include "../CORP/Algorithm/GeneticAlgorithm/GeneticAlgorithm.h"
 #include"../CORP2/Validator.hpp"
 #include"../CORP/Algorithm/RandomSolutionAlgorithm/RandomSolutionAlgorithm.h";
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Crossover/OnePointCrossover/OnePointCrossover.h";
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Mutation/BitFlipMutation/BitFlipMutation.h";
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Fitness/CoverPercentRatioFitness/CoverPercentRatioFitness.h";
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/InitGenotype/RandomInitGenotype/RandomInitGenotype.h";
 
 class Executor
 {
@@ -85,15 +89,19 @@ private:
     void run()
     {
         // choose an algorithm and display the solution set
-        AlgorithmRunner<RandomSolutionAlgorithm> runner;
+		AlgorithmRunner<GeneticAlgorithm<
+			RandomInitGenotype, 
+			BitFlipMutation, 
+			CoverPercentRatioFitness, 
+			OnePointCrossover>> runner;
 
         Star* star = new Star(*_matrix);
 
-		//Cover cover(star);
-		//Validator val;
-		//std::vector<int> sol = { 2 ,3 ,21, 23, 24 };
-		//std::cout << "IS SOLUTION?\t" << val.checkSolution(cover, sol) << std::endl;
-		//system("pause");
+		Cover cover(star);
+		Validator val;
+		std::vector<int> sol = {1,6,8};
+		std::cout << "IS SOLUTION?\t" << val.checkSolution(cover, sol) << std::endl;
+		system("pause");
 		
 
 		
