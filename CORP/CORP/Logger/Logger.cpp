@@ -1,18 +1,12 @@
 #include "Logger.h"
 #include "stdexcept"
 
-const std::string Logger::logTypeDebug = "DEBUG";
-const std::string Logger::logTypeInfo = "INFO";
-const std::string Logger::logTypeError = "ERROR";
-
 const std::string Logger::fileName = "log.txt";
 Logger* Logger::pointMainLog = nullptr;
-std::mutex Logger::logMutex;
 
-Logger& Logger::mainLog()
+Logger& Logger::mainLog()		//creates new Logger object
 { 
 	static Reset cleanup;
-	std::lock_guard<std::mutex> guard(logMutex);
 	if (pointMainLog == nullptr)
 		pointMainLog = new Logger();
 	return *pointMainLog;
@@ -20,17 +14,16 @@ Logger& Logger::mainLog()
 
 Logger::Reset::~Reset()
 {
-	std::lock_guard<std::mutex> guard(Logger::logMutex);
 	delete Logger::pointMainLog;
 	Logger::pointMainLog == nullptr;
 }
 
-Logger::~Logger()
+Logger::~Logger()				//close the log object
 {
 	outputStream.close();
 }
 
-Logger::Logger()
+Logger::Logger()				//Initialize the log object
 {
 	outputStream.open(fileName);
 	if (!outputStream.good()) {
@@ -38,13 +31,14 @@ Logger::Logger()
 	}
 }
 
-void Logger::log(const std::string& message, const std::string& logLevel)
+void Logger::log(const std::string& message)
+								//Writes the given log message to the file
 {
-	std::lock_guard<std::mutex> guard(logMutex);
-	logHelper(message,logLevel);
+	//std::lock_guard<std::mutex> guard(logMutex);
+	logHelper(message);
 }
 
-void Logger::logHelper(const std::string& inMessage, const std::string& inLogLevel)
+void Logger::logHelper(const std::string& inMessage)
 {
-	outputStream << inLogLevel << ": " << inMessage << std::endl;
+	outputStream << "Log: " << inMessage << std::endl;
 }
