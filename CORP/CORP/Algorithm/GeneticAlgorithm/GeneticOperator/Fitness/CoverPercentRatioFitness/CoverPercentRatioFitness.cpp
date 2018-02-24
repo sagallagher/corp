@@ -14,14 +14,13 @@
 // divided by the solution size
 bool CoverPercentRatioFitness::setFitness(Genotype& genotype)
 {
-	float n;
-	float p;
+	float n, p, w;
 	for (Chromosome& chromo : genotype.getChromosomes()) 
 	{
-		p = chromo.getCover().coverPercent()*100;
-		n = (chromo.getCover()._bitVector.numberSelected());
-
-		chromo.setFitness(10*p - pow(n, 1+(p/250)));
+		p = chromo.getCover().coverPercent();
+		n = ((float)chromo.getCover()._bitVector.numberSelected()/ chromo.getCover()._bitVector.length());
+		w - 3.0;
+		chromo.setFitness(p/pow(n,w));
 	}
 
 	return true;
