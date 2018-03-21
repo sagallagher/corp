@@ -108,6 +108,15 @@
     <ClInclude Include="..\CORP\Logger\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\ColoringFitness\ColoringFitness.h">
+      <Filter>Header Files\GeneticAlgorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Purge\Purge.h">
+      <Filter>Header Files\GeneticAlgorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Purge\RandomHalfPurge\RandomHalfPurge.h">
+      <Filter>Header Files\GeneticAlgorithm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CORP\OptionContainer\OptionContainer.cpp">
@@ -169,6 +178,12 @@
     </ClCompile>
     <ClCompile Include="..\CORP\Logger\Logger.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\ColoringFitness\ColoringFitness.cpp">
+      <Filter>Source Files\GeneticAlgorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Purge\RandomHalfPurge\RandomHalfPurge.cpp">
+      <Filter>Source Files\GeneticAlgorithm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

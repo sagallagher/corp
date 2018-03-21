@@ -21,9 +21,6 @@
 class RandomInitGenotype : public InitGenotype
 {
 private:
-	// return a randomly generated chromosome
-	Chromosome getRandomChromosome(Star* star);
-
 	// return a randomly generated cover
 	Cover getRandomCover(Star* star);
 
@@ -32,6 +29,9 @@ public:
 	// with random chromosomes
 	// the initial genotype will have size chromosomes
 	Genotype fillGenotype(Star* star, int size);
+
+	// return a randomly generated chromosome
+	Chromosome getRandomChromosome(Star* star);
 
 };
 

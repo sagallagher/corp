@@ -33,7 +33,8 @@
 #include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Mutation/BitFlipMutation/BitFlipMutation.h";
 #include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Fitness/CoverPercentRatioFitness/CoverPercentRatioFitness.h";
 #include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/InitGenotype/RandomInitGenotype/RandomInitGenotype.h";
-
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Fitness/ColoringFitness/ColoringFitness.h";
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Purge/RandomHalfPurge/RandomHalfPurge.h"
 class Executor
 {
 protected:
@@ -92,8 +93,9 @@ private:
 		AlgorithmRunner<GeneticAlgorithm<
 			RandomInitGenotype, 
 			BitFlipMutation, 
-			CoverPercentRatioFitness, 
-			OnePointCrossover>> runner;
+			ColoringFitness, 
+			OnePointCrossover, 
+			RandomHalfPurge>> runner;
 
         Star* star = new Star(*_matrix);
 

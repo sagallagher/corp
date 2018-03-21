@@ -19,8 +19,8 @@ bool CoverPercentRatioFitness::setFitness(Genotype& genotype)
 	{
 		p = chromo.getCover().coverPercent();
 		n = ((float)chromo.getCover()._bitVector.numberSelected()/ chromo.getCover()._bitVector.length());
-		w - 3.0;
-		chromo.setFitness(p/pow(n,w));
+
+		chromo.setFitness(1-p);
 	}
 
 	return true;

@@ -30,7 +30,7 @@
 #include <fstream>
 
 template <typename TheInitPopulation_T, typename TheMutation_T, 
-	typename TheFitness_T,typename TheCrossover_T>
+	typename TheFitness_T,typename TheCrossover_T,typename ThePurge_T>
 class GeneticAlgorithm : public Algorithm 
 {
 
@@ -39,6 +39,7 @@ private:
 	TheMutation_T _mutation;
 	TheFitness_T _fitness;
 	TheCrossover_T _crossover;
+	ThePurge_T _purge;
 
 public:
 
@@ -58,6 +59,11 @@ public:
 		// solution output file
 		std::string GA_SOLUTION_FILE = "solutions.txt";
 		GA_SOLUTION_FILE = Config::getInstance()->pull("GA_SOLUTION_FILE", GA_SOLUTION_FILE);
+
+		// how many generations should we wait to purge?
+		int PURGE_DELAY = 10;
+		PURGE_DELAY = Config::getInstance()->pull("PURGE_DELAY", PURGE_DELAY);
+
 
 		// fill the initial population
 		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
@@ -112,13 +118,16 @@ public:
 			// perform the crossover on the population
 			_crossover.performCrossover(geno, star);
 
+			// if we have reached x generations, purge
+
+			if (generation % PURGE_DELAY == 0) _purge.purgeGenotype(geno, star);
+
 			// increment generation
 			generation++;
 
 		}
 
 	}
-
 
 };
 

@@ -47,8 +47,6 @@ Chromosome Genotype::getMostFit()
 {
 	Chromosome max = _chromosomes.at(0);
 
-	max.setFitness(0);
-
 	for (Chromosome& chromo : _chromosomes) {
 		if (chromo.getFitness() >= max.getFitness())
 			max = chromo;
@@ -56,5 +54,4 @@ Chromosome Genotype::getMostFit()
 
 	return max;
 	
-
 }
