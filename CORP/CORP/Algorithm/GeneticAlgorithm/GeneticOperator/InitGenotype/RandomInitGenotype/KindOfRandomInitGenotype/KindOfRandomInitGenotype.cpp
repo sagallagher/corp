@@ -1,3 +1,13 @@
+/**
+*  file:	KindOfRandomInitGenotype.cpp
+*  author:	Steven Gallagher
+*  date:	3/27/2018
+*  updated:	3/27/2018
+*
+*  Fills genotype from file and then the rest randomly
+*
+*/
+
 #include"KindOfRandomInitGenotype.h"
 #include<fstream>
 #include"../../../../Genotype/Chromosome/Chromsome.h"
