@@ -40,14 +40,6 @@ bool OnePointCrossover::performCrossover(Genotype& genotype, Star* star)
 	child1 = most_fit.at(0);
 	child2 = most_fit.at(1);
 
-	//
-	// swap tails
-	//
-	/*std::cout << "\n----------vvvvvvv---------------\n";
-	std::cout << "child1:\t" << child1.getCover().toString() << std::endl;
-	std::cout << "child2:\t" << child2.getCover().toString() << std::endl;
-
-	std::cout << "swap\n";*/
 	int rand_index = rand() % child1.getCover()._bitVector.length();
 	// get first half of parent2 for child1
 	for (int i = 0; i < rand_index; i++)
@@ -64,13 +56,6 @@ bool OnePointCrossover::performCrossover(Genotype& genotype, Star* star)
 		if (most_fit1.getCover()._bitVector[i]) child2.getCover().select(i);
 		else child2.getCover().deselect(i);
 	}
-	/*std::cout << "child1:\t" << child1.getCover().toString()<< std::endl;;
-	std::cout << "child2:\t" << child2.getCover().toString()<< std::endl;;
-	std::cout << "\n------------^^^^^^^^^^-------------\n";*/
-
-
-
-
 
 	//
 	// select survivors
