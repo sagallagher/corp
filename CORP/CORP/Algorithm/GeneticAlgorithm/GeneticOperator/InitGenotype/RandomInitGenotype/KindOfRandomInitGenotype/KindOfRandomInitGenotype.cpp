@@ -7,7 +7,6 @@
 // fills the rest with random chromosomes
 Genotype KindOfRandomInitGenotype::fillGenotype(Star* star, int size)
 {
-	// number of times to mutate each generation
 	std::string CHROMOSOME_FILE = "chromosomes.txt";
 	CHROMOSOME_FILE = Config::getInstance()->pull("CHROMOSOME_FILE", CHROMOSOME_FILE);
 
@@ -18,13 +17,10 @@ Genotype KindOfRandomInitGenotype::fillGenotype(Star* star, int size)
 	return _genotype;
 }
 
-
 void KindOfRandomInitGenotype::fillRest(int size, Star* star)
 {
 	while (_genotype.getChromosomes().size() < size)
-	{
 		_genotype.appendChromosome(RandomInitGenotype::getRandomChromosome(star));
-	}
 }
 
 // loop through file and make chromosomes to append to genotype
@@ -32,13 +28,18 @@ bool KindOfRandomInitGenotype::fillGenotypeFromFile(std::string file_path, Star*
 {
 	std::ifstream chromo_file(file_path);
 
+	if (!chromo_file)
+	{
+		std::cout << "CHROMOSOME FILE NOT FOUND\n";
+		system("pause");
+	}
+
 	std::string line;
 
 	int index;
 
 	while (std::getline(chromo_file, line))
 	{
-
 		Cover temp_cover(star);
 
 		Chromosome new_chromo(temp_cover);
@@ -51,6 +52,8 @@ bool KindOfRandomInitGenotype::fillGenotypeFromFile(std::string file_path, Star*
 
 			index++;
 		}
+
+		_genotype.appendChromosome(new_chromo);
 		
 	}
 

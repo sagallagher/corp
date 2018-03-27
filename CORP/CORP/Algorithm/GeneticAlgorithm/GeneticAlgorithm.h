@@ -68,6 +68,7 @@ public:
 		// fill the initial population
 		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
 
+		std::cout << geno.toString() << std::endl;
 		// generation count
 		int generation = 0;
 
