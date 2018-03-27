@@ -122,6 +122,7 @@
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\Fitness.h" />
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\GeneticOperator.h" />
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\InitGenotype.h" />
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\KindOfRandomInitGenotype\KindOfRandomInitGenotype.h" />
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\RandomInitGenotype.h" />
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Mutation\BitFlipMutation\BitFlipMutation.h" />
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Mutation\Mutation.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Crossover\OnePointCrossover\OnePointCrossover.cpp" />
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\ColoringFitness\ColoringFitness.cpp" />
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Fitness\CoverPercentRatioFitness\CoverPercentRatioFitness.cpp" />
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\KindOfRandomInitGenotype\KindOfRandomInitGenotype.cpp" />
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\RandomInitGenotype.cpp" />
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Mutation\BitFlipMutation\BitFlipMutation.cpp" />
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Purge\RandomHalfPurge\RandomHalfPurge.cpp" />

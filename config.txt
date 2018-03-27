@@ -1,0 +1,25 @@
+# the path to the file containing the adjacency matrix
+AdjacencyList = ../../data/600cell_facets.txt
+
+#
+# Genetic Algorithm Settings
+#
+
+# the size of the genotype to use
+GENOTYPE_SIZE = 50
+
+# the number of mutations to apply to each generation
+STEP_SIZE = 5
+
+# the file to output solutions found to
+GA_SOLUTION_FILE = C:/Users/Steven/Source/Repos/corp13/corp/CORP/CORP/Algorithm/GeneticAlgorithm/solutions.txt
+
+
+#
+# example fitness functions
+#
+
+#chromo.setFitness(10*p - pow(n, 1+(p/250)));
+#chromo.setFitness((p*100-(.025*n))/100);
+#chromo.setFitness(chromo.getCover().coverPercent());
+#chromo.setFitness(numselection);

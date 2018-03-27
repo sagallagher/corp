@@ -35,6 +35,8 @@
 #include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/InitGenotype/RandomInitGenotype/RandomInitGenotype.h";
 #include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Fitness/ColoringFitness/ColoringFitness.h";
 #include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/Purge/RandomHalfPurge/RandomHalfPurge.h"
+#include"../CORP/Algorithm/GeneticAlgorithm/GeneticOperator/InitGenotype/RandomInitGenotype/KindOfRandomInitGenotype/KindOfRandomInitGenotype.h"
+
 class Executor
 {
 protected:
@@ -91,7 +93,7 @@ private:
     {
         // choose an algorithm and display the solution set
 		AlgorithmRunner<GeneticAlgorithm<
-			RandomInitGenotype, 
+			KindOfRandomInitGenotype, 
 			BitFlipMutation, 
 			ColoringFitness, 
 			OnePointCrossover, 

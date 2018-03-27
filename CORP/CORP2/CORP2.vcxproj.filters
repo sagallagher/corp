@@ -117,6 +117,9 @@
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Purge\RandomHalfPurge\RandomHalfPurge.h">
       <Filter>Header Files\GeneticAlgorithm</Filter>
     </ClInclude>
+    <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\KindOfRandomInitGenotype\KindOfRandomInitGenotype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\CORP\OptionContainer\OptionContainer.cpp">
@@ -183,6 +186,9 @@
       <Filter>Source Files\GeneticAlgorithm</Filter>
     </ClCompile>
     <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\Purge\RandomHalfPurge\RandomHalfPurge.cpp">
+      <Filter>Source Files\GeneticAlgorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\KindOfRandomInitGenotype\KindOfRandomInitGenotype.cpp">
       <Filter>Source Files\GeneticAlgorithm</Filter>
     </ClCompile>
   </ItemGroup>
