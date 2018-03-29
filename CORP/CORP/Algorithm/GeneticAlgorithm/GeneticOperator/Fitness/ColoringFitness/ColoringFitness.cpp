@@ -32,9 +32,7 @@ bool ColoringFitness::setFitness(Genotype& geno) {
 
 	}
 
-
 	return true;
-	
 }
 
 // check if element is in vector

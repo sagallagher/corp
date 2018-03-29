@@ -45,6 +45,8 @@ public:
 
 	void run(Star* star)
 	{
+		
+
 		// seed random number generation
 		srand(std::time(nullptr));
 
@@ -64,13 +66,20 @@ public:
 		int PURGE_DELAY = 10;
 		PURGE_DELAY = Config::getInstance()->pull("PURGE_DELAY", PURGE_DELAY);
 
+		// metric output file
+		std::string METRIC_OUTPUT = "metrics.txt";
+		METRIC_OUTPUT = Config::getInstance()->pull("METRIC_OUTPUT", METRIC_OUTPUT);
+
+		//rate to sample to metric output
+		int SAMPLE_RATE = 1;
+		SAMPLE_RATE = Config::getInstance()->pull("SAMPLE_RATE", SAMPLE_RATE);
 
 		// fill the initial population
 		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
 
 		std::cout << geno.toString() << std::endl;
 		// generation count
-		int generation = 0;
+		int generation = 1;
 
 		// outsteam file to write to
 		std::ofstream myfile;
@@ -78,8 +87,23 @@ public:
 		//  -> mutate -> set fitness -> crossover ->
 		while (true)
 		{
+
+			// set the fitness of the population
+			_fitness.setFitness(geno);
+
+			// write metrics
+
+			if(generation%SAMPLE_RATE == 0)
+				geno.writeMetrics(
+					geno.getFitnesses(),
+					geno.getPercentCovereds(),
+					geno.getNumberSelecteds(),
+					generation,
+					METRIC_OUTPUT
+			);
+
 			// periodically print the genotype and the current generation
-			if (generation % 100 == 0)
+			if (generation % 10 == 0)
 			{
 				std::cout << "Generation:\t" << generation << std::endl;
 

@@ -118,7 +118,7 @@
       <Filter>Header Files\GeneticAlgorithm</Filter>
     </ClInclude>
     <ClInclude Include="..\CORP\Algorithm\GeneticAlgorithm\GeneticOperator\InitGenotype\RandomInitGenotype\KindOfRandomInitGenotype\KindOfRandomInitGenotype.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GeneticAlgorithm</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

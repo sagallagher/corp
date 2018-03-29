@@ -21,6 +21,10 @@ private:
 	// contains the chromosomes of the genotype
 	std::vector<Chromosome> _chromosomes;
 
+	bool writeString(std::string outfile_path, std::string towrite);
+
+
+
 
 public:
 	// return the genotype as a vector of chromosomes
@@ -35,6 +39,17 @@ public:
 	std::string toString();
 
 	Chromosome getMostFit();
+
+	std::vector<double> getFitnesses();
+
+	std::vector<double> getNumberSelecteds();
+
+	std::vector<double> getPercentCovereds();
+
+	bool writeMetrics(std::vector<double>, std::vector<double>, std::vector<double>, int, std::string);
+
+	bool writeVectorAsList(std::vector<double> vector, std::string outfile_path);
+
 
 };
 

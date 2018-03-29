@@ -4,7 +4,7 @@
 *  date:	3/27/2018
 *  updated:	3/27/2018
 *
-*  The header file for the Boolset class
+*  Fills genotype from file and then the rest randomly
 *
 */
 
