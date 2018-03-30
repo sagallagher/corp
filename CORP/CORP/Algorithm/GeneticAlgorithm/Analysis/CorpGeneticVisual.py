@@ -89,7 +89,7 @@ if __name__ == '__main__':
     # 1 => 3D Plot
     
     
-    GRAPH_CHOICE = 0
+    GRAPH_CHOICE = 1
     
     g = CorpGeneticVisual("C:/Users/Steven/Desktop/metrics.txt")
 
