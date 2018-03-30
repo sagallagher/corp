@@ -83,21 +83,30 @@ public:
 		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
 
 		std::cout << geno.toString() << std::endl;
+		
 		// generation count
 		int generation = 1;
 
-		// outsteam file to write to
+		// solution file to write to
 		std::ofstream myfile;
+		
+		// clear metric file
+		std::ofstream outfile;
+		outfile.open(METRIC_OUTPUT);
+		outfile.close();
 
 		//  -> mutate -> set fitness -> crossover ->
 		while (true)
 		{
-
+			
 			// set the fitness of the population
 			_fitness.setFitness(geno);
 
-			// write metrics
 
+			// clear metric file
+
+
+			// write metrics
 			if(generation%SAMPLE_RATE == 0)
 				geno.writeMetrics(
 					geno.getFitnesses(),
