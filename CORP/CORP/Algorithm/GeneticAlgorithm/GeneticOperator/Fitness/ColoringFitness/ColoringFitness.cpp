@@ -22,11 +22,11 @@ bool ColoringFitness::setFitness(Genotype& geno) {
 
 		// set the fitness of the chromosome
 		p = chromo.getCover().coverPercent();
-		n = ((float)chromo.getCover()._bitVector.numberSelected());
+		n = ((float)chromo.getCover()._bitVector.numberSelected()/ chromo.getCover()._bitVector.length());
 
 		x = 1; k = 1; r = 5;
 
-		fit = pow(c, x) - (k *  sigmoid(p) + r* sigmoid(pow(n,r)));
+		fit = p - n - (c/8);
 
 		chromo.setFitness(fit);
 

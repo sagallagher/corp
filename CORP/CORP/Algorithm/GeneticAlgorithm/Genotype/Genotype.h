@@ -46,7 +46,9 @@ public:
 
 	std::vector<double> getPercentCovereds();
 
-	bool writeMetrics(std::vector<double>, std::vector<double>, std::vector<double>, int, std::string);
+	std::vector<double> getChromaticNumbers();
+
+	bool writeMetrics(std::vector<double>, std::vector<double>, std::vector<double>, std::vector<double>, int, std::string);
 
 	bool writeVectorAsList(std::vector<double> vector, std::string outfile_path);
 

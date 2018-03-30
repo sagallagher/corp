@@ -10,7 +10,7 @@
 #include"Genotype.h"
 #include<sstream>
 #include<fstream>
-
+#include"../GeneticOperator/Fitness/ColoringFitness/ColoringFitness.h"
 
 // return the genotype as a vector of chromosomes
 std::vector<Chromosome>& Genotype::getChromosomes() { return _chromosomes; }
@@ -88,6 +88,19 @@ std::vector<double> Genotype::getPercentCovereds()
 	return result;
 }
 
+std::vector<double> Genotype::getChromaticNumbers()
+{
+
+	ColoringFitness cf;
+
+	std::vector<double> result;
+
+	for (Chromosome chromo : _chromosomes)
+		result.push_back(cf.getChromaticNumber(chromo));
+
+	return result;
+}
+
 // write vector as a list python's eval() will understamd
 bool Genotype::writeVectorAsList(std::vector<double> vector, std::string outfile_path)
 {
@@ -151,7 +164,7 @@ bool Genotype::writeString(std::string outfile_path, std::string towrite)
 
 
 bool Genotype::writeMetrics(std::vector<double> fitness, 
-	std::vector<double> cover_perc, std::vector<double> num_selected, int generation, std::string outfile_path)
+	std::vector<double> cover_perc, std::vector<double> num_selected, std::vector<double> chromatic_numbers, int generation, std::string outfile_path)
 {
 
 	// write generation
@@ -169,7 +182,13 @@ bool Genotype::writeMetrics(std::vector<double> fitness,
 	if(!writeString(outfile_path,"\n")) return false;
 
 	// write num selected
-	writeVectorAsList(num_selected,outfile_path);
+	if(!writeVectorAsList(num_selected,outfile_path)) return false;
+
+	if (!writeString(outfile_path, "\n")) return false;
+
+	// write chromatic numbers
+	if (!writeVectorAsList(chromatic_numbers, outfile_path)) return false;
+
 
 	if (!writeString(outfile_path, "\n")) return false;
 	if (!writeString(outfile_path, "\n")) return false;

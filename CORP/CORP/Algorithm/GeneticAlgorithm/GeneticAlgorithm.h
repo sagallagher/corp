@@ -74,6 +74,11 @@ public:
 		int SAMPLE_RATE = 1;
 		SAMPLE_RATE = Config::getInstance()->pull("SAMPLE_RATE", SAMPLE_RATE);
 
+		// rate we display genotype
+		int DISPLAY_GENOTYPE_DELAY = 1;
+		DISPLAY_GENOTYPE_DELAY = Config::getInstance()->pull("DISPLAY_GENOTYPE_DELAY", DISPLAY_GENOTYPE_DELAY);
+
+
 		// fill the initial population
 		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
 
@@ -98,12 +103,13 @@ public:
 					geno.getFitnesses(),
 					geno.getPercentCovereds(),
 					geno.getNumberSelecteds(),
+					geno.getChromaticNumbers(),
 					generation,
 					METRIC_OUTPUT
 			);
 
 			// periodically print the genotype and the current generation
-			if (generation % 10 == 0)
+			if (generation % DISPLAY_GENOTYPE_DELAY == 0)
 			{
 				std::cout << "Generation:\t" << generation << std::endl;
 
