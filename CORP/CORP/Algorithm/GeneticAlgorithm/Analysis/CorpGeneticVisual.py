@@ -37,16 +37,12 @@ class CorpGeneticVisual():
                   
     def graphAll(self):
 
-        
         generations = [i for i in range(len(self._fitnesses))]
         
         for generation in generations:
             for index in range(len(self._fitnesses[generation])):
                 
-                #print(generation, self._fitnesses[generation][index])
                 plt.scatter(generations[generation],self._fitnesses[generation][index])
-                
-                #print(generation, self._fitnesses[generation][index])
       
                 plt.figure(1)
                 plt.subplot(221)
@@ -96,8 +92,7 @@ if __name__ == '__main__':
     # 1 => cover percent
     # 2 => number selected
     #print(type(g._cover_percents[0][]))
-    a = []
-
+    
     g.graph3D(g._colors,
                      g._num_selecteds,
                      g._fitnesses,
