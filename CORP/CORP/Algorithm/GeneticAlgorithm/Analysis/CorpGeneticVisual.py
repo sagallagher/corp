@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
 # class to parse and graph lists outputed from corp project
 class CorpGeneticVisual():
     
@@ -9,7 +10,7 @@ class CorpGeneticVisual():
         self._num_selecteds = []
         self._colors = []
         self.parse(input_file_path)
-        
+   
     # parse data from file into lists
     def parse(self,input_file_path):
         
@@ -33,11 +34,7 @@ class CorpGeneticVisual():
                         self._colors.append(eval(line))
                         
                     data_class+=1
-     
-    # graph fitness, cover percent, or number selected   
-    # 0 => fitness
-    # 1 => cover percent
-    # 2 => number selected               
+                  
     def graphAll(self):
 
         
@@ -76,43 +73,20 @@ class CorpGeneticVisual():
                 
                 plt.scatter(generations[generation],data[generation][index])
                 
-        
     def graph3D(self,x,y,z,x_label,y_label,z_label):
             
         
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
         generations = [i for i in range(len(self._fitnesses))]
-                            
-        #print(generation, self._fitnesses[generation][index])
-       
-        """
-        for generation in generations:
-            for index in range(len(self._fitnesses[generation])):
-                ax.scatter(x[generation][index],
-                            y[generation][index],
-                            z[generation][index],
-                            c='r', marker='o')
-                
-        """
-        
-   
+ 
         ax.scatter(x,y,z,c='r', marker='o')
-                
-                
-        
-        
+
         ax.set_xlabel(x_label)
         ax.set_ylabel(y_label)
         ax.set_zlabel(z_label)
-        
-        
-        
-        plt.show()
-        
 
-     
-    
+        plt.show()
 
 if __name__ == '__main__':
     
@@ -122,10 +96,11 @@ if __name__ == '__main__':
     # 1 => cover percent
     # 2 => number selected
     #print(type(g._cover_percents[0][]))
-    a = [i for i in range(len(g._fitnesses))]
+    a = []
+
     g.graph3D(g._colors,
                      g._num_selecteds,
-                     g._cover_percents,
+                     g._fitnesses,
                      'Colors Used',
                      'Number Selected',
                      'Cover Percent')
