@@ -35,39 +35,38 @@ class CorpGeneticVisual():
                         
                     data_class+=1
                   
+                    
+        
     def graphAll(self):
-
-        generations = [i for i in range(len(self._fitnesses))]
         
-        for generation in generations:
-            for index in range(len(self._fitnesses[generation])):
-                
-                plt.scatter(generations[generation],self._fitnesses[generation][index])
-      
-                plt.figure(1)
-                plt.subplot(221)
-                plt.scatter(generations[generation],self._fitnesses[generation][index])
-                
-           
-                plt.subplot(223)
-                plt.scatter(generations[generation],self._cover_percents[generation][index])
-                
-                plt.subplot(222)
-                plt.scatter(generations[generation],self._num_selecteds[generation][index])
-                plt.show()        
+        fig = plt.figure()
         
-    # graph fitness, cover percent, or number selected   
-    # 0 => fitness
-    # 1 => cover percent
-    # 2 => number selected               
-    def graphOne(self, data):
-
-        generations = [i for i in range(len(data))]
+        ax1 = fig.add_subplot(221)
+        ax2 = fig.add_subplot(222)
+        ax3 = fig.add_subplot(223)
+        ax4 = fig.add_subplot(224)
         
-        for generation in generations:
-            for index in range(len(data[generation])):
-                
-                plt.scatter(generations[generation],data[generation][index])
+        ax1.set_title("Fitness")
+        
+        ax2.set_title("Colors")
+        
+        ax3.set_title("Number Selected")
+        
+        ax4.set_title("Percent Covered")
+        
+        solution_count = [i for i in range(len(self._fitnesses)*len(self._fitnesses[0]))],
+        
+        ax1.scatter(solution_count, self._fitnesses,c='black', marker='o')
+        
+        ax2.scatter(solution_count, self._colors,c='black', marker='o')
+        
+        ax3.scatter(solution_count, self._num_selecteds,c='black', marker='o')
+        
+        ax4.scatter(solution_count, self._cover_percents,c='black', marker='o')
+        
+        plt.tight_layout()
+        
+        plt.show()
                 
     def graph3D(self,x,y,z,x_label,y_label,z_label):
             
@@ -86,19 +85,26 @@ class CorpGeneticVisual():
 
 if __name__ == '__main__':
     
+    # 0 => All Plots
+    # 1 => 3D Plot
+    
+    
+    GRAPH_CHOICE = 0
+    
     g = CorpGeneticVisual("C:/Users/Steven/Desktop/metrics.txt")
 
-    # 0 => fitness
-    # 1 => cover percent
-    # 2 => number selected
-    #print(type(g._cover_percents[0][]))
+    if GRAPH_CHOICE == 0:
+        g.graphAll()
     
-    g.graph3D(g._colors,
-                     g._num_selecteds,
-                     g._fitnesses,
-                     'Colors Used',
-                     'Number Selected',
-                     'Cover Percent')
+    elif GRAPH_CHOICE == 1:
+        g.graph3D(g._colors,
+                         g._num_selecteds,
+                         g._cover_percents,
+                         'Colors Used',
+                         'Number Selected',
+                         'Cover Percent')
+        
+    
     
 
 

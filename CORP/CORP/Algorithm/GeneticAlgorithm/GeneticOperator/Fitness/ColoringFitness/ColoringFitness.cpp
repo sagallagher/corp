@@ -26,7 +26,7 @@ bool ColoringFitness::setFitness(Genotype& geno) {
 
 		x = 1; k = 1; r = 5;
 
-		fit = p - n - pow(.1,c);
+		fit = p - n - (pow(2,c))/256;
 
 		chromo.setFitness(fit);
 
