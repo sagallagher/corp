@@ -11,13 +11,7 @@
 #ifndef _EXECUTOR_GUARD
 #define _EXECUTOR_GUARD
 
-#define _CRTDBG_MAP_ALLOC
-#include<iostream>
-#include <crtdbg.h>
-#ifdef _DEBUG
-#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#define new DEBUG_NEW
-#endif
+
 
 #include "../CORP/Config/Config.h"
 #include "../CORP/InputParser/InputParser.h"
@@ -102,13 +96,6 @@ private:
         Star* star = new Star(*_matrix);
 
 		Cover cover(star);
-		Validator val;
-		std::vector<int> sol = {1,6,8};
-		std::cout << "IS SOLUTION?\t" << val.checkSolution(cover, sol) << std::endl;
-		system("pause");
-		
-
-		
 
         runner.start(star);
 

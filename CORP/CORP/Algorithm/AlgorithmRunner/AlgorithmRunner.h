@@ -1,13 +1,6 @@
 #ifndef _ALGORITHM_CONTAINER_GUARD
 #define _ALGORITHM_CONTAINER_GUARD 1
 
-#define _CRTDBG_MAP_ALLOC
-#include<iostream>
-#include <crtdbg.h>
-#ifdef _DEBUG
-#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#define new DEBUG_NEW
-#endif
 
 #include"../Algorithm.h"
 #include "../NaiveAlgorithm/NaiveAlgorithm.h"

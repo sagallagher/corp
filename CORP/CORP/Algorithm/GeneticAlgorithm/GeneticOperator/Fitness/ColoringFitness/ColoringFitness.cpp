@@ -25,8 +25,10 @@ bool ColoringFitness::setFitness(Genotype& geno) {
 		n = ((float)chromo.getCover()._bitVector.numberSelected()/ chromo.getCover()._bitVector.length());
 
 		x = 1; k = 1; r = 5;
+		int a = chromo.getCover()._bitVector.numberSelected();
+		
 
-		fit = p - n - (pow(2,c))/256;
+		fit = 100*p - c - abs(48 - a);
 
 		chromo.setFitness(fit);
 

@@ -1,10 +1,4 @@
-#define _CRTDBG_MAP_ALLOC
-#include<iostream>
-#include <crtdbg.h>
-#ifdef _DEBUG
-#define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#define new DEBUG_NEW
-#endif
+
 
 #include"../CORP2/Validator.hpp"
 #include "../CORP2/Executor.hpp"
@@ -36,5 +30,5 @@ int main(int argc, const char* argv[])
     system("pause");
 
     std::cout << "Dumping Memory Leaks" << std::endl;
-    _CrtDumpMemoryLeaks();
+
 }

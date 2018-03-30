@@ -1,7 +1,11 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+import sys
+import time
+
 # class to parse and graph lists outputed from corp project
+
 class CorpGeneticVisual():
     
     def __init__(self, input_file_path):
@@ -71,38 +75,45 @@ class CorpGeneticVisual():
     def graph3D(self,x,y,z,x_label,y_label,z_label):
             
         
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-        generations = [i for i in range(len(self._fitnesses))]
+        fig = plt.figure();
+        ax = fig.add_subplot(111, projection='3d');
+        generations = [i for i in range(len(self._fitnesses))];
  
-        ax.scatter(x,y,z,c='r', marker='o')
+        ax.scatter(x,y,z,c='r', marker='o');
 
-        ax.set_xlabel(x_label)
-        ax.set_ylabel(y_label)
-        ax.set_zlabel(z_label)
-
-        plt.show()
+        ax.set_xlabel(x_label);
+        ax.set_ylabel(y_label);
+        ax.set_zlabel(z_label);
+        fig.savefig('fig.png');
+     
 
 if __name__ == '__main__':
     
     # 0 => All Plots
     # 1 => 3D Plot
     
+   
     
     GRAPH_CHOICE = 1
     
     g = CorpGeneticVisual("C:/Users/Steven/Desktop/metrics.txt")
 
     if GRAPH_CHOICE == 0:
-        g.graphAll()
+            g.graphAll()
     
     elif GRAPH_CHOICE == 1:
-        g.graph3D(g._colors,
+        while(True):
+            time.sleep(5)
+            g.parse("C:/Users/Steven/Desktop/metrics.txt")
+            g.graph3D(g._colors,
                          g._num_selecteds,
                          g._cover_percents,
                          'Colors Used',
                          'Number Selected',
                          'Cover Percent')
+        
+        
+    
         
     
     
