@@ -54,6 +54,9 @@
     <ClInclude Include="Algorithm\AlgorithmRunner\AlgorithmRunner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GreedyAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Algorithm\AlgorithmRunner\AlgorithmRunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GreedyAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
