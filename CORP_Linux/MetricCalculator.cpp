@@ -9,11 +9,21 @@ std::vector<double> MetricCalculator::getMetric(int metric_num)
   std::vector<double> result;
   ColoringFitness  cf;
   for (Chromosome chromo : _genotype.getChromosomes())
-    if(metric_num == 0) result.push_back(chromo.getFitness());
-    else if(metric_num == 1) result.push_back((double)chromo.getCover()._bitVector.numberSelected());
-    else if(metric_num == 2) result.push_back(chromo.getCover().coverPercent());
-    else if(metric_num == 3) result.push_back(cf.getChromaticNumber(chromo));
-    
+    switch(metric_num)
+    {
+    case 0:
+      result.push_back(chromo.getFitness());
+      break;
+    case 1:
+      result.push_back((double)chromo.getCover()._bitVector.numberSelected());
+      break;
+    case 2:
+      result.push_back(chromo.getCover().coverPercent());
+      break;
+    case 3:
+      result.push_back(cf.getChromaticNumber(chromo));
+      break;
+  }
     // define more metrics here then update METRIC_COUT in writeAll()...
 
   return result;
@@ -67,6 +77,8 @@ bool MetricCalculator::writeMetrics(std::vector<std::vector<double>> metrics, st
 
 bool MetricCalculator::writeAll(std::string outfile_path)
 {
+
+  // UPDATE THIS TO MATCH # of metrics in getMetric()
   const int METRIC_COUNT = 3;
 
   for(int i = 0; i <= METRIC_COUNT;i++)
