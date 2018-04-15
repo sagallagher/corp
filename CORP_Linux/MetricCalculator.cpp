@@ -13,6 +13,8 @@ std::vector<double> MetricCalculator::getMetric(int metric_num)
     else if(metric_num == 1) result.push_back((double)chromo.getCover()._bitVector.numberSelected());
     else if(metric_num == 2) result.push_back(chromo.getCover().coverPercent());
     else if(metric_num == 3) result.push_back(cf.getChromaticNumber(chromo));
+    
+    // define more metrics here then update METRIC_COUT in writeAll()...
 
   return result;
 }
