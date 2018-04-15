@@ -29,10 +29,11 @@
 #include"CoverPercentRatioFitness.h"
 #include"Config.h"
 #include <fstream>
+#include"MetricCalculator.h"
 
-template <typename TheInitPopulation_T, typename TheMutation_T, 
+template <typename TheInitPopulation_T, typename TheMutation_T,
 	typename TheFitness_T,typename TheCrossover_T,typename ThePurge_T>
-class GeneticAlgorithm : public Algorithm 
+class GeneticAlgorithm : public Algorithm
 {
 
 private:
@@ -46,7 +47,7 @@ public:
 
 	void run(Star* star)
 	{
-		
+
 
 		// seed random number generation
 		srand(std::time(nullptr));
@@ -84,39 +85,32 @@ public:
 		Genotype geno = _init_population.fillGenotype(star, GENOTYPE_SIZE);
 
 		std::cout << geno.toString() << std::endl;
-		
+
 		// generation count
 		int generation = 1;
 
 		// solution file to write to
 		std::ofstream myfile;
-		
+
 		// clear metric file
 		std::ofstream outfile;
 		outfile.open(METRIC_OUTPUT);
 		outfile.close();
 
+
+
 		//  -> mutate -> set fitness -> crossover ->
 		for(int i = 0; i <100000;i++)
 		{
-			
+
 			// set the fitness of the population
 			_fitness.setFitness(geno);
 
-
-			// clear metric file
-
-
-			// write metrics
 			if(generation%SAMPLE_RATE == 0)
-				geno.writeMetrics(
-					geno.getFitnesses(),
-					geno.getPercentCovereds(),
-					geno.getNumberSelecteds(),
-					geno.getChromaticNumbers(),
-					generation,
-					METRIC_OUTPUT
-			);
+			{
+				MetricCalculator mc(geno);
+				mc.writeAll(METRIC_OUTPUT);
+			}
 
 			// periodically print the genotype and the current generation
 			if (generation % DISPLAY_GENOTYPE_DELAY == 0)

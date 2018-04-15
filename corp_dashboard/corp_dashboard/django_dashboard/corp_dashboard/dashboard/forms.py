@@ -1,6 +1,7 @@
 from django import forms
 from .models import Config
 class ConfigForm(forms.ModelForm):
+    CONFIG_FILE = forms.CharField(label='CONFIG_FILE', max_length=100)
     AdjacencyList = forms.CharField(label='AdjacencyList', max_length=100)
     GA_SOLUTION_FILE = forms.CharField(label='GA_SOLUTION_FILE', max_length=100)
     CHROMOSOME_FILE = forms.CharField(label='CHROMOSOME_FILE', max_length=100)
@@ -12,7 +13,8 @@ class ConfigForm(forms.ModelForm):
 
     class Meta():
         model=Config
-        fields=['AdjacencyList',
+        fields=['CONFIG_FILE',
+                'AdjacencyList',
                 'GA_SOLUTION_FILE',
                 'CHROMOSOME_FILE',
                 'METRIC_OUTPUT',

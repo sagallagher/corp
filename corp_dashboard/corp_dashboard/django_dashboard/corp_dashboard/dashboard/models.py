@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Config(models.Model):
+    CONFIG_FILE = models.CharField(max_length=200)
     AdjacencyList = models.CharField(max_length=200)
     GA_SOLUTION_FILE = models.CharField(max_length=200)
     CHROMOSOME_FILE = models.CharField(max_length=200)
@@ -10,3 +11,6 @@ class Config(models.Model):
     STEP_SIZE = models.IntegerField(default=1)
     PURGE_DELAY = models.IntegerField(default=10000)
     SAMPLE_RATE = models.IntegerField(default=10000)
+
+    def __str__(self):
+        return self.CONFIG_FILE

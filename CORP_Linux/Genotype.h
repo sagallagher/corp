@@ -39,20 +39,6 @@ public:
 	std::string toString();
 
 	Chromosome getMostFit();
-
-	std::vector<double> getFitnesses();
-
-	std::vector<double> getNumberSelecteds();
-
-	std::vector<double> getPercentCovereds();
-
-	std::vector<double> getChromaticNumbers();
-
-	bool writeMetrics(std::vector<double>, std::vector<double>, std::vector<double>, std::vector<double>, int, std::string);
-
-	bool writeVectorAsList(std::vector<double> vector, std::string outfile_path);
-
-
 };
 
 #endif
