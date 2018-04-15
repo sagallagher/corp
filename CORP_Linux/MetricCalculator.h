@@ -27,9 +27,6 @@ private:
   // write a metric as a list python's eval() will understand
   bool writeVectorAsList(std::vector<double>& metric ,std::string outfile_path);
 
-  // write each metric in vectr of metrics to output_file
-  bool writeMetrics(std::vector<std::vector<double>> metrics, std::string outfile_path);
-
 };
 
 

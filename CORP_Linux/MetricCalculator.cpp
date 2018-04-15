@@ -69,12 +69,6 @@ bool MetricCalculator::writeVectorAsList(std::vector<double>& metric ,std::strin
   outfile.close();
 }
 
-bool MetricCalculator::writeMetrics(std::vector<std::vector<double>> metrics, std::string outfile_path)
-{
-  for(auto metric : metrics)
-    writeVectorAsList(metric, outfile_path);
-}
-
 bool MetricCalculator::writeAll(std::string outfile_path)
 {
 
