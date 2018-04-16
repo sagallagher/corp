@@ -30,6 +30,7 @@
 #include"ColoringFitness.h";
 #include"RandomHalfPurge.h"
 #include"KindOfRandomInitGenotype.h"
+#include"BeamSearch.h"
 
 class Executor
 {
@@ -86,12 +87,13 @@ private:
     void run()
     {
         // choose an algorithm and display the solution set
-		AlgorithmRunner<GeneticAlgorithm<
-			KindOfRandomInitGenotype, 
-			BitFlipMutation, 
-			ColoringFitness, 
-			OnePointCrossover, 
-			RandomHalfPurge>> runner;
+		AlgorithmRunner<BeamSearch> runner;
+    /*GeneticAlgorithm<
+			KindOfRandomInitGenotype,
+			BitFlipMutation,
+			ColoringFitness,
+			OnePointCrossover,
+			RandomHalfPurge>*/
 
         Star* star = new Star(*_matrix);
 

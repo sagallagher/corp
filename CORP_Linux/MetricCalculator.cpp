@@ -8,6 +8,7 @@ std::vector<double> MetricCalculator::getMetric(int metric_num)
 {
   std::vector<double> result;
   ColoringFitness  cf;
+
   for (Chromosome chromo : _genotype.getChromosomes())
     switch(metric_num)
     {
@@ -57,7 +58,6 @@ bool MetricCalculator::writeVectorAsList(std::vector<double>& metric ,std::strin
     // followed by a comma
     // unlesss its the last item
     if (index < metric.size()-1) outfile << ",";
-
 
     // increment index to track where in list we are
     index++;
