@@ -1,7 +1,3 @@
------------------------------
-UTILITY
------------------------------
-
 InputParser
   InputParser parses a configuration file into an OptionsContainer.
 
@@ -16,28 +12,18 @@ Config.cpp
   Config uses a singleton design pattern to offer easy access
   across classes to values parsed using InputParser.
 
------------------------------
-PROBLEM REPRESENTATION
------------------------------
-
-
 Matrix
   Matrix is a 1D representation of a 2D matrix.
 
 Star
   Star stores data regarding the current adjacency list we are
-  working with
+  working with.
 
 BoolSet
-  A wrapper for star for this specific problem
+  A wrapper of star for this specific problem.
 
 Cover
-  Cover offers methods to interact with a BoolSet
-
-
------------------------------
-ALGORITHM
------------------------------
+  Cover offers methods to interact with a BoolSet.
 
 Algorithm
   Algorithm provides functions to assist with running algorithms.
