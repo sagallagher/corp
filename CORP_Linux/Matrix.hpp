@@ -48,7 +48,7 @@ public:
         // Allocate parallel array
         this->_matrix = new T[_rows * _columns];
 
-        // Copy contents 
+        // Copy contents
         memcpy(this->_matrix, rhs._matrix, _rows * _columns * sizeof(T));
     }
 
@@ -83,7 +83,7 @@ public:
         this->_matrix = new T[_rows * _columns];
 
         //
-        // Copy contents 
+        // Copy contents
         //
         memcpy(this->_matrix, rhs._matrix, _rows * _columns * sizeof(T));
 

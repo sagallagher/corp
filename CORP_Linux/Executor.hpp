@@ -95,7 +95,7 @@ private:
 			OnePointCrossover,
 			RandomHalfPurge>*/
 
-        Star* star = new Star(*_matrix);
+    Star* star = new Star(*_matrix);
 
 		Cover cover(star);
         runner.start(star);
