@@ -10,11 +10,12 @@ std::vector<std::vector<bool>> BeamSearch::getMatrix2D(Cover& cover)
   int cols = cover._star->_matrix.numColumns();
   for(int i = 0; i < rows;i++)
   {
+    std::vector<bool> row = {};
     for(int j = 0; j < cols;j++)
     {
-      std::cout << i << "\t|\t" << j << std::endl;
-      //std::cout << cover._star->_matrix.get(i,j) << std::endl;
+      row.push_back(cover._star->_matrix.get(i,j));
     }
+    matrix_2d.push_back(row);
   }
 
   return matrix_2d;
@@ -45,6 +46,7 @@ std::map<int,int> BeamSearch::getFacetCounts(Cover& cover)
     }
   }
 
+  // display counts
   for(auto key : result)
   {
     std::cout << key.first << "\t|\t" << key.second << std::endl;
@@ -72,7 +74,6 @@ void BeamSearch::runHelper(Cover& cover, int k)
     // if we found a solution
     if (cover.checkCover())
     {
-      std::cout << "aaghh\n";
       // store it
       //_solutions.push_back(solution);
 
