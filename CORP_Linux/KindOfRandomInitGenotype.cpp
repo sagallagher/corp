@@ -67,9 +67,8 @@ bool KindOfRandomInitGenotype::fillGenotypeFromFile(std::string file_path, Star*
 		}
 
 		_genotype.appendChromosome(new_chromo);
-		
+
 	}
 
 	return true;
 }
-

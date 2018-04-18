@@ -87,7 +87,7 @@ public:
 		std::cout << geno.toString() << std::endl;
 
 		// generation count
-		int generation = 1;
+		int generation = 0;
 
 		// solution file to write to
 		std::ofstream myfile;
@@ -100,7 +100,7 @@ public:
 
 
 		//  -> mutate -> set fitness -> crossover ->
-		for(int i = 0; i <100000;i++)
+		while(true)
 		{
 
 			// set the fitness of the population
@@ -155,7 +155,7 @@ public:
 
 			// if we have reached x generations, purge
 
-			if (generation % PURGE_DELAY == 0) _purge.purgeGenotype(geno, star);
+			if (PURGE_DELAY != -1 && generation % PURGE_DELAY == 0) _purge.purgeGenotype(geno, star);
 
 			// increment generation
 			generation++;

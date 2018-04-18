@@ -41,7 +41,7 @@ std::map<int,int> BeamSearch::getFacetCounts(Cover& cover)
               result[current] = result[current]+1;
 
               // remove the current row from the covers matrix
-              cover._star->_matrix.deleteRow(current-1);
+              //cover._star->_matrix.deleteRow(current-1);
 
             }
       }

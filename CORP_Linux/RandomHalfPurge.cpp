@@ -5,6 +5,7 @@
 
 bool RandomHalfPurge::purgeGenotype(Genotype& geno, Star* star) {
 
+	std::cout << "Executing RandomHalfPurge" << std::endl;
 	// seed random numbers with time
 	srand(std::time(nullptr));
 
@@ -35,7 +36,7 @@ bool RandomHalfPurge::appendChromosomes(Genotype& geno, Star* star, int size)
 
 	for (int i = 0; i < size; i++)
 	{
-        Chromosome chromo = ig.getRandomChromosome(star);
+		Chromosome chromo = ig.getRandomChromosome(star);
 		geno.appendChromosome(chromo);
 	}
 
