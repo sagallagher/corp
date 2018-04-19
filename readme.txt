@@ -9,7 +9,7 @@ least one vertice in the set is adjacent to each of the polytope's facets."
 The framework includes classes and methods for the representation of the problem.
 Additionally, we provide an environment for the running and testing of relevant algorithms.
 
-Three relevant algorithms and been implemented:
+Three relevant algorithms have been implemented:
   - Genetic Algorithm
   - Beam Search Algorithm
   - Graph Coloring Algorithm
