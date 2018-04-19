@@ -3,8 +3,8 @@ Introduction
 ------------------------------------------------------
 This C++ framework was created to address the question:
 
-"For any given polytope, find the minimum set of vertices required such that at least one vertice in the set
-is adjacent to each of the polytope's facets."
+"For any given polytope, find the minimum set of vertices required such that at
+least one vertice in the set is adjacent to each of the polytope's facets."
 
 The framework includes classes and methods for the representation of the problem.
 Additionally, we provide an environment for the running and testing of relevant algorithms.
