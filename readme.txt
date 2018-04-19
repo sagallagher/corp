@@ -1,7 +1,7 @@
 ------------------------------------------------------
 Introduction
 ------------------------------------------------------
-This C++ framework was created to address the question:
+This C++ framework addresses the question:
 
 "For any given polytope, find the minimum set of vertices required such that at
 least one vertice in the set is adjacent to each of the polytope's facets."
