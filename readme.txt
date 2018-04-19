@@ -1,3 +1,16 @@
+To use Visual Studio:
+1. Open CORP.sln
+2. In the Solution Explorer, right click "Solution 'CORP' (2 projects) and select "Properties"
+3. Under "Common Properties", be sure "Single startup project" is selected
+3. Click on the drop down menu below the "Single startup project" radio box, select CORP2.
+4. Press OK
+
+5. In the Solution Explorer, right click CORP2 and select "Properties"
+6. Under "Configuration Properties", select "Debugging"
+7. For the field "Command Arguments", supply the path to a configuration file
+8. Press Ok
+
+
 InputParser
   InputParser parses a configuration file into an OptionsContainer.
 
