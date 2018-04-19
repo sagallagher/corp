@@ -7,7 +7,7 @@ This C++ framework was created to address the question:
 is adjacent to each of the polytope's facets."
 
 The framework includes classes and methods for the representation of the problem.
-Additionally, we provide an environment for running and testing relevant algorithms.
+Additionally, we provide an environment for the running and testing of relevant algorithms.
 
 Three relevant algorithms and been implemented:
   - Genetic Algorithm
