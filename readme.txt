@@ -37,10 +37,10 @@ g++:
 4. Execute the compiled code with "./corp.out"
 
 ------------------------------------------------------
-Configuration file
+Configuration
 ------------------------------------------------------
 #
-# Example configuration
+# Example configuration file
 #
 
 # the path to the file containing the adjacency matrix
