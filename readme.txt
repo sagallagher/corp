@@ -1,4 +1,7 @@
-To use Visual Studio:
+------------------------------------------------------
+Compilation & Execution Instructions
+------------------------------------------------------
+Visual Studio:
 1. Open CORP.sln
 2. In the Solution Explorer, right click "Solution 'CORP' (2 projects) and select "Properties"
 3. Under "Common Properties", be sure "Single startup project" is selected
@@ -9,8 +12,56 @@ To use Visual Studio:
 6. Under "Configuration Properties", select "Debugging"
 7. For the field "Command Arguments", supply the path to a configuration file
 8. Press Ok
+9. Press play to execute the compiled code
+
+g++:
+1. Set current directory to "CORP - Linux"
+2. Run the command: g++ -std=c++11 *cpp -out corp.out
+3. If there are permission issues, use "chmod 755 corp.out"
+4. Execute the compiled code with "./corp.out"
+
+------------------------------------------------------
+Configuration file:
+------------------------------------------------------
+#
+# Example configuration
+#
+
+# the path to the file containing the adjacency matrix
+AdjacencyList = adjacency_list_120cell.txt
+
+#
+# Genetic Algorithm Settings
+#
 
 
+# the size of the genotype to use
+GENOTYPE_SIZE = 15
+
+# the number of mutations to apply to each generation
+STEP_SIZE = 1
+
+# the file to output solutions found to
+GA_SOLUTION_FILE = GA_solutions.txt
+
+# the file good solutions are found to initialize genotype
+CHROMOSOME_FILE = chromosomes.txt
+
+# how many generations to wait before purging
+PURGE_DELAY = -1
+
+# output file for metrics
+METRIC_OUTPUT = metrics.txt
+
+# how often to write metrics to file
+SAMPLE_RATE = 500
+
+# how often we print genotype
+DISPLAY_GENOTYPE_DELAY = 500
+
+------------------------------------------------------
+Class Descriptions
+------------------------------------------------------
 InputParser
   InputParser parses a configuration file into an OptionsContainer.
 
