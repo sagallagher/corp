@@ -32,7 +32,7 @@ Visual Studio:
 
 g++:
 1. Set current directory to "CORP - Linux"
-2. Run the command: g++ -std=c++11 *cpp -out corp.out
+2. Run the command: g++ -std=c++11 *.cpp -out corp.out
 3. If there are permission issues, use "chmod 755 corp.out"
 4. Execute the compiled code with "./corp.out"
 
