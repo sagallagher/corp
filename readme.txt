@@ -37,7 +37,7 @@ g++:
 4. Execute the compiled code with "./corp.out"
 
 ------------------------------------------------------
-Configuration file:
+Configuration file
 ------------------------------------------------------
 #
 # Example configuration
