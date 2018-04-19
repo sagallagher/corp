@@ -11,7 +11,7 @@
 #include<sstream>
 #include<fstream>
 #include"../GeneticOperator/Fitness/ColoringFitness/ColoringFitness.h"
-
+#include"../../../Config/Config.h"
 // return the genotype as a vector of chromosomes
 std::vector<Chromosome>& Genotype::getChromosomes() { return _chromosomes; }
 
