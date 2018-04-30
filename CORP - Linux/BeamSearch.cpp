@@ -3,73 +3,9 @@
 
 BeamSearch::BeamSearch() {}
 
-
-// display map of freq counts
-void BeamSearch::displayFacetCounts(std::map<int,int> map)
-{
-  // display counts
-  for(auto key : map)
-    std::cout << key.first << "\t|\t" << key.second << std::endl;
-}
-
-// get the number of facets each vertice covers as a dictionary
-std::map<int,int> BeamSearch::getFacetCounts(Cover& cover)
-{
-
-  int rows = cover._star->_matrix.numRows();
-  int cols = cover._star->_matrix.numColumns();
-
-
-  std::map<int,int> result;
-
-  // loop through each vertice, current_vertice i.e loop from 0-24
-  for(int current = 1; current < cover._bitVector.length();current++)
-  {
-    // initialize map count
-    result[current] = 0;
-
-    // loop through each row of matrix 2d
-    for(int i = 0; i < rows;i++)
-    {
-      // loop through each column of matrix 2d
-      for(int j = 0;j < cols;j++)
-      {
-            // if item at matrix_2d[i,j] == result[current_vertice] = result[current_vertice]++;
-            if(cover._star->_matrix.get(i,j) == current)
-            {
-              // increment the current vertices count
-              result[current] = result[current]+1;
-
-              // remove the current row from the covers matrix
-              //cover._star->_matrix.deleteRow(current-1);
-
-            }
-      }
-    }
-  }
-
-  return result;
-}
-
-int BeamSearch::getAndRemoveMax(std::map<int,int>& map)
-{
-  int max_value = 0;
-  int max_key = 0;
-
-  for(auto pair : map)
-  {
-    if(pair.second > max_value) max_key = pair.first;
-  }
-
-  map.erase(map.find(max_key));
-
-  return max_key;
-}
-
-void BeamSearch::run(Star* star)
-{
-  int k = 1;
-  int MAX_SIZE = 5;
+void BeamSearch::run(Star* star) {
+  int k = 2;
+  int MAX_SIZE = 48;
 
   std::vector<int> solution = {};
 
@@ -77,72 +13,119 @@ void BeamSearch::run(Star* star)
   Cover cover(star);
 
   // pass cover to recursive helper method
-  runHelper(cover, solution, k, MAX_SIZE);
+  runHelper(cover, solution, k, MAX_SIZE,0,0);
 }
 
 ///////////////////////////////////////////////////////////////
 // return true if an element is a vector
 template<typename T>
-bool inSolution(const std::vector<T>& solution, const T& element)
-{
+bool inSolution(const std::vector<T>& solution, const T& element) {
 	return std::find(solution.begin(), solution.end(), element) != solution.end();
 }
 
-void displaySolution(std::vector<int> solution)
-{
+void displaySolution(std::vector<int> solution) {
   for(auto item : solution)
-  {
     std::cout << item << " ";
-  }
+
   std::cout << std::endl;
 }
 ///////////////////////////////////////////////////////////////
 
+// display map of freq counts
+void BeamSearch::displayFacetCounts(std::map<int,double> map)
+{
+  // display counts
+  for(auto key : map)
+    std::cout << key.first << "\t|\t" << key.second << std::endl;
+}
+
+std::map<int,double> BeamSearch::getPercentCovered(Cover& cover) {
+
+  std::map<int,double> result;
+
+  // loop through each vertex in cover
+  for (int i = 0; i < cover.vertices(); i++)
+  {
+    // select the  the vertex in the cover
+    cover.select(i);
+
+    // store that percent covered
+    result[i] = cover.coverPercent();
+
+    // deslect to modify cover
+    cover.deselect(i);
+  }
+
+  return result;
+}
+
+int BeamSearch::getAndRemoveMax(std::map<int,double>& map) {
+  double max_value = 0;
+  int max_key = 0;
+
+  for(auto pair : map)
+  {
+    if(pair.second > max_value)
+    {
+      max_key = pair.first;
+      max_value = pair.second;
+    }
+  }
+
+  map.erase(map.find(max_key));
+
+  return max_key;
+}
 
 // recrusive helper
-void BeamSearch::runHelper(Cover& cover, std::vector<int>& solution, int k, int MAX_SIZE)
-{
+void BeamSearch::runHelper(Cover& cover, std::vector<int>& solution, int k, int MAX_SIZE, int current_branch, int current_vertex) {
 
+  std::cout << "current branch:\t" << current_vertex << std::endl;
+  // if we found a solution
+  if (cover.checkCover())
+  {
+    // store it
+    _solutions.push_back(solution);
 
+    // display it
+    std::cout << "SOLUTION FOUND\n";
+    displaySolution(solution);
+
+    // kill this branch because every solution following will be a solution of greater length
+    return;
+  }
 
   // do all this for each vertice
-  for (int vertex = 0; vertex <= cover.vertices(); vertex++)
+  if(current_vertex <= cover.vertices())
   {
-
-    // if the solution is beyond on the upper bound, kill the branch
-    if (solution.size() > MAX_SIZE) return;
-
-    // if we found a solution
-    if (cover.checkCover())
-    {
-      // store it
-      _solutions.push_back(solution);
-      std::cout << "SOLUTION FOUND\n";
-      displaySolution(solution);
-      // kill this branch because every solution following will be a solution of greater length
-  		return;
-    }
+    // need a new cover for each starting vertex
+    Cover temp_cover(cover);
 
     // get the number of times each vertice appears in a facet
-    std::map<int,int> facet_counts = getFacetCounts(cover);
+    std::map<int,double> facet_counts = getPercentCovered(temp_cover);
 
-    displayFacetCounts(facet_counts);
-
-    Cover temp_cover = cover;
-
+    // need new solution vector for each starting vertex
     std::vector<int> temp_solution = solution;
 
-    // go the width of the branching factor
-    for(int i = 0; i < k;i++)
-    {
+    // select the starting vertex
+    temp_cover.select(current_vertex);
 
+    // if our current solution has exceeded the max solution size, kill this branch
+    if (solution.size() > MAX_SIZE) return;
+
+    // go the width of the branching factor
+    if(current_branch < k)
+    {
       // display solution
       displaySolution(solution);
 
       // get the next best of the facet counts
       int best = getAndRemoveMax(facet_counts);
+
       while(inSolution(temp_solution,best))
+      {
         best = getAndRemoveMax(facet_counts);
+      }
 
       // store in the solution
       temp_solution.push_back(best);
@@ -151,9 +134,9 @@ void BeamSearch::runHelper(Cover& cover, std::vector<int>& solution, int k, int 
       temp_cover.select(best);
 
       // recurse with new cover and solution
-      runHelper(temp_cover, temp_solution, k, MAX_SIZE);
-    }
+      runHelper(temp_cover, temp_solution, k, MAX_SIZE, ++current_branch, current_vertex);
+
+    } else runHelper(temp_cover, temp_solution, k, MAX_SIZE, 0, ++current_vertex);
 
   }
-
 }

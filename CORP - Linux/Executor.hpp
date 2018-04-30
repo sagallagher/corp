@@ -88,12 +88,13 @@ private:
     {
         // choose an algorithm and display the solution set
 		//AlgorithmRunner<BeamSearch> runner;
-    AlgorithmRunner<GeneticAlgorithm<
+    AlgorithmRunner<BeamSearch> runner;
+    /*r<GeneticAlgorithm<
 			KindOfRandomInitGenotype,
 			BitFlipMutation,
 			ColoringFitness,
 			OnePointCrossover,
-			RandomHalfPurge>> runner;
+			RandomHalfPurge>>*/
 
     Star* star = new Star(*_matrix);
 

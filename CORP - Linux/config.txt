@@ -1,5 +1,5 @@
 # the path to the file containing the adjacency matrix
-AdjacencyList = adjacency_list_120cell.txt
+AdjacencyList = adjacency_list_600cell.txt
 
 #
 # Genetic Algorithm Settings

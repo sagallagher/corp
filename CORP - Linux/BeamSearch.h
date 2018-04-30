@@ -18,13 +18,14 @@ private:
   std::map<int,int> getFacetCounts(Cover& cover);
 
   // recrusive helper
-  void runHelper(Cover& _cover, std::vector<int>& solution, int k, int MAX_SIZE);
+  void runHelper(Cover& _cover, std::vector<int>& solution, int k, int MAX_SIZE, int current_branch, int current_vertex);
 
   // get max item and remove it
-  int getAndRemoveMax(std::map<int,int>& map);
+  int getAndRemoveMax(std::map<int,double>& map);
 
   // display map of freq counts
-  void displayFacetCounts(std::map<int,int> map);
+  void displayFacetCounts(std::map<int,double> map);
 
+  std::map<int,double> getPercentCovered(Cover& cover);
 
 };
